@@ -4,7 +4,7 @@ import logo from '../../images/logos/crative-agency.png';
 const NavBar = () => {
   return (
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light sticky-top">
         <a class="navbar-brand" href="#">
           <img class="img-fluid logo rounded" src={logo} alt="logo" />
         </a>
