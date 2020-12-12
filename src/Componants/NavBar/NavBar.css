@@ -1,0 +1,46 @@
+body{
+    background: #000;
+}
+a:hover {
+    text-decoration: none;
+}
+.search{
+    cursor: pointer;
+}
+.fa-shopping-cart{
+    font-size: 35px;
+    
+}
+.logo{
+    height: 40px;
+}
+.navbar .nav-item{
+    margin-left: 50px;
+}
+.searchBox{
+    width: 650px;
+}
+.cartIcon{
+    position: relative;
+
+}
+.badgeCart{
+    position: absolute;
+    left: 15px;
+    top: 3px;
+}
+@media (max-width: 991px){
+    .searchBox{
+        margin-top: 20px;
+        width: auto;
+    }
+    .badgeCart{
+        position: absolute;
+        left: 50%;
+        top: 3px;
+    }
+    .navbar .nav-item{
+        margin-left: 0;
+        margin-top: 15px;
+    }
+}

@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './Componants/NavBar/NavBar';
 
 function App() {
   return (
     <div className="App">
-     <h1>Welcome to Software Enginerring group Project</h1>
+     <NavBar></NavBar>
     </div>
   );
 }
