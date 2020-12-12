@@ -1,0 +1,29 @@
+.carousel-item {
+    height: 450px;
+  }
+  .carousel-img-1 {
+    background-image: url("../../images/banner1.jpg");
+    background-size: cover;
+  }
+  .carousel-img-2 {
+    background-image: url("../../images/banner2.jpg");
+    background-size: cover;
+  }
+  .carousel-img-3 {
+    background-image: url("../../images/banner3.jpg");
+    background-size: cover;
+  }
+  @media (max-width: 991px){
+    .carousel-img-1 {
+        background-image: url("../../images/smBanner1.jpg");
+        background-size: cover;
+      }
+      .carousel-img-2 {
+        background-image: url("../../images/smBanner2.jpg");
+        background-size: cover;
+      }
+      .carousel-img-3 {
+        background-image: url("../../images/smBanner3.jpg");
+        background-size: cover;
+      }
+}
