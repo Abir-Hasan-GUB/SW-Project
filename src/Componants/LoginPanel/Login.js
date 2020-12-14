@@ -47,9 +47,19 @@ const Login = () => {
                     {/* ==================== Forgot Password Modal End ================= */}
 
                     <div className="form-group px-5 ">
-                        <input className="btn btn-success logInBtn btn-lg btn-block p-3" type="submit" value="Log In" />
+                        <input className="btn btn-success logInBtn btn-sm btn-sm-lg btn-block p-3" type="submit" value="Log In" />
                     </div>
                 </form>
+
+                {/* ===================== Alert Messege Start ================= */}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Recovery Request Success!</strong> You check your mail inbox now.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {/* ===================== Alert Messege Start ================= */}
+
 
                 {/* ===================== Register Panel ================= */}
 
@@ -64,7 +74,7 @@ const Login = () => {
                         <input className="form-control form-control-lg" placeholder="Enter Password" type="password" name="" id="" />
                     </div>
                     <div className="form-group px-5 ">
-                        <input className="btn btn-success logInBtn btn-lg btn-block p-3" type="submit" value="Sign Up" />
+                        <input className="btn btn-success logInBtn btn-sm btn-md-lg btn-block p-3" type="submit" value="Sign Up" />
                     </div>
                 </form>
 
