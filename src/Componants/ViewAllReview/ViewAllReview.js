@@ -2,7 +2,7 @@ import React from 'react';
 import DashBoardTop from '../AdminPanel/DashBoardTop/DashBoardTop';
 import DashBoardMenu from '../DashBoardMenu/DashBoardMenu';
 
-const MakeAdmin = () => {
+const ViewAllReview = () => {
     return (
         <div className="container">
             <div className="row mx-0">
@@ -12,7 +12,7 @@ const MakeAdmin = () => {
                 <div className="col-md-9 dashBoardMainDiv px-0">
                     <DashBoardTop></DashBoardTop>
                     <div className="reviews">
-                        <h1>Make Admin</h1>
+                        <h1>Reviews</h1>
                     </div>
                 </div>
             </div>
@@ -20,4 +20,4 @@ const MakeAdmin = () => {
     );
 };
 
-export default MakeAdmin;
+export default ViewAllReview;

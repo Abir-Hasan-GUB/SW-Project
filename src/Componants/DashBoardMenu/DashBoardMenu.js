@@ -1,15 +1,10 @@
 import React from 'react';
-import './AdminPanel.css';
-import logo from '../../images/logos/logo.png';
-import Statistics from '../Statistics/Statistics';
 import { Link } from 'react-router-dom';
-import DashBoardTop from './DashBoardTop/DashBoardTop';
+import logo from '../../images/logos/logo.png';
 
-const AdminPanel = () => {
+const DashBoardMenu = () => {
     return (
-        <div className="container">
-            <div className="row mx-0">
-                <div className="col-md-3 dashBoardMenu bg-dark px-0">
+        <div className="dashBoardMenu bg-dark px-0">
                     <div className="row mx-0">
                         <div className="col-md-12 m-0 px-0 dashBoardLogo bg-light">
                             <Link to="/"><img className="img-fluid dashLogo" src={logo} alt="logo" /></Link>
@@ -41,16 +36,7 @@ const AdminPanel = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-9 px-0">
-                    <div className="">
-                    <DashBoardTop></DashBoardTop>
-                    </div>
-                    <Statistics></Statistics>
-                    
-                </div>
-            </div>
-        </div>
     );
 };
 
-export default AdminPanel;
+export default DashBoardMenu;

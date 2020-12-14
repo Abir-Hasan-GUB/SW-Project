@@ -15,6 +15,7 @@ import ViewAllProducts from '../ViewAllProducts/ViewAllProducts';
 import OrderList from '../OrderList/OrderList';
 import AddProduct from '../AddProduct/AddProduct';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import ViewAllReview from '../ViewAllReview/ViewAllReview';
 // import ViewAllProducts from '../ViewAllProducts/AddProduct';
 // import ViewAllProducts from '../ViewAllProducts/orderList';
 // import ViewAllProducts from '../ViewAllProducts/MakeAdmin';
@@ -43,7 +44,7 @@ const Main = () => {
                     <AdminPanel></AdminPanel>
                 </Route>
                 <Route path="/ViewAllReviews">
-                    <ViewAllProducts></ViewAllProducts>
+                    <ViewAllReview></ViewAllReview>
                 </Route>
                 <Route path="/orderList">
                     <OrderList></OrderList>
