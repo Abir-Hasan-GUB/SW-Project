@@ -5,6 +5,7 @@ const Login = () => {
         <div className="container" id="login">
             <div className="login bg-light text-center p-5">
                 <h1 className="mb-4">Login</h1>
+                <h1 className="mb-4">Sign Up</h1>
 
                 {/* ==================== Login Panel ================= */}
                 <form action="">
