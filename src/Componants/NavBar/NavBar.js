@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './NavBar.css';
 import logo from '../../images/logos/crative-agency.png';
+// import './uikit.min.css';
+// import './uikit.min';
+// import './uikit-icons.min';
+
 const NavBar = () => {
   return (
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light" uk-sticky="top: 200; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up">
         <a class="navbar-brand" href="#">
           <img class="img-fluid logo rounded" src={logo} alt="logo" />
         </a>

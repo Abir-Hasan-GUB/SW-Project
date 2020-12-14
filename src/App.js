@@ -1,14 +1,10 @@
-import './App.css';
-import Banner from './Componants/Banner/Banner';
-import NavBar from './Componants/NavBar/NavBar';
-import Shop from './Componants/Shop/Shop';
+import { createContext } from 'react';
+import Main from './Componants/Main/Main';
 
 function App() {
   return (
-    <div className="App">
-     <NavBar></NavBar>
-     <Banner></Banner>
-     <Shop></Shop>
+    <div>
+     <Main></Main>
     </div>
   );
 }

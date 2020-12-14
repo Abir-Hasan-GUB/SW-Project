@@ -1,5 +1,7 @@
 .carousel-item {
-    height: 450px;
+    height: 700px;
+    /* 450px recommended */
+    width: 100%;
   }
   .carousel-img-1 {
     background-image: url("../../images/banner1.jpg");

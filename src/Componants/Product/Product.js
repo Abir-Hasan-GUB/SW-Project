@@ -1,4 +1,5 @@
 import React from 'react';
+document.title="Products"; // Chenge title
 
 const Product = (props) => {
     const { img, name, price, seller, stock, star } = props;

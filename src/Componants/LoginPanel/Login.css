@@ -1,0 +1,35 @@
+#login{
+    font-family: 'Poppins', sans-serif;
+}
+.login{
+    min-height: 500px;
+   margin: 15% auto;
+   width: 530px;
+   border-radius: 30px;
+}
+.login h1{
+    font-weight: 600;
+}
+.login input[type="password"],.login input[type="email"],.login input[type="text"],.logInBtn{
+    padding: 30px;
+    border-radius: 35px;
+}
+.forgetPassword{
+    font-size: 20px;
+    font-weight: 400;
+    transition: .4s;
+}
+.forgetPassword:hover{
+    font-weight: 600;
+}
+.logInBtn{
+    border-radius: 35px;
+}
+.facebookBtn{
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.facebookBtn .fab{
+    font-size: 35px;
+}
