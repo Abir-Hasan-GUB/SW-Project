@@ -9,10 +9,10 @@ const Login = () => {
 
                 {/* ==================== Login Panel ================= */}
                 <form action="">
-                    <div className="form-group mt-1 px-5">
+                    <div className="form-group mt-1 px-0 px-md-5">
                         <input className="form-control email form-control-lg" placeholder="Enter Email" type="email" name="" id="" />
                     </div>
-                    <div className="form-group px-5">
+                    <div className="form-group px-0 px-md-5">
                         <input className="form-control form-control-lg" placeholder="Enter Password" type="password" name="" id="" />
                     </div>
                     <div>
@@ -36,7 +36,7 @@ const Login = () => {
                                     <div className="form-group">
                                         <input className="ForgotEmail form-control form-control-lg email" type="email" name="" placeholder="Enter Your Email" id="" />
                                     </div>
-                                    <div className="form-group px-5 ">
+                                    <div className="form-group px-0 px-md-5 ">
                                         <input className="btn btn-success logInBtn btn-md btn-block p-3" type="submit" value="Reset Password" />
                                     </div>
                                     <p className="text-dark py-2"><strong>Return to <a href="#" className="text-success">Login</a> </strong></p>
@@ -46,7 +46,7 @@ const Login = () => {
                     </div>
                     {/* ==================== Forgot Password Modal End ================= */}
 
-                    <div className="form-group px-5 ">
+                    <div className="form-group px-0 px-md-5 ">
                         <input className="btn btn-success logInBtn btn-sm btn-sm-lg btn-block p-3" type="submit" value="Log In" />
                     </div>
                 </form>
@@ -64,16 +64,16 @@ const Login = () => {
                 {/* ===================== Register Panel ================= */}
 
                 <form action="">
-                    <div className="form-group mt-1 px-5">
+                    <div className="form-group mt-1 px-0 px-md-5">
                         <input className="form-control form-control-lg" placeholder="Enter Your Name" type="text" name="" id="" />
                     </div>
-                    <div className="form-group mt-1 px-5">
+                    <div className="form-group mt-1 px-0 px-md-5">
                         <input className="form-control email form-control-lg" placeholder="Enter Your Email" type="email" name="" id="" />
                     </div>
-                    <div className="form-group px-5">
+                    <div className="form-group px-0 px-md-5">
                         <input className="form-control form-control-lg" placeholder="Enter Password" type="password" name="" id="" />
                     </div>
-                    <div className="form-group px-5 ">
+                    <div className="form-group px-0 px-md-5 ">
                         <input className="btn btn-success logInBtn btn-sm btn-md-lg btn-block p-3" type="submit" value="Sign Up" />
                     </div>
                 </form>

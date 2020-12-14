@@ -1,0 +1,19 @@
+.dashBoardMenu{
+    height: 100vh;
+}
+.dashBoardBar{
+    height: 80px;
+    width: 100%;
+}
+.dashBoardLogo,.dashLogo{
+    height: 80px;
+    width: 100%;
+}
+.menu .list-group-item{
+    font-size: 22px;
+    font-weight: 600;
+    transition: .3s;
+}
+.menu .list-group-item:hover{
+    color: lime !important;
+}
