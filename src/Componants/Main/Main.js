@@ -28,7 +28,7 @@ const Main = () => {
                 <Route exact path="/">
                     <NavBar></NavBar>
                     <Banner></Banner>
-                    <Shop></Shop>
+                    
                    {/* <NotFound></NotFound> */}
                 </Route>
                 <Route path="/products">

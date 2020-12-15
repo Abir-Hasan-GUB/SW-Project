@@ -1,0 +1,19 @@
+.avater{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.flag{
+    height: 40px;
+    width: 60px;
+}
+.fa-cog,.fa-bell{
+    cursor: pointer;
+    transition: .3s;
+}
+.fa-cog:hover{
+    color: rgb(245, 152, 66);
+}
+.fa-bell:hover{
+    color: rgb(245, 152, 66);
+}
