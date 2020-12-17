@@ -2,7 +2,11 @@ import React from 'react';
 import './Statistics.css';
 import welcomeProfileImg from "../../images/dashboard/profile-img.png";
 import proPic from "../../images/dashboard/abir.JPG";
+import { PieChart } from 'recharts';
+import PieCharts from '../PieCharts/PieCharts';
+
 const Statistics = () => {
+
     return (
         <div className="container">
             <div className="row dashBoardHeight">
@@ -57,13 +61,22 @@ const Statistics = () => {
                                     </div>
                                     <i class="far fa-copy bg-primary text-white" style={{ lineHeight: "40px" }}></i>
                                 </div>
-                                
+                               
                             </div>
 
                         </div>
                     </div>
+
+                    
                 </div>
+                {/* =============== Monthly Income PIE Chart =================
+                <div className="pieChart bg-warning row ml-0">
+                        <div className="col-md-4">
+                            <PieCharts></PieCharts>
+                        </div>
+                    </div> */}
             </div>
+            
         </div>
     );
 };

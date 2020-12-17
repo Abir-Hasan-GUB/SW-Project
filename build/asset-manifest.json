@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.54dd55d7.chunk.css",
+    "main.js": "/static/js/main.c6bd9997.chunk.js",
+    "main.js.map": "/static/js/main.c6bd9997.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.10107a19.js",
+    "runtime-main.js.map": "/static/js/runtime-main.10107a19.js.map",
+    "static/js/2.08866315.chunk.js": "/static/js/2.08866315.chunk.js",
+    "static/js/2.08866315.chunk.js.map": "/static/js/2.08866315.chunk.js.map",
+    "static/js/3.592af817.chunk.js": "/static/js/3.592af817.chunk.js",
+    "static/js/3.592af817.chunk.js.map": "/static/js/3.592af817.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.54dd55d7.chunk.css.map": "/static/css/main.54dd55d7.chunk.css.map",
+    "static/js/2.08866315.chunk.js.LICENSE.txt": "/static/js/2.08866315.chunk.js.LICENSE.txt",
+    "static/media/NotFound.css": "/static/media/NotFound.a8d5043e.png",
+    "static/media/Banner.css": "/static/media/smBanner3.61abafc2.jpg",
+    "static/media/crative-agency.9ffa50c5.png": "/static/media/crative-agency.9ffa50c5.png",
+    "static/media/logo.1a94a9b0.png": "/static/media/logo.1a94a9b0.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.10107a19.js",
+    "static/js/2.08866315.chunk.js",
+    "static/css/main.54dd55d7.chunk.css",
+    "static/js/main.c6bd9997.chunk.js"
+  ]
+}
