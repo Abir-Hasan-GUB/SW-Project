@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AdminPanel.css';
 import logo from '../../images/logos/logo.png';
 import Statistics from '../Statistics/Statistics';
 import { Link } from 'react-router-dom';
 import DashBoardTop from './DashBoardTop/DashBoardTop';
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css';
 
 const AdminPanel = () => {
+    const [value, onChange] = useState(new Date());
     return (
         <div className="container">
             <div className="row mx-0">
@@ -26,13 +29,17 @@ const AdminPanel = () => {
                                 <div class="accordion" id="showCalender">
                                     <div>
                                         <div class="mb-0">
-                                            <button class="list-group-item list-group-item-action mt-3 bg-dark text-light" type="button" data-toggle="collapse" data-target="#calender" aria-expanded="true" aria-controls="calender"> <i class="far fa-calendar-alt mr-2"></i> Calender</button>
+                                            <button class="list-group-item list-group-item-action mt-3 bg-dark text-light" type="button" data-toggle="collapse" data-target="#calender" aria-expanded="true" aria-controls="calender"> <i class="far fa-calendar-alt mr-2"></i> Daily Sell</button>
                                         </div>
                                         <div id="calender" class="collapse" aria-labelledby="headingOne" data-parent="#showCalender">
                                             <div class="">
                                                 {/* calender here  */}
-                                                <h1 className="text-warning">Calender</h1>
-                                            </div>
+                                                {/* <h1 className="text-warning">Calender</h1> */}
+                                                <Calendar
+                                                // onChange={onChange}
+                                                // value={value}
+                                            />
+                                    </div>
                                         </div>
                                     </div>
                                 </div>

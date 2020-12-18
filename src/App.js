@@ -22,8 +22,9 @@ function App() {
     <Router>
             <Switch>
                 <Route exact path="/">
-                    {/* <NavBar></NavBar>
+                    {/*
                     <Banner></Banner> */}
+                     <NavBar></NavBar>
                     <AdminPanel></AdminPanel>
                    {/* <NotFound></NotFound> */}
                 </Route>
