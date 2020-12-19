@@ -4,11 +4,11 @@ import logo from '../../images/logos/logo.png';
 import Statistics from '../Statistics/Statistics';
 import { Link } from 'react-router-dom';
 import DashBoardTop from './DashBoardTop/DashBoardTop';
-import Calendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css';
+import Calender from '../Calender/Calender';
+
 
 const AdminPanel = () => {
-    const [value, onChange] = useState(new Date());
+    
     return (
         <div className="container">
             <div className="row mx-0">
@@ -34,11 +34,8 @@ const AdminPanel = () => {
                                         <div id="calender" class="collapse" aria-labelledby="headingOne" data-parent="#showCalender">
                                             <div class="">
                                                 {/* calender here  */}
-                                                {/* <h1 className="text-warning">Calender</h1> */}
-                                                <Calendar
-                                                // onChange={onChange}
-                                                // value={value}
-                                            />
+                                              <Calender></Calender>
+                                               
                                     </div>
                                         </div>
                                     </div>
