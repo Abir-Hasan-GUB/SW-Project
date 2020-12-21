@@ -16,6 +16,8 @@ import OrderList from './Componants/OrderList/OrderList';
 import AddProduct from './Componants/AddProduct/AddProduct';
 import MakeAdmin from './Componants/MakeAdmin/MakeAdmin';
 import NotFound from './Componants/NotFound/NotFound';
+import ClienDashBoardMenu from './Componants/ClientDashBoardMenu/ClienDashBoardMenu';
+import Client from './Componants/Client/Client';
 
 function App() {
   return (
@@ -51,6 +53,9 @@ function App() {
                 </Route>
                 <Route path="/makeAdmin">
                     <MakeAdmin></MakeAdmin>
+                </Route>
+                <Route path="/client">
+                    <Client></Client>
                 </Route>
                 <Route path="*">
                     <NotFound></NotFound>
