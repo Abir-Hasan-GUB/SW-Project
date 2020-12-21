@@ -2,8 +2,6 @@ import React from 'react';
 import './Statistics.css';
 import welcomeProfileImg from "../../images/dashboard/profile-img.png";
 import proPic from "../../images/dashboard/abir.JPG";
-import { PieChart } from 'recharts';
-import PieCharts from '../PieCharts/PieCharts';
 
 const Statistics = () => {
 

@@ -41,7 +41,7 @@ const AdminPanel = () => {
                                     </div>
                                 </div>
                                 {/* ============= Calender Accordion End ==========  */}
-                                <button data-toggle="modal" data-target="#forgotPasswordModal" type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-user-plus"></i> Log Out</button>
+                                <button data-toggle="modal" data-target="#forgotPasswordModal" type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Log Out</button>
 
                                 {/* ==================== Log Out Confarmation Modal Start ================= */}
 

@@ -18,6 +18,9 @@ import MakeAdmin from './Componants/MakeAdmin/MakeAdmin';
 import NotFound from './Componants/NotFound/NotFound';
 import ClienDashBoardMenu from './Componants/ClientDashBoardMenu/ClienDashBoardMenu';
 import Client from './Componants/Client/Client';
+import FeedBack from './Componants/FeedBack/FeedBack';
+import Message from './Componants/Message/Message';
+import ClientOrder from './Componants/ClientOrder/ClientOrder';
 
 function App() {
   return (
@@ -56,6 +59,15 @@ function App() {
                 </Route>
                 <Route path="/client">
                     <Client></Client>
+                </Route>
+                <Route path="/feedBack">
+                    <FeedBack></FeedBack>
+                </Route>
+                <Route path="/message">
+                    <Message></Message>
+                </Route>
+                <Route path="/clientOrder">
+                    <ClientOrder></ClientOrder>
                 </Route>
                 <Route path="*">
                     <NotFound></NotFound>
