@@ -34,7 +34,7 @@ const Footer = () => {
                 </div>
                 <div className="col-md-3">
                     <h5>Contact Us</h5>
-                    <ul>
+                    <ul className="p-0">
                         <ul className="list-unstyled d-flex p-0">
                             <li><i class="fas fa-map-marker-alt mr-3"></i></li>
                             <li>Dhaka, Shawrapara: 359/2</li>

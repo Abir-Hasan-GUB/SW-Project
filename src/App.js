@@ -1,5 +1,4 @@
 import { createContext } from 'react';
-import Main from './Componants/Main/Main';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,7 +6,6 @@ import {
   Link
 } from "react-router-dom";
 import NavBar from './Componants/NavBar/NavBar';
-import Banner from './Componants/Banner/Banner';
 import Shop from './Componants/Shop/Shop';
 import Login from './Componants/LoginPanel/Login';
 import AdminPanel from './Componants/AdminPanel/AdminPanel';
@@ -16,11 +14,14 @@ import OrderList from './Componants/OrderList/OrderList';
 import AddProduct from './Componants/AddProduct/AddProduct';
 import MakeAdmin from './Componants/MakeAdmin/MakeAdmin';
 import NotFound from './Componants/NotFound/NotFound';
-import ClienDashBoardMenu from './Componants/ClientDashBoardMenu/ClienDashBoardMenu';
 import FeedBack from './Componants/FeedBack/FeedBack';
 import Message from './Componants/Message/Message';
 import ClientOrder from './Componants/ClientOrder/ClientOrder';
 import Footer from './Componants/Footer/Footer';
+import Sliders from './Componants/Sliders/Sliders';
+
+
+
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
                     {/*
                     <Banner></Banner> */}
                      <NavBar></NavBar>
+                    <Sliders></Sliders>
                     {/* <AdminPanel></AdminPanel> */}
                     <Footer></Footer>
                    {/* <NotFound></NotFound> */}
