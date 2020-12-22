@@ -8,8 +8,8 @@ import laptop3 from '../../images/banner3.jpg';
 
 const Footer = () => {
     return (
-        <div className="container footerDiv">
-            <div className="row ml-0 mr-0 bg-dark text-light pt-4">
+        <div id="footer" className="container footerDiv">
+            <div className="row bg-dark text-light pt-4">
                 <div className="col-md-3">
                     <Link to="/"><img className="img-fluid bg-light footerLogo rounded" src={logo} alt="logo" /></Link>
                     <p className="pt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est quas quam corrupti neque atque saepe ab magni temporibus !</p>

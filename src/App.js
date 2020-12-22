@@ -21,14 +21,14 @@ import ClientOrder from './Componants/ClientOrder/ClientOrder';
 import Footer from './Componants/Footer/Footer';
 import Sliders from './Componants/Sliders/Sliders';
 import HomeCategories from './Componants/HomeCategories/HomeCategories';
+import HomeMenuBar from './Componants/HomeMenuBar/HomeMenuBar';
 
 function App() {
   return (
     <Router>
             <Switch>
                 <Route exact path="/">
-                    
-                     <NavBar></NavBar>
+                    <HomeMenuBar></HomeMenuBar>
                     <Banner></Banner>
                     <HomeCategories></HomeCategories>
                     <Sliders></Sliders>

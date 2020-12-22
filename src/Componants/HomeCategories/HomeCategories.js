@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const HomeCategories = () => {
     return (
-        <div className="container bg-dark pr-0 pl-0">
+        <div id="category" className="container bg-dark cnt">
             <div className="serviceTitle text-light pt-5 text-center">
                 <h2>Products <span className="text-warning"> Category</span></h2>
             </div>
