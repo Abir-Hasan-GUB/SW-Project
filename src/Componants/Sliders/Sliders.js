@@ -22,9 +22,9 @@ const Sliders = () => {
     };
 
     return (
-        <div id="ourworks" className="container bg-light pl-0">
-            <div className="serviceTitle text-center pt-3 pb-3">
-                <h2>Display <span className="text-success"> our works</span></h2>
+        <div id="ourworks" className="container bg-dark text-light px-0">
+            <div className="serviceTitle text-center py-5 pb-3">
+                <h2>Sample of <span className="text-warning"> our Products</span></h2>
             </div>
             <div className="ourWorks">
                 <Slider {...settings}>

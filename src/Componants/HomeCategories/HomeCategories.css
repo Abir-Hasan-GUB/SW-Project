@@ -1,0 +1,16 @@
+.cat1, .cat2, .cat3{
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+.cat1{
+    background-image: linear-gradient(#ff9c35,#ffd019);
+}
+.cat2{
+    background-image: linear-gradient(#ff1671,#ff5398);
+}
+.cat3{
+    background-image: linear-gradient(#3f07f8,#4289ff);
+}
+.catImg{
+    height: 125px;
+}

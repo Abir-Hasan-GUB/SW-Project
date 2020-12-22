@@ -1,26 +1,27 @@
 import React from 'react';
-document.title="Products"; // Chenge title
+// document.title = "Products"; // Chenge title
 
 const Product = (props) => {
     const { img, name, price, seller, stock, star } = props;
     return (
-        <div className="span_1_of_2 bg-light">
-            <div className="row">
-                <div className="col-md-4">
+        <div>
+            <div className="bg-light row py-4 ml-0">
+                <div className="col-md-4 p-4">
                     <img className="img-fluid rounded" src={img} alt="" />
                 </div>
-                <div className="col-md-8 pl-4 text-left">
-                    <h6 class="product-name p-2 text-primary">{name}</h6>
+                <div className="text-left col-md-8">
+                    <h6 class="product-name text-primary">{name}</h6>
                     <p class="lead">By: {seller}</p>
-                    <p class="m-0 text-danger">Price: $ {price}</p>
-                    <p class="m-0 text-success">Available: {stock}</p>
+                    <p class="text-danger">Price: $ {price}</p>
+                    <p class="text-success">Available: {stock}</p>
                     <p class="h6">Rating: {star} <small><i class="fas fa-star text-warning"></i></small></p>
                     <button onClick={() => props.handleAddProduct(props)}
-                        class="btn btn-warning btn-sm btn-block w-75 my-3">
+                        class="btn btn-warning btn-sm my-3">
                         <strong>
                             <i class="fas fa-cart-plus"></i> add to cart
                                     </strong>
                     </button>
+                    <hr />
                 </div>
             </div>
         </div>

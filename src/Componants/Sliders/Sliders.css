@@ -1,7 +1,3 @@
-.container{
-    padding-left: 0;
-    padding-right: 0;
-}
 .ourWorks{
     height: 500px;
     width: 100%;
@@ -39,4 +35,8 @@ content: ""
 }
 .slick-arrow{
     display: none !important;
+}
+.serviceTitle{
+    text-transform: uppercase;
+    font-weight: 700;
 }

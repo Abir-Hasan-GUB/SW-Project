@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import NavBar from './Componants/NavBar/NavBar';
+import Banner from './Componants/Banner/Banner';
 import Shop from './Componants/Shop/Shop';
 import Login from './Componants/LoginPanel/Login';
 import AdminPanel from './Componants/AdminPanel/AdminPanel';
@@ -19,18 +20,17 @@ import Message from './Componants/Message/Message';
 import ClientOrder from './Componants/ClientOrder/ClientOrder';
 import Footer from './Componants/Footer/Footer';
 import Sliders from './Componants/Sliders/Sliders';
-
-
-
+import HomeCategories from './Componants/HomeCategories/HomeCategories';
 
 function App() {
   return (
     <Router>
             <Switch>
                 <Route exact path="/">
-                    {/*
-                    <Banner></Banner> */}
+                    
                      <NavBar></NavBar>
+                    <Banner></Banner>
+                    <HomeCategories></HomeCategories>
                     <Sliders></Sliders>
                     {/* <AdminPanel></AdminPanel> */}
                     <Footer></Footer>
@@ -38,7 +38,6 @@ function App() {
                 </Route>
                 <Route path="/products">
                     <Shop></Shop>
-                    <Footer></Footer>
                 </Route>
                 <Route path="/login">
                     <Login></Login>

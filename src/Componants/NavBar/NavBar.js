@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import './NavBar.css';
 import logo from '../../images/logos/crative-agency.png';
+import { Link } from 'react-router-dom';
 // import './uikit.min.css';
 // import './uikit.min';
 // import './uikit-icons.min';
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
-    <div class="container" id="navbar">
+    <div class="container fixed-top" id="navbar">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light" uk-sticky="top: 200; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up">
-        <a class="navbar-brand" href="#">
-          <img class="img-fluid logo rounded" src={logo} alt="logo" />
+        <a class="navbar-brand">
+        <Link to="/"><img class="img-fluid logo rounded" src={logo} alt="logo" /></Link>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -27,10 +28,10 @@ const NavBar = () => {
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-warning" href="#">Sign In</a>
+              <Link to="/login"><a class="nav-link text-warning">Sign In</a></Link>
             </li>
             <li className="nav-item cartIcon">
-              <i class="fas fa-shopping-cart"></i><span class="badge badgeCart text-primary">0</span>
+              <i class="fas fa-shopping-cart"></i><span class="badge badgeCart text-primary">{props.cart}</span>
             </li>
           </ul>
         </div>
