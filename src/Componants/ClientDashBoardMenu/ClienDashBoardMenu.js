@@ -11,7 +11,7 @@ const ClienDashBoardMenu = () => {
                 </div>
                 <div className="menu col-md-12 px-0 text-center">
                     <div class="list-group mt-5">
-                        <Link to="/clientOrder"> <button type="button" class="list-group-item list-group-item-action bg-dark text-light"> <i class="fas fa-sort-alpha-up-alt mr-2"></i> Order</button></Link>
+                        <Link to="/client"> <button type="button" class="list-group-item list-group-item-action bg-dark text-light"> <i class="fas fa-sort-alpha-up-alt mr-2"></i> Order</button></Link>
                         <Link to="/feedBack"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="far fa-comments mr-2"></i> Feedback</button></Link>
                         <Link to="/message"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="far fa-envelope mr-2"></i> Messege</button></Link>
                         <button data-toggle="modal" data-target="#forgotPasswordModal" type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Log Out</button>

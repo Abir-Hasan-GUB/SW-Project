@@ -1,0 +1,27 @@
+.footerList li{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid #979696;
+  font-size: 20px;
+  line-height: 40px;
+}
+.footerLogo{
+    height: 40px;
+}
+.footerList li{
+    color: #fff;
+    transition: .5s;
+  }
+  .footerList li:hover{
+    color: #000;
+    background: #fff;
+  }
+  .quickLink li{
+    color: #fff;
+  }
+  .quickLink li:hover{
+    margin-left: 15px;
+    transition: .5s;
+    color: lime;
+  }

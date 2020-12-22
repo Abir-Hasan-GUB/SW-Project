@@ -10,7 +10,7 @@ const ClientOrder = () => {
             <div className="col-md-3 dashBoardMenu bg-dark px-0">
                 <ClienDashBoardMenu></ClienDashBoardMenu>
             </div>
-            <div className="col-md-9 dashBoardMainDiv px-0" style={{ height: '100vh', backgroundColor: '#dadadb'}}>
+            <div className="col-md-9 dashBoardMainDiv px-0" style={{ height: '700px', backgroundColor: '#dadadb'}}>
                 <DashBoardTop></DashBoardTop>
                 <div className="reviews row ml-0 mr-0">
                 <h5 className="text-primary py-2">Your Order</h5>

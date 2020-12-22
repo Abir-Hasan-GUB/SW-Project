@@ -17,10 +17,10 @@ import AddProduct from './Componants/AddProduct/AddProduct';
 import MakeAdmin from './Componants/MakeAdmin/MakeAdmin';
 import NotFound from './Componants/NotFound/NotFound';
 import ClienDashBoardMenu from './Componants/ClientDashBoardMenu/ClienDashBoardMenu';
-import Client from './Componants/Client/Client';
 import FeedBack from './Componants/FeedBack/FeedBack';
 import Message from './Componants/Message/Message';
 import ClientOrder from './Componants/ClientOrder/ClientOrder';
+import Footer from './Componants/Footer/Footer';
 
 function App() {
   return (
@@ -30,44 +30,56 @@ function App() {
                     {/*
                     <Banner></Banner> */}
                      <NavBar></NavBar>
-                    <AdminPanel></AdminPanel>
+                    {/* <AdminPanel></AdminPanel> */}
+                    <Footer></Footer>
                    {/* <NotFound></NotFound> */}
                 </Route>
                 <Route path="/products">
                     <Shop></Shop>
+                    <Footer></Footer>
                 </Route>
                 <Route path="/login">
                     <Login></Login>
                 </Route>
                 <Route path="/admin">
                     <AdminPanel></AdminPanel>
+                    <Footer></Footer>
                 </Route>
                 <Route path="/statistics">
                     <AdminPanel></AdminPanel>
+                    <Footer></Footer>
                 </Route>
                 <Route path="/ViewAllReviews">
                     <ViewAllReview></ViewAllReview>
+                    <Footer></Footer>
                 </Route>
                 <Route path="/orderList">
                     <OrderList></OrderList>
+                    <Footer></Footer>
                 </Route>
                 <Route path="/addProduct">
                     <AddProduct></AddProduct>
+                    <Footer></Footer>
                 </Route>
                 <Route path="/makeAdmin">
                     <MakeAdmin></MakeAdmin>
+                    <Footer></Footer>
                 </Route>
-                <Route path="/client">
+                {/* <Route path="/client">
                     <Client></Client>
-                </Route>
+                    <Footer></Footer>
+                </Route> */}
                 <Route path="/feedBack">
                     <FeedBack></FeedBack>
+                    <Footer></Footer>
                 </Route>
                 <Route path="/message">
                     <Message></Message>
+                    <Footer></Footer>
                 </Route>
-                <Route path="/clientOrder">
+                <Route path="/client">
                     <ClientOrder></ClientOrder>
+                    <Footer></Footer>
                 </Route>
                 <Route path="*">
                     <NotFound></NotFound>

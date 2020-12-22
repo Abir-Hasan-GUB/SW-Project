@@ -12,7 +12,7 @@ const OrderList = () => {
                 <div className="col-md-9 dashBoardMainDiv px-0">
                     <DashBoardTop></DashBoardTop>
                     <div className="reviews row bg-light ml-0 mr-0">
-                        <div className="col-md-12 pr-0 pl-0" style={{ height: '100vh' }}>
+                        <div className="col-md-12 pr-0 pl-0" style={{ height: '620px' }}>
                             <table class="table table-striped table-hover text-center">
                                 <thead class="thead-dark">
                                     <tr>

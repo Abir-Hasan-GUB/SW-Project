@@ -1,5 +1,5 @@
 .dashBoardHeight{
-    height: 100vh;
+    min-height: 620px;
     background: #dadadb;
 }
 .welcome-back{
