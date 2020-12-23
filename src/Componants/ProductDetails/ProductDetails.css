@@ -10,3 +10,13 @@
     width: 100%;
     height: auto;
 }
+.proDetls{
+    text-align: justify;
+    text-justify: inter-word;
+}
+.clientImgInReview{
+    height: 74px;
+    width: 74px;
+    border-radius: 50%;
+
+}
