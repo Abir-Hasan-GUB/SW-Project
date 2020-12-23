@@ -24,8 +24,8 @@ const ProductDetails = () => {
                 {/* product main feature   */}
                 <div className="col-md-6 pt-3 mt-4">
                     <h5>{product.name}</h5>
-                    <div className="row mt-3">
-                        <div className="col-md-6">
+                    <div className=" mt-3 d-flex justify-content-between">
+                        <div>
                             <ul className=" productDetailsPoint1">
                                 <li>Price</li>
                                 <li>Reguler Price</li>
@@ -35,7 +35,7 @@ const ProductDetails = () => {
                                 <li>MPN</li>
                             </ul>
                         </div>
-                        <div className="col-md-6 productDetailsPoint2">
+                        <div className="productDetailsPoint2 pr-md-5">
                             <ul className="list-unstyled">
                                 <li>{product.price}</li>
                                 <li>{product.price + 12}</li>
@@ -58,6 +58,8 @@ const ProductDetails = () => {
                             <li>{product.features[4].description} : {product.features[4].value}</li>
                         </ul>
                     </div>}
+                    <h3 style={{color: '#f58220', fontWeight: '700'}}>$ {product.price}</h3>
+                    <small className="text-primary"><strong>CASH DISCOUNT PRICE</strong></small>
                 </div>
 
                 {/* products description in details  */}
@@ -69,7 +71,7 @@ const ProductDetails = () => {
 
             {/* clients review show from database here  */}
             <div className="reviewsOfClientByProduct p-3 bg-light">
-                <h4>Reviews (0) :</h4>
+                <h4>Reviews (2) :</h4>
                 <p>Get specific details about this product from customers who own it.</p>
                 <hr />
                 <div className="clientReview px-5">

@@ -20,3 +20,13 @@
     border-radius: 50%;
 
 }
+@media (max-width: 400px){
+    .productDetailsPoint1 li{
+        font-size: 15px;
+        font-weight: 700;
+    }
+    .productDetailsPoint2 li{
+        font-size: 15px;
+        font-weight: 400;
+    }
+}

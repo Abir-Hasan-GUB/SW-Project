@@ -13,7 +13,7 @@ const Footer = () => {
                 <div className="col-md-3">
                     <Link to="/"><h1 className="text-warning navbar-brand">Creative Agency</h1></Link>
                     <p className="pt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est quas quam corrupti neque atque saepe ab magni temporibus !</p>
-                    <ul className="d-flex list-unstyled footerList text-center justify-content-between">
+                    <ul className="d-flex list-unstyled footerList text-center justify-content-around">
                         <a href="#"> <li><i class="fab fa-twitter"></i></li></a>
                         <a href="#"> <li><i class="fab fa-facebook-f"></i></li></a>
                         <a href="#"> <li><i class="fab fa-google"></i></li></a>
@@ -53,7 +53,7 @@ const Footer = () => {
                         </ul>
                     </ul>
                 </div>
-                <div className="col-md-3">
+                <div className="col-md-3 d-none d-md-block">
                     <h5>Filckr Stream</h5>
                     <div className="row">
                         <div className="col-md-4">
