@@ -1,6 +1,7 @@
 import React from 'react';
 import DashBoardTop from '../AdminPanel/DashBoardTop/DashBoardTop';
 import DashBoardMenu from '../DashBoardMenu/DashBoardMenu';
+import Footer from '../Footer/Footer';
 import './MakeAdmin.css';
 
 const MakeAdmin = () => {
@@ -28,6 +29,7 @@ const MakeAdmin = () => {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

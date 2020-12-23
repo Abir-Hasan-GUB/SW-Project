@@ -1,0 +1,12 @@
+.productDetailsPoint1 li{
+    font-size: 20px;
+    font-weight: 700;
+}
+.productDetailsPoint2 li{
+    font-size: 20px;
+    font-weight: 400;
+}
+.productImg{
+    width: 100%;
+    height: auto;
+}

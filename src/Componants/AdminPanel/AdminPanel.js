@@ -5,6 +5,7 @@ import Statistics from '../Statistics/Statistics';
 import { Link } from 'react-router-dom';
 import DashBoardTop from './DashBoardTop/DashBoardTop';
 import Calender from '../Calender/Calender';
+import Footer from '../Footer/Footer';
 
 
 const AdminPanel = () => {
@@ -75,6 +76,7 @@ const AdminPanel = () => {
 
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

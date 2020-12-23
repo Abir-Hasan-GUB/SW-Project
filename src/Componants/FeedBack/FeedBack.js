@@ -1,6 +1,7 @@
 import React from 'react';
 import DashBoardTop from '../AdminPanel/DashBoardTop/DashBoardTop';
 import ClienDashBoardMenu from '../ClientDashBoardMenu/ClienDashBoardMenu';
+import Footer from '../Footer/Footer';
 
 const FeedBack = () => {
     return (
@@ -42,6 +43,7 @@ const FeedBack = () => {
                     </div>
             </div>
         </div>
+        <Footer></Footer>
     </div>
     );
 };

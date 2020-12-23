@@ -21,10 +21,8 @@ const Shop = () => {
                 <div className="col-md-8 mt-4">
                     {
                         products.map(product => <Product
-                            name={product.name} price={product.price}
-                            seller={product.seller} star={product.star}
-                            stock={product.stock} img={product.img}
-                            handleAddProduct={handleAddProduct} key={product.key}
+                            product={product}
+                            handleAddProduct={handleAddProduct}
                         ></Product>)
                     }
                 </div>

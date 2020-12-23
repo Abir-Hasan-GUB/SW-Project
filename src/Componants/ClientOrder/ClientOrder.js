@@ -2,6 +2,7 @@ import React from 'react';
 import DashBoardTop from '../AdminPanel/DashBoardTop/DashBoardTop';
 import ClienDashBoardMenu from '../ClientDashBoardMenu/ClienDashBoardMenu';
 import cardImg from '../../images/banner1.jpg';
+import Footer from '../Footer/Footer';
 
 const ClientOrder = () => {
     return (
@@ -79,6 +80,7 @@ const ClientOrder = () => {
                     </div>
             </div>
         </div>
+        <Footer></Footer>
     </div>
     );
 };

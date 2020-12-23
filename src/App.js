@@ -22,6 +22,7 @@ import Footer from './Componants/Footer/Footer';
 import Sliders from './Componants/Sliders/Sliders';
 import HomeCategories from './Componants/HomeCategories/HomeCategories';
 import HomeMenuBar from './Componants/HomeMenuBar/HomeMenuBar';
+import ProductDetails from './Componants/ProductDetails/ProductDetails';
 
 function App() {
   return (
@@ -44,27 +45,21 @@ function App() {
                 </Route>
                 <Route path="/admin">
                     <AdminPanel></AdminPanel>
-                    <Footer></Footer>
                 </Route>
                 <Route path="/statistics">
                     <AdminPanel></AdminPanel>
-                    <Footer></Footer>
                 </Route>
                 <Route path="/ViewAllReviews">
                     <ViewAllReview></ViewAllReview>
-                    <Footer></Footer>
                 </Route>
                 <Route path="/orderList">
                     <OrderList></OrderList>
-                    <Footer></Footer>
                 </Route>
                 <Route path="/addProduct">
                     <AddProduct></AddProduct>
-                    <Footer></Footer>
                 </Route>
                 <Route path="/makeAdmin">
                     <MakeAdmin></MakeAdmin>
-                    <Footer></Footer>
                 </Route>
                 {/* <Route path="/client">
                     <Client></Client>
@@ -72,15 +67,15 @@ function App() {
                 </Route> */}
                 <Route path="/feedBack">
                     <FeedBack></FeedBack>
-                    <Footer></Footer>
                 </Route>
                 <Route path="/message">
                     <Message></Message>
-                    <Footer></Footer>
                 </Route>
                 <Route path="/client">
                     <ClientOrder></ClientOrder>
-                    <Footer></Footer>
+                </Route>
+                <Route path="/product/:productKey">
+                    <ProductDetails></ProductDetails>
                 </Route>
                 <Route path="*">
                     <NotFound></NotFound>

@@ -1,6 +1,7 @@
 import React from 'react';
 import DashBoardTop from '../AdminPanel/DashBoardTop/DashBoardTop';
 import DashBoardMenu from '../DashBoardMenu/DashBoardMenu';
+import Footer from '../Footer/Footer';
 
 const ViewAllReview = () => {
     return (
@@ -51,6 +52,7 @@ const ViewAllReview = () => {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

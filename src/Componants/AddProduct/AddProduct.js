@@ -1,6 +1,7 @@
 import React from 'react';
 import DashBoardTop from '../AdminPanel/DashBoardTop/DashBoardTop';
 import DashBoardMenu from '../DashBoardMenu/DashBoardMenu';
+import Footer from '../Footer/Footer';
 
 const AddProduct = () => {
     return (
@@ -64,6 +65,7 @@ const AddProduct = () => {
                     </div>
             </div>
         </div>
+        <Footer></Footer>
     </div>
     );
 };
