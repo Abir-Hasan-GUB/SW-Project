@@ -1,3 +1,6 @@
 .ifCartItemIsEmpty{
-    margin-top: 7%;
+    margin-top: 5%;
+}
+.cartReviwDiv{
+    min-height: 713px;
 }

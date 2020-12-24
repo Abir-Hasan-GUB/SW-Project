@@ -6,7 +6,7 @@ const ReviewItems = (props) => {
     return (
         <div className="container bg-light">
            <div className="row cartReviewRow">
-               <div className="col-md-3 cartReviewImg">
+               <div className="col-md-3 p-2 cartReviewImg">
                     <img src={img} alt={name}/>
                </div>
                <div className="col-md-9 py-3 pr-5">

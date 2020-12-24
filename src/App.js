@@ -5,7 +5,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import NavBar from './Componants/NavBar/NavBar';
 import Banner from './Componants/Banner/Banner';
 import Shop from './Componants/Shop/Shop';
 import Login from './Componants/LoginPanel/Login';
@@ -24,8 +23,10 @@ import HomeCategories from './Componants/HomeCategories/HomeCategories';
 import HomeMenuBar from './Componants/HomeMenuBar/HomeMenuBar';
 import ProductDetails from './Componants/ProductDetails/ProductDetails';
 import ReviewOrder from './Componants/ReviewOrder/ReviewOrder';
+import PlaceOrder from './Componants/PlaceOrder/PlaceOrder';
 
 function App() {
+
   return (
     <Router>
             <Switch>
@@ -81,11 +82,15 @@ function App() {
                 <Route path="/reviewOrder">
                     <ReviewOrder></ReviewOrder>
                 </Route>
+                <Route path="/placeOrder">
+                    <PlaceOrder></PlaceOrder>
+                </Route>
                 <Route path="*">
                     <NotFound></NotFound>
                 </Route>
             </Switch>
         </Router>
+
   );
 }
 

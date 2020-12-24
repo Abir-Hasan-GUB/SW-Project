@@ -1,35 +1,35 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import fakeData from '../fakeData';
 import './Shop.css';
 import Product from '../Product/Product';
 import NavBar from '../NavBar/NavBar';
 import Cart from '../Cart/Cart';
-import { addToDatabaseCart } from '../utilities/databaseManager';
+import { addToDatabaseCart, getDatabaseCart } from '../utilities/databaseManager';
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
     const [products, setProducts] = useState(fakeData);
     const [cart, setCart] = useState([])
 
-    const handleAddProduct = (product) => {
-        const toBeAddedKey = product.key;
-        const sameProduct = cart.find(pd => pd.product.key === toBeAddedKey);
-        let count = 1;
-        let newCart;
-        if (sameProduct) {
-            count = sameProduct.quantity + 1;
-            sameProduct.quantity = count;
-            const others = cart.filter(pd => pd.key !== toBeAddedKey);
-            // pd = load whole products
-            // pd.product.key = load all products key
-            // product.product.key = clicked product by add to cart button
-            newCart = [...others, sameProduct];
-        }
-        else {
-            product.product.quantity = 1;
-            newCart = [...cart, product];
-        }
+    // useEffect(() => {
+    //     const saveCart = getDatabaseCart();
+    //     const productsKeys = Object.keys(saveCart);
+    //     const previousCart = productsKeys.map(existingKey => {
+    //         const product = fakeData.find(pd => pd.key === existingKey);
+    //         product.quantity = saveCart[existingKey];
+    //         return product;
+    //     })
+    //     // setCart(previousCart) error here . eita dile erroer aste
+    // }, [])
+
+
+    const handleAddProduct = ({product}) => {
+        console.log(product.key)
+        const newCart = [...cart , product];
         setCart(newCart); // update cart to new
-        addToDatabaseCart(product.product.key, count);
+        const sameProduct = newCart.filter(pd => pd.key === product.key);
+        const count = sameProduct.length;
+        addToDatabaseCart(product.key, count);
     }
     return (
         <div className="container">
@@ -46,8 +46,9 @@ const Shop = () => {
                     }
                 </div>
                 <div className="col-md-4 my-5">
-
-                    <Cart cart={cart}></Cart>
+                    <Cart cart={cart}>
+                    <Link to="/reviewOrder"><button className="btn btn-info btn-lg text-light btn-block"><h5>Review Your Order</h5></button></Link>
+                    </Cart>
                 </div>
             </div>
         </div>

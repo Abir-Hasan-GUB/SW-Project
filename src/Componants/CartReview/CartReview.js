@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Cart = (props) => {
-    // console.log(props)
+const CartReview = (props) => {
+
     const applyPromoCode = () => {
         let promoCount = 0;
         let promoCode = document.getElementById('promoCode').value;
@@ -32,13 +32,12 @@ const Cart = (props) => {
     // console.log(cart.length)
     // console.log(cart)
     let subTotal = 0;
-    // console.log(subTotal)
+    console.log(subTotal)
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
         console.log(product)
         // console.log(product.price)
-        // subTotal += product.product.price * product.quantity;
-        subTotal += product.price;
+        subTotal += product.price * product.quantity;
 
     }
     // console.log(cart[0].product.price)
@@ -57,6 +56,7 @@ const Cart = (props) => {
 
     let total = subTotal + shipping; // shipping charge + total
     let totalPayable = total + tax; //total price with tax + shipping
+
 
     return (
         <div className="shopingCard position-fixed container">
@@ -125,10 +125,7 @@ const Cart = (props) => {
                                 </div>
                             </div>
                         </div>
-                        {/* <Link to="/reviewOrder"><button className="btn btn-info btn-lg text-light btn-block"><h5>Review Your Order</h5></button></Link> */}
-                        {
-                            props.children // show button as children of cart
-                        }
+                        <Link to="/reviewOrder"><button className="btn btn-info btn-lg text-light btn-block"><h5>Review Your Order</h5></button></Link>
                     </div>
                 </div>
             </div>
@@ -136,4 +133,4 @@ const Cart = (props) => {
     );
 };
 
-export default Cart;
+export default CartReview;
