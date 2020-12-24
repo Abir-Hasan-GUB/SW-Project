@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Cart = (props) => {
-
-    const applyPromoCode = (price) => {
+    // console.log(props)
+    const applyPromoCode = () => {
         let promoCount = 0;
         let promoCode = document.getElementById('promoCode').value;
         let totalPrice = document.getElementById('toalPrice').innerText;
@@ -28,16 +29,17 @@ const Cart = (props) => {
 
     // variable decler
     const cart = props.cart;
-    console.log(cart)
+    // console.log(cart)
     let subTotal = 0;
 
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
-        subTotal += product.price;
+        // console.log(product)
+        subTotal = subTotal + product.product.price;
     }
-
+    // console.log(cart[0].product.price)
+    console.log('subtotal', subTotal)
     let tax = (5 * subTotal) / 100;  // tax calculated
-    let persentage = subTotal;
     let shipping = 50; //shipping charge fixed
 
     // conditionally reduce shipping cost 
@@ -119,6 +121,7 @@ const Cart = (props) => {
                                 </div>
                             </div>
                         </div>
+                        <Link to="/reviewOrder"><button className="btn btn-info btn-lg text-light btn-block"><h5>Review Your Order</h5></button></Link>
                     </div>
                 </div>
             </div>

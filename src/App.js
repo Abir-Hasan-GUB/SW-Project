@@ -23,6 +23,7 @@ import Sliders from './Componants/Sliders/Sliders';
 import HomeCategories from './Componants/HomeCategories/HomeCategories';
 import HomeMenuBar from './Componants/HomeMenuBar/HomeMenuBar';
 import ProductDetails from './Componants/ProductDetails/ProductDetails';
+import ReviewOrder from './Componants/ReviewOrder/ReviewOrder';
 
 function App() {
   return (
@@ -76,6 +77,9 @@ function App() {
                 </Route>
                 <Route path="/product/:productKey">
                     <ProductDetails></ProductDetails>
+                </Route>
+                <Route path="/reviewOrder">
+                    <ReviewOrder></ReviewOrder>
                 </Route>
                 <Route path="*">
                     <NotFound></NotFound>

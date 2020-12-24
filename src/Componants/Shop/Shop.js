@@ -12,6 +12,7 @@ const Shop = () => {
     const handleAddProduct = (product) => {
         const newCart = [...cart, product]; //copy existing cart element
         setCart(newCart); // update cart to new
+        // console.log("Cart" ,cart)
     }
     return (
         <div className="container">
