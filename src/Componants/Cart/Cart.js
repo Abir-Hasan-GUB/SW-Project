@@ -35,10 +35,10 @@ const Cart = (props) => {
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
         // console.log(product)
-        subTotal = subTotal + product.product.price;
+        subTotal += product.product.price;
     }
     // console.log(cart[0].product.price)
-    console.log('subtotal', subTotal)
+    // console.log('subtotal', subTotal)
     let tax = (5 * subTotal) / 100;  // tax calculated
     let shipping = 50; //shipping charge fixed
 
