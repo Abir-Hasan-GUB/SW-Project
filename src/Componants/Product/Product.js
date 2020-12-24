@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 // document.title = "Products"; // Chenge title
 
 const Product = (props) => {
-    
     const { img, name, price, seller, stock, star, key } = props.product;
     return (
         <div>

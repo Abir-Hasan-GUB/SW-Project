@@ -29,13 +29,16 @@ const Cart = (props) => {
 
     // variable decler
     const cart = props.cart;
+    // console.log(cart.length)
     // console.log(cart)
     let subTotal = 0;
-
+    console.log(subTotal)
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
-        // console.log(product)
-        subTotal += product.product.price;
+        console.log(product)
+        // console.log(product.price)
+        subTotal += product.price * product.quantity;
+
     }
     // console.log(cart[0].product.price)
     // console.log('subtotal', subTotal)

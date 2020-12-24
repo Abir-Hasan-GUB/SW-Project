@@ -11,17 +11,24 @@ const Shop = () => {
     const [cart, setCart] = useState([])
 
     const handleAddProduct = (product) => {
-        // console.log(product)
-        const newCart = [...cart, product]; //copy existing cart element
+        const toBeAddedKey = product.key;
+        const sameProduct = cart.find(pd => pd.product.key === toBeAddedKey);
+        let count = 1;
+        let newCart;
+        if (sameProduct) {
+            count = sameProduct.quantity + 1;
+            sameProduct.quantity = count;
+            const others = cart.filter(pd => pd.key !== toBeAddedKey);
+            // pd = load whole products
+            // pd.product.key = load all products key
+            // product.product.key = clicked product by add to cart button
+            newCart = [...others, sameProduct];
+        }
+        else {
+            product.product.quantity = 1;
+            newCart = [...cart, product];
+        }
         setCart(newCart); // update cart to new
-        // console.log("Cart" ,cart)
-        // console.log("key "+product.product.key)
-        const sameProduct = newCart.filter(pd => pd.product.key === product.product.key);
-        // pd = load whole products
-        // pd.product.key = load all products key
-        // product.product.key = clicked product by add to cart button
-        const count = sameProduct.length;
-        // console.log(count)
         addToDatabaseCart(product.product.key, count);
     }
     return (
@@ -39,7 +46,7 @@ const Shop = () => {
                     }
                 </div>
                 <div className="col-md-4 my-5">
-                    
+
                     <Cart cart={cart}></Cart>
                 </div>
             </div>
