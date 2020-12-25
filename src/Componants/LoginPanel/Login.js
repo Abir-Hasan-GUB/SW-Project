@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import firebaseConfig from './firbase.config';
 import './Login.css';
 import firebase from "firebase/app";
 import "firebase/auth";
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 const Login = () => {
     const [newUser, setNewUser] = useState(false); // use for chenge state when need to login using emai & password
@@ -16,6 +17,12 @@ const Login = () => {
     if (firebase.apps.length === 0) {
         firebase.initializeApp(firebaseConfig); // initialize firebase
     }
+
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
+    const history = useHistory(); // get app history
+    const location = useLocation(); // get app location
+    let { from } = location.state || { from: { pathname: "/" } }; // get app location state form private route
 
     const provider = new firebase.auth.GoogleAuthProvider();
     const fbProvider = new firebase.auth.FacebookAuthProvider();
@@ -53,6 +60,8 @@ const Login = () => {
                     photo: photoURL
                 }
                 setUser(signInUser);
+                setLoggedInUser(signInUser); // send user information to user context
+                history.replace(from); //after validate loggedInUser redirect to destination page
             })
             .catch(err => {
                 console.log(err);
@@ -110,6 +119,8 @@ const Login = () => {
                     newUserInfo.error = '';
                     newUserInfo.success = true; // if successfully login then value is true
                     setUser(newUserInfo);
+                    setLoggedInUser(newUserInfo); //send user info to UserContext
+                    history.replace(from); //after validate loggedInUser redirect to destination page
                 })
                 .catch((error) => {
                     const newUserInfo = { ...user }; //copy existing user info

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 import logo from '../../images/logos/logo.png';
 
 const ClienDashBoardMenu = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
     return (
         <div className="dashBoardMenu bg-dark px-0">
             <div className="row mx-0">
@@ -30,7 +33,7 @@ const ClienDashBoardMenu = () => {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
-                                        <button type="button" class="btn btn-success">Confirm</button>
+                                        <button onClick={()=> setLoggedInUser({})} type="button" class="btn btn-success">Confirm</button>
                                     </div>
                                 </div>
                             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './AdminPanel.css';
 import logo from '../../images/logos/logo.png';
 import Statistics from '../Statistics/Statistics';
@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom';
 import DashBoardTop from './DashBoardTop/DashBoardTop';
 import Calender from '../Calender/Calender';
 import Footer from '../Footer/Footer';
+import { UserContext } from '../../App';
 
 
 const AdminPanel = () => {
-    
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
     return (
         <div className="container">
             <div className="row mx-0">
@@ -58,7 +60,7 @@ const AdminPanel = () => {
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
-                                                <button type="button" class="btn btn-success">Confirm</button>
+                                                <button onClick={()=> setLoggedInUser({})} type="button" class="btn btn-success">Confirm</button>
                                             </div>
                                         </div>
                                     </div>

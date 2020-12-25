@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -24,21 +24,26 @@ import HomeMenuBar from './Componants/HomeMenuBar/HomeMenuBar';
 import ProductDetails from './Componants/ProductDetails/ProductDetails';
 import ReviewOrder from './Componants/ReviewOrder/ReviewOrder';
 import PlaceOrder from './Componants/PlaceOrder/PlaceOrder';
+import PrivateRoute from './Componants/PrivateRoute/PrivateRoute';
+
+export const UserContext = createContext();
 
 function App() {
+const [loggedInUser, setLoggedInUser] = useState({});
 
     return (
+        <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
         <Router>
             <Switch>
                 <Route exact path="/">
-                    {/* <HomeMenuBar></HomeMenuBar>
+                    <HomeMenuBar></HomeMenuBar>
                     <Banner></Banner>
                     <HomeCategories></HomeCategories>
-                    <Sliders></Sliders> */}
+                    <Sliders></Sliders>
                     {/* <AdminPanel></AdminPanel> */}
-                    {/* <Footer></Footer> */}
+                    <Footer></Footer>
                     {/* <NotFound></NotFound> */}
-                    <Login></Login>
+                    {/* <Login></Login> */}
                 </Route>
                 <Route path="/products">
                     <Shop></Shop>
@@ -46,12 +51,12 @@ function App() {
                 <Route path="/login">
                     <Login></Login>
                 </Route>
-                <Route path="/admin">
+                <PrivateRoute path="/admin">
                     <AdminPanel></AdminPanel>
-                </Route>
-                <Route path="/statistics">
+                </PrivateRoute>
+                <PrivateRoute path="/statistics">
                     <AdminPanel></AdminPanel>
-                </Route>
+                </PrivateRoute>
                 <Route path="/ViewAllReviews">
                     <ViewAllReview></ViewAllReview>
                 </Route>
@@ -74,24 +79,24 @@ function App() {
                 <Route path="/message">
                     <Message></Message>
                 </Route>
-                <Route path="/client">
+                <PrivateRoute path="/client">
                     <ClientOrder></ClientOrder>
-                </Route>
+                </PrivateRoute>
                 <Route path="/product/:productKey">
                     <ProductDetails></ProductDetails>
                 </Route>
                 <Route path="/reviewOrder">
                     <ReviewOrder></ReviewOrder>
                 </Route>
-                <Route path="/placeOrder">
+                <PrivateRoute path="/placeOrder">
                     <PlaceOrder></PlaceOrder>
-                </Route>
+                </PrivateRoute>
                 <Route path="*">
                     <NotFound></NotFound>
                 </Route>
             </Switch>
         </Router>
-
+        </UserContext.Provider>
     );
 }
 
