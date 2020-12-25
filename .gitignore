@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/src/Componants/LoginPanel/firbase.config.js
 /.pnp
 .pnp.js
 

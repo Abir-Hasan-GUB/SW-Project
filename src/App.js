@@ -31,13 +31,14 @@ function App() {
         <Router>
             <Switch>
                 <Route exact path="/">
-                    <HomeMenuBar></HomeMenuBar>
+                    {/* <HomeMenuBar></HomeMenuBar>
                     <Banner></Banner>
                     <HomeCategories></HomeCategories>
-                    <Sliders></Sliders>
+                    <Sliders></Sliders> */}
                     {/* <AdminPanel></AdminPanel> */}
-                    <Footer></Footer>
+                    {/* <Footer></Footer> */}
                     {/* <NotFound></NotFound> */}
+                    <Login></Login>
                 </Route>
                 <Route path="/products">
                     <Shop></Shop>
