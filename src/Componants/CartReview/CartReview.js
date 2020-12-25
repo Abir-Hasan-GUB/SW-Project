@@ -32,10 +32,10 @@ const CartReview = (props) => {
     // console.log(cart.length)
     // console.log(cart)
     let subTotal = 0;
-    console.log(subTotal)
+    // console.log(subTotal)
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
-        console.log(product)
+        // console.log(product)
         // console.log(product.price)
         subTotal += product.price * product.quantity;
 
@@ -125,7 +125,9 @@ const CartReview = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <Link to="/reviewOrder"><button className="btn btn-info btn-lg text-light btn-block"><h5>Review Your Order</h5></button></Link>
+                        {
+                            props.children
+                        }
                     </div>
                 </div>
             </div>

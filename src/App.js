@@ -1,9 +1,9 @@
 import { createContext } from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
 } from "react-router-dom";
 import Banner from './Componants/Banner/Banner';
 import Shop from './Componants/Shop/Shop';
@@ -27,8 +27,8 @@ import PlaceOrder from './Componants/PlaceOrder/PlaceOrder';
 
 function App() {
 
-  return (
-    <Router>
+    return (
+        <Router>
             <Switch>
                 <Route exact path="/">
                     <HomeMenuBar></HomeMenuBar>
@@ -37,7 +37,7 @@ function App() {
                     <Sliders></Sliders>
                     {/* <AdminPanel></AdminPanel> */}
                     <Footer></Footer>
-                   {/* <NotFound></NotFound> */}
+                    {/* <NotFound></NotFound> */}
                 </Route>
                 <Route path="/products">
                     <Shop></Shop>
@@ -91,7 +91,7 @@ function App() {
             </Switch>
         </Router>
 
-  );
+    );
 }
 
 export default App;

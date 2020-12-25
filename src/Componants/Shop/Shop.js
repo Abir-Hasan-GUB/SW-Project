@@ -11,21 +11,23 @@ const Shop = () => {
     const [products, setProducts] = useState(fakeData);
     const [cart, setCart] = useState([])
 
-    // useEffect(() => {
-    //     const saveCart = getDatabaseCart();
-    //     const productsKeys = Object.keys(saveCart);
-    //     const previousCart = productsKeys.map(existingKey => {
-    //         const product = fakeData.find(pd => pd.key === existingKey);
-    //         product.quantity = saveCart[existingKey];
-    //         return product;
-    //     })
-    //     // setCart(previousCart) error here . eita dile erroer aste
-    // }, [])
+    useEffect(() => {
+        const saveCart = getDatabaseCart();
+        const productsKeys = Object.keys(saveCart);
+        const previousCart = productsKeys.map(existingKey => {
+            const product = fakeData.find(pd => pd.key === existingKey);
+            product.quantity = saveCart[existingKey];
+            return product;
+        })
+        // console.log(previousCart);
+        setCart(previousCart);
+        // setCart(previousCart) error here . eita dile erroer aste
+    }, [])
 
 
-    const handleAddProduct = ({product}) => {
+    const handleAddProduct = ({ product }) => {
         console.log(product.key)
-        const newCart = [...cart , product];
+        const newCart = [...cart, product];
         setCart(newCart); // update cart to new
         const sameProduct = newCart.filter(pd => pd.key === product.key);
         const count = sameProduct.length;
@@ -47,7 +49,7 @@ const Shop = () => {
                 </div>
                 <div className="col-md-4 my-5">
                     <Cart cart={cart}>
-                    <Link to="/reviewOrder"><button className="btn btn-info btn-lg text-light btn-block"><h5>Review Your Order</h5></button></Link>
+                        <Link to="/reviewOrder"><button className="btn btn-info btn-lg text-light btn-block"><h5>Review Your Order</h5></button></Link>
                     </Cart>
                 </div>
             </div>

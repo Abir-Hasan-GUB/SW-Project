@@ -5,7 +5,7 @@ import NavBar from '../NavBar/NavBar';
 import ReviewItems from '../ReviewItems/ReviewItems';
 import './ReviewOrder.css';
 import emptyCart from '../../images/emptyCart.jpg';
-import { getDatabaseCart, removeFromDatabaseCart } from '../utilities/databaseManager';
+import { getDatabaseCart, removeFromDatabaseCart, processOrder } from '../utilities/databaseManager';
 import { Link } from 'react-router-dom';
 import CartReview from '../CartReview/CartReview';
 import Footer from '../Footer/Footer';
@@ -33,6 +33,11 @@ const ReviewOrder = () => {
         });
         setCart(cartProducts);
     }, [])
+
+    const handlePlaceOrder = () => {
+        setCart([]);
+        processOrder();
+    }
 
     return (
         <div className="container">
@@ -63,10 +68,9 @@ const ReviewOrder = () => {
                     </div>
                 </div>
                 <div className="col-md-4">
-                    <Cart cart={cart}>
-                    <Link to="/placeOrder"><button className="btn btn-info btn-lg text-light btn-block"><h5>Place Order</h5></button></Link>
-                    </Cart>
-                    {/* <CartReview cart={cart}></CartReview> */}
+                    <CartReview cart={cart}>
+                    <Link to="/placeOrder"><button onClick={handlePlaceOrder} className="btn btn-info btn-lg text-light btn-block"><h5>Place Order</h5></button></Link>
+                    </CartReview>
                 </div>
             </div>}
             {cart.length > 0 && <Footer></Footer>}
