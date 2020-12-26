@@ -259,6 +259,9 @@ const Login = () => {
                 <div className="form-group px-5 ">
                     <a className="btn btn-primary justify-content-around d-flex facebookBtn logInBtn btn-sm text-light btn-block p-2" onClick={handleSignInWithFaceBook}><i class="fab fa-facebook"></i> continue with Facebook</a>
                 </div>
+                <div className="form-group px-0 px-md-5 ">
+                        <Link to="/"><input className="btn btn-dark text-light logInBtn btn-sm btn-sm-lg btn-block p-3" type="submit" value="Back to Home" /></Link>
+                    </div>
             </div>
         </div>
     );

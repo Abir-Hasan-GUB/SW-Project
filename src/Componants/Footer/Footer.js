@@ -26,7 +26,7 @@ const Footer = () => {
                     <ul className="list-unstyled quickLink">
                         <Link to="/"> <li className="mt-2">Home</li></Link>
                         <Link to="/"> <li className="mt-2">Contact</li></Link>
-                        <Link to="/"> <li className="mt-2">Products</li></Link>
+                        <Link to="/products"> <li className="mt-2">Products</li></Link>
                         <Link to="/admin"> <li className="mt-2">Admin</li></Link>
                         <Link to="/client"> <li className="mt-2">Client</li></Link>
                         <Link to="/"> <li className="mt-2">About Us</li></Link>
