@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 import logo from '../../images/logos/logo.png';
 import Calender from '../Calender/Calender';
 
 const DashBoardMenu = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    let admin = loggedInUser.email;
+
     return (
         <div className="dashBoardMenu bg-dark px-0">
             <div className="row mx-0">
@@ -16,7 +20,7 @@ const DashBoardMenu = () => {
                         <Link to="/ViewAllReviews"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-border-all mr-2"></i> View All Reviews</button></Link>
                         <Link to="/orderList"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-luggage-cart mr-2"></i> Order List</button></Link>
                         <Link to="/addProduct"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="far fa-plus-square mr-2"></i> Add Product</button></Link>
-                        <Link to="/makeAdmin"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-user-plus"></i> Make Admin</button></Link>
+                        {admin == 'abirhasan6111@gmail.com' && <Link to="/makeAdmin"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Make Admin</button></Link>}
 
                         {/* ============= Calender Accordion Start ==========  */}
                         <div class="accordion" id="showCalender">
@@ -49,7 +53,7 @@ const DashBoardMenu = () => {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
-                                        <button type="button" class="btn btn-success">Confirm</button>
+                                        <button onClick={()=> setLoggedInUser({})} type="button" class="btn btn-success">Confirm</button>
                                     </div>
                                 </div>
                             </div>

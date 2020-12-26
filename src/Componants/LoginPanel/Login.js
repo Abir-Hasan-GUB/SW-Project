@@ -138,7 +138,7 @@ const Login = () => {
 
         user.updateProfile({
             displayName: name,
-            photoURL: "https://i.imgur.com/3fet72d.jpg"
+            // photoURL: "https://i.imgur.com/3fet72d.jpg"
         }).then(function () {
             console.log("User name updated successfully")
         }).catch(function (error) {

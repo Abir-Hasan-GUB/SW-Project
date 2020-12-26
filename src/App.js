@@ -57,37 +57,37 @@ const [loggedInUser, setLoggedInUser] = useState({});
                 <PrivateRoute path="/statistics">
                     <AdminPanel></AdminPanel>
                 </PrivateRoute>
-                <Route path="/ViewAllReviews">
+                <PrivateRoute path="/ViewAllReviews">
                     <ViewAllReview></ViewAllReview>
-                </Route>
-                <Route path="/orderList">
+                </PrivateRoute>
+                <PrivateRoute path="/orderList">
                     <OrderList></OrderList>
-                </Route>
-                <Route path="/addProduct">
+                </PrivateRoute>
+                <PrivateRoute path="/addProduct">
                     <AddProduct></AddProduct>
-                </Route>
-                <Route path="/makeAdmin">
+                </PrivateRoute>
+                <PrivateRoute path="/makeAdmin">
                     <MakeAdmin></MakeAdmin>
-                </Route>
+                </PrivateRoute>
                 {/* <Route path="/client">
                     <Client></Client>
                     <Footer></Footer>
                 </Route> */}
-                <Route path="/feedBack">
+                <PrivateRoute path="/feedBack">
                     <FeedBack></FeedBack>
-                </Route>
-                <Route path="/message">
+                </PrivateRoute>
+                <PrivateRoute path="/message">
                     <Message></Message>
-                </Route>
+                </PrivateRoute>
                 <PrivateRoute path="/client">
                     <ClientOrder></ClientOrder>
                 </PrivateRoute>
                 <Route path="/product/:productKey">
                     <ProductDetails></ProductDetails>
                 </Route>
-                <Route path="/reviewOrder">
+                <PrivateRoute path="/reviewOrder">
                     <ReviewOrder></ReviewOrder>
-                </Route>
+                </PrivateRoute>
                 <PrivateRoute path="/placeOrder">
                     <PlaceOrder></PlaceOrder>
                 </PrivateRoute>
