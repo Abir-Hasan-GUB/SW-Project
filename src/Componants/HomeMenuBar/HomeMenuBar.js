@@ -21,16 +21,16 @@ const HomeMenuBar = () => {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#showcase">Home <span class="sr-only">(current)</span></a>
+              <Link to="/"><a class="nav-link text-warning" href="#showcase">Home <span class="sr-only">(current)</span></a></Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#category">Category</a>
+              <a class="nav-link text-light" href="#category">Category</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#ourworks">Sample</a>
+              <a class="nav-link text-light" href="#ourworks">Sample</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#footer">Contacts</a>
+              <a class="nav-link text-light" href="#footer">Contacts</a>
             </li>
               {/* ================ User Control Button ================= */}
               <li class="dropdown nav-item">
@@ -45,8 +45,8 @@ const HomeMenuBar = () => {
                   <h6>{loggedInUser.name}</h6>
                   <Link to="/client"><button className="btn btn-primary btn-sm">View Profile</button></Link>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item text-left" href="#"><i class="fas fa-lock mr-2"></i> Terms of service</a>
-                  <a class="dropdown-item text-left" href="#"><i class="fas fa-question-circle mr-2"></i> FAQ</a>
+                  <Link to="/termsAndService"><a class="dropdown-item text-left" href="#"><i class="fas fa-lock mr-2"></i> Terms of service</a></Link>
+                  <Link to="/faq"><a class="dropdown-item text-left" href="#"><i class="fas fa-question-circle mr-2"></i> FAQ</a></Link>
                   <a onClick={()=> setLoggedInUser({})} class="dropdown-item text-left" href="#"><i class="fas fa-sign-out-alt mr-2"></i> Logout</a>
                   </div>}
                 </div>

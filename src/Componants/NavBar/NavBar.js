@@ -42,8 +42,8 @@ const NavBar = (props) => {
                   <h6>{loggedInUser.name}</h6>
                   <Link to="/client"><button className="btn btn-primary btn-sm">View Profile</button></Link>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item text-left" href="#"><i class="fas fa-lock mr-2"></i> Terms of service</a>
-                  <a class="dropdown-item text-left" href="#"><i class="fas fa-question-circle mr-2"></i> FAQ</a>
+                <Link to="/termsAndService">  <a class="dropdown-item text-left" href="#"><i class="fas fa-lock mr-2"></i> Terms of service</a></Link>
+                 <Link to="/faq"> <a class="dropdown-item text-left" href="#"><i class="fas fa-question-circle mr-2"></i> FAQ</a></Link>
                   <a onClick={()=> setLoggedInUser({})} class="dropdown-item text-left" href="#"><i class="fas fa-sign-out-alt mr-2"></i> Logout</a>
                   </div>}
                 </div>

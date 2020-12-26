@@ -25,6 +25,8 @@ import ProductDetails from './Componants/ProductDetails/ProductDetails';
 import ReviewOrder from './Componants/ReviewOrder/ReviewOrder';
 import PlaceOrder from './Componants/PlaceOrder/PlaceOrder';
 import PrivateRoute from './Componants/PrivateRoute/PrivateRoute';
+import TermsAndService from './Componants/TermsAndService/TermsAndService';
+import FAQ from './Componants/FAQ/FAQ';
 
 export const UserContext = createContext();
 
@@ -90,6 +92,12 @@ const [loggedInUser, setLoggedInUser] = useState({});
                 </PrivateRoute>
                 <PrivateRoute path="/placeOrder">
                     <PlaceOrder></PlaceOrder>
+                </PrivateRoute>
+                <PrivateRoute path="/termsAndService">
+                    <TermsAndService></TermsAndService>
+                </PrivateRoute>
+                <PrivateRoute path="/faq">
+                    <FAQ></FAQ>
                 </PrivateRoute>
                 <Route path="*">
                     <NotFound></NotFound>
