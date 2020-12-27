@@ -40,7 +40,7 @@ const ReviewOrder = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container px-0">
                 <ShopNavBar></ShopNavBar>
             {cart.length <= 0 && <div className="ifCartItemIsEmpty text-center bg-light">
                 <img className="img-fluid my-5" src={emptyCart} alt="empty cart" />
@@ -69,7 +69,7 @@ const ReviewOrder = () => {
                 </div>
                 <div className="col-md-4">
                     <CartReview cart={cart}>
-                    <Link to="/placeOrder"><button onClick={handlePlaceOrder} className="btn btn-info btn-lg text-light btn-block"><h5>Place Order</h5></button></Link>
+                    <Link to="/placeOrder"><button className="btn btn-info btn-lg text-light btn-block"><h5>Proceed to Checkout</h5></button></Link>
                     </CartReview>
                 </div>
             </div>}

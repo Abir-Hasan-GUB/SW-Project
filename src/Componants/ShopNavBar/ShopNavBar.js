@@ -8,7 +8,7 @@ const ShopNavBar = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     return (
-        <div className="container fixed-top">
+        <div className="container fixed-top px-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand">
    <Link to="/"> <img className="bg-light img-fluid logo rounded" src={logo} alt="logo"/></Link>

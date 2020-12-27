@@ -27,6 +27,7 @@ import PlaceOrder from './Componants/PlaceOrder/PlaceOrder';
 import PrivateRoute from './Componants/PrivateRoute/PrivateRoute';
 import TermsAndService from './Componants/TermsAndService/TermsAndService';
 import FAQ from './Componants/FAQ/FAQ';
+import Shipment from './Componants/Shipment/Shipment';
 
 export const UserContext = createContext();
 
@@ -99,6 +100,10 @@ const [loggedInUser, setLoggedInUser] = useState({});
                 <PrivateRoute path="/faq">
                     <FAQ></FAQ>
                 </PrivateRoute>
+                <PrivateRoute path="/orderComplete">
+                    <Shipment></Shipment>
+                </PrivateRoute>
+                
                 <Route path="*">
                     <NotFound></NotFound>
                 </Route>
