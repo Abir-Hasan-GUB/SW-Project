@@ -3,12 +3,12 @@ import placeOrder from '../../images/place order.gif';
 import fakeData from '../fakeData';
 import { getDatabaseCart, processOrder } from '../utilities/databaseManager';
 import bkashRouls from '../../images/bkashrouls.png';
+import emptyCart from '../../images/emptyCart.jpg';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import ShopNavBar from '../ShopNavBar/ShopNavBar';
 
 const PlaceOrder = () => {
-
     // ============== calculated order price =================
     const [cart, setCart] = useState([]);
     let price = 0;
@@ -39,11 +39,20 @@ const PlaceOrder = () => {
     return (
         <div className="container bg-light px-0">
             <ShopNavBar></ShopNavBar>
-            <h1 className="mt-5 pb-3 pt-5 text-center text-danger">Checkout</h1>
-            <div className="divider" style={{ borderBottom: "3px solid red" }}></div>
-            <h3 className="p-3"><strong>Billing Details</strong></h3>
-            <div className="billingAddress p-3">
-                <form action="">
+
+            {cart.length <= 0 && <div className="ifCartItemIsEmpty text-center bg-light">
+                <img className="img-fluid my-5" src={emptyCart} alt="empty cart" />
+                <h1 className="mt-5">Your Cart is Empty!</h1>
+                <p className="lead py-3">Looks like you haven't made order yet.</p>
+                <Link to="/products"><button style={{ backgroundColor: '#f90' }} className="btn text-light my-5 p-3 btn-lg"><h5>Continue to Shopping</h5></button></Link>
+            </div>}
+
+
+            {cart.length > 0 && <form action="">
+                <h1 className="mt-5 pb-3 pt-5 text-center text-danger">Checkout</h1>
+                <div className="divider" style={{ borderBottom: "3px solid red" }}></div>
+                <h3 className="p-3"><strong>Billing Details</strong></h3>
+                <div className="billingAddress p-3">
                     <div className="row">
                         <div className="col-md-6">
                             <div className="form-group">
@@ -78,48 +87,46 @@ const PlaceOrder = () => {
                     {/* <div className="adminBtn  d-flex justify-content-center my-3">
                            <input className="btn btn-success btn-lg btn-block w-50" type="submit" value="Add Product"/>
                            </div> */}
-                </form>
-            </div>
-            <h3 className="p-3">Your Order</h3>
-            <div className="productTable p-3">
-                <table className="table">
-                    <tr>
-                        <th className="text-left">Product</th>
-                        <th className="text-right">Unit Price</th>
-                        <th className="text-right">Quantity</th>
-                        <th className="text-right">Total Price</th>
-                    </tr>
-                    { // load card product form sesion storage
-                        cart.map(pd => <tr>
-                            <td className="text-left">{pd.name}</td>
-                            <td className="text-right">$ {pd.price}</td>
-                            <td className="text-right">{pd.quantity}</td>
-                            <td className="text-right">$ {pd.price * pd.quantity}</td>
+
+                </div>
+                <h3 className="p-3">Your Order</h3>
+                <div className="productTable p-3">
+                    <table className="table">
+                        <tr>
+                            <th className="text-left">Product</th>
+                            <th className="text-right">Unit Price</th>
+                            <th className="text-right">Quantity</th>
+                            <th className="text-right">Total Price</th>
                         </tr>
-                        )
-                    }
-                </table>
-                <table className="table">
-                    <tr>
-                        <th className="text-left">Subtotal</th>
-                        <th className="text-right">$ {price}</th>
-                    </tr>
-                    <tr>
-                        <th className="text-left">Total</th>
-                        <th className="text-right">$ {price}</th>
-                    </tr>
-                </table>
-                <p className="text-danger">** Delive Charge Vary some times...</p>
-            </div>
+                        { // load card product form sesion storage
+                            cart.map(pd => <tr>
+                                <td className="text-left">{pd.name}</td>
+                                <td className="text-right">$ {pd.price}</td>
+                                <td className="text-right">{pd.quantity}</td>
+                                <td className="text-right">$ {pd.price * pd.quantity}</td>
+                            </tr>
+                            )
+                        }
+                    </table>
+                    <table className="table">
+                        <tr>
+                            <th className="text-left">Subtotal</th>
+                            <th className="text-right">$ {price}</th>
+                        </tr>
+                        <tr>
+                            <th className="text-left">Total</th>
+                            <th className="text-right">$ {price}</th>
+                        </tr>
+                    </table>
+                    <p className="text-danger">** Delive Charge Vary some times...</p>
+                </div>
 
-            {/* ============ bkash payment section ================= */}
-            <div className="p-3">
-                <h3 className="mb-3">Select Payment Method</h3>
-                <input className="mr-2" type="radio" name="bkash" id="bkash" data-toggle="collapse" href="#bkashToggol" role="button" aria-expanded="false" aria-controls="bkashToggol" />
+                {/* ============ bkash payment section ================= */}
+                <div className="p-3">
+                    <h3 className="mb-3">Select Payment Method</h3>
+                    <input className="mr-2" type="radio" name="bkash" id="bkash" data-toggle="collapse" href="#bkashToggol" role="button" aria-expanded="false" aria-controls="bkashToggol" />
 
-                <label htmlFor="bkash"><strong>bKash Transfer</strong></label>
-
-                <form action="">
+                    <label htmlFor="bkash"><strong>bKash Transfer</strong></label>
 
                     <div class="collapse" id="bkashToggol">
                         <img style={{ width: '100%' }} className="img-fluid rounded" src={bkashRouls} alt="bkashRouls" />
@@ -135,13 +142,12 @@ const PlaceOrder = () => {
                     <h6><label htmlFor="terms" className="mt-3"><input type="checkbox" name="" id="terms" required /> I have read and agree to the website <Link to="termsAndService" className="text-danger">terms and conditions *</Link></label></h6>
                     <div className="text-right my-5 pr-3">
                         {/* <Link to="/orderComplete"> */}
-                        <button className="btn btn-success btn-lg p-2 rounded">Place Order</button>
+                        <button onClick={handlePlaceOrder} className="btn btn-success btn-lg p-2 rounded">Place Order</button>
                         {/* </Link> */}
                     </div>
-                </form>
 
-
-            </div>
+                </div>
+            </form>}
             <Footer></Footer>
         </div>
     );

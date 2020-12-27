@@ -1,17 +1,20 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import fakeData from '../fakeData';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import './ProductDetails.css';
 import client from '../../images/dashboard/abir.JPG';
+import { UserContext } from '../../App';
 
 const ProductDetails = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
     const { productKey } = useParams();//recive product key
     const product = fakeData.find(pd => pd.key === productKey);
-    console.log(product)
+    // console.log(product)
     const features = product.features.length;
-    console.log(features)
+    // console.log(features)
     return (
         <div className="container">
             <NavBar></NavBar>
@@ -92,8 +95,9 @@ const ProductDetails = () => {
                 </div>
 
                 {/* recive clients review by form here  */}
+                {!loggedInUser.name && <h4 className="my-5 text-info text-center"><i class="fas fa-quote-left"></i> To write your review please <Link to="/login"><span className="text-danger"> logIn <i class="fas fa-quote-right text-info"></i></span></Link></h4>}
+                {loggedInUser.name && <form action="">
                 <h5 className="mt-5 mb-3">Write your review</h5>
-                <form action="">
                     <div className="row">
                         <div className="col-md-6">
                             <div className="form-group">
@@ -124,7 +128,7 @@ const ProductDetails = () => {
                             <input className="btn btn-lg btn btn-dark text-light" type="submit" value="Comment" />
                         </div>
                     </div>
-                </form>
+                </form>}
             </div>
             <Footer></Footer>
         </div>
