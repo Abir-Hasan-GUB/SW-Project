@@ -12,8 +12,20 @@ const PlaceOrder = () => {
     // ============== calculated order price =================
     const [cart, setCart] = useState([]);
     let price = 0;
+    let shippingAndPrice = 0;
     for (let i = 0; i < cart.length; i++) {
         price += cart[i].price * cart[i].quantity;
+    }
+    price = ((price / 100) * 5) + price; // add tax for
+    
+    if(price >= 250){
+        shippingAndPrice = price + 25;
+    }
+    if(price>= 500){
+        shippingAndPrice =  price;
+    }
+    if(price < 250){
+        shippingAndPrice = price + 50;
     }
 
     useEffect(() => {// load data from database(sesion storage)
@@ -101,9 +113,9 @@ const PlaceOrder = () => {
                         { // load card product form sesion storage
                             cart.map(pd => <tr>
                                 <td className="text-left">{pd.name}</td>
-                                <td className="text-right">$ {pd.price}</td>
+                                <td className="text-right">{pd.price}</td>
                                 <td className="text-right">{pd.quantity}</td>
-                                <td className="text-right">$ {pd.price * pd.quantity}</td>
+                                <td className="text-right">{pd.price.toFixed(2) * pd.quantity.toFixed(2)}</td>
                             </tr>
                             )
                         }
@@ -111,11 +123,11 @@ const PlaceOrder = () => {
                     <table className="table">
                         <tr>
                             <th className="text-left">Subtotal</th>
-                            <th className="text-right">$ {price}</th>
+                            <th className="text-right">$ {price.toFixed(2)}</th>
                         </tr>
                         <tr>
                             <th className="text-left">Total</th>
-                            <th className="text-right">$ {price}</th>
+                            <th className="text-right">$ {shippingAndPrice.toFixed(2)}</th>
                         </tr>
                     </table>
                     <p className="text-danger">** Delive Charge Vary some times...</p>
@@ -131,6 +143,7 @@ const PlaceOrder = () => {
                     <div class="collapse" id="bkashToggol">
                         <img style={{ width: '100%' }} className="img-fluid rounded" src={bkashRouls} alt="bkashRouls" />
                         <div className="form-group mt-3">
+                            <h5 className="text-info py-2">bKash Number: <span className="text-danger">+88 01774-062312 (Personal)</span> </h5>
                             <label className="mt-2" htmlFor="bkashNumber"><strong>bKash Number</strong></label>
                             <input className="form-control w-50 form-control-lg" placeholder="bKash Number" type="tel" name="" id="bkashNumber" required />
                             <label className="mt-2" htmlFor="transactionId"><strong>bKash transaction ID</strong></label>
