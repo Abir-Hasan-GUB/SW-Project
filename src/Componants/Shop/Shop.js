@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from 'react';
-import fakeData from '../fakeData';
 import './Shop.css';
 import Product from '../Product/Product';
 import NavBar from '../NavBar/NavBar';
@@ -8,25 +7,37 @@ import { addToDatabaseCart, getDatabaseCart } from '../utilities/databaseManager
 import { Link } from 'react-router-dom';
 
 const Shop = () => {
-    const [products, setProducts] = useState(fakeData);
+    const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([])
 
+    // data load form database
+    useEffect(() => {
+        fetch('http://localhost:5000/products/')
+        .then(response => response.json())
+        .then(data => setProducts(data))
+    }, [])
+
+    //load data form sesion storage
     useEffect(() => {
         const saveCart = getDatabaseCart();
-        const productsKeys = Object.keys(saveCart);
-        const previousCart = productsKeys.map(existingKey => {
-            const product = fakeData.find(pd => pd.key === existingKey);
-            product.quantity = saveCart[existingKey];
-            return product;
+        const productKeys = Object.keys(saveCart);
+       
+        // load all products using keys
+        fetch('http://localhost:5000/productsByKeys',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productKeys)
         })
-        // console.log(previousCart);
-        setCart(previousCart);
+        .then(response => response.json())
+        .then(data => setCart(data))
         // setCart(previousCart) error here . eita dile erroer aste
     }, [])
 
 
     const handleAddProduct = ({ product }) => {
-        console.log(product.key)
+        // console.log(product.key)
         const newCart = [...cart, product];
         setCart(newCart); // update cart to new
         const sameProduct = newCart.filter(pd => pd.key === product.key);

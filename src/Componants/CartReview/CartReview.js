@@ -37,7 +37,7 @@ const CartReview = (props) => {
         const product = cart[i];
         // console.log(product)
         // console.log(product.price)
-        subTotal += product.price * product.quantity;
+        subTotal += product.price * product.quantity || 1;
 
     }
     // console.log(cart[0].product.price)

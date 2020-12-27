@@ -88,12 +88,12 @@ const [loggedInUser, setLoggedInUser] = useState({});
                 <Route path="/product/:productKey">
                     <ProductDetails></ProductDetails>
                 </Route>
-                <PrivateRoute path="/reviewOrder">
+                <Route path="/reviewOrder">
                     <ReviewOrder></ReviewOrder>
-                </PrivateRoute>
-                <PrivateRoute path="/placeOrder">
+                </Route>
+                <Route path="/placeOrder">
                     <PlaceOrder></PlaceOrder>
-                </PrivateRoute>
+                </Route>
                 <PrivateRoute path="/termsAndService">
                     <TermsAndService></TermsAndService>
                 </PrivateRoute>

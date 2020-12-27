@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import fakeData from '../fakeData';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import './ProductDetails.css';
@@ -9,12 +8,23 @@ import { UserContext } from '../../App';
 
 const ProductDetails = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [product, setProduct] = useState({});
 
     const { productKey } = useParams();//recive product key
-    const product = fakeData.find(pd => pd.key === productKey);
-    // console.log(product)
-    const features = product.features.length;
-    // console.log(features)
+
+    // load one product/ search one product using key
+    
+    useEffect(() => {
+        fetch(`http://localhost:5000/product/`+productKey)
+        .then(response => response.json())
+        .then(function(value){
+            if(value){
+                setProduct(value)
+            }
+        })
+        
+    },[productKey]);
+
     return (
         <div className="container">
             <NavBar></NavBar>
@@ -51,7 +61,7 @@ const ProductDetails = () => {
                     </div>
 
                     {/* products extra fetures conditionally render here  */}
-                    {features >= 5 && <div className="features">
+                    {/* {product.features.length > 0 && <div className="features">
                         <h4>Features-</h4>
                         <ul>
                             <li>{product.features[0].description} : {product.features[0].value}</li>
@@ -60,8 +70,8 @@ const ProductDetails = () => {
                             <li>{product.features[3].description} : {product.features[3].value}</li>
                             <li>{product.features[4].description} : {product.features[4].value}</li>
                         </ul>
-                    </div>}
-                    <h3 style={{color: '#f58220', fontWeight: '700'}}>$ {product.price}</h3>
+                    </div>} */}
+                    <h1 className="mt-5" style={{color: '#f58220', fontWeight: '700'}}>$ {product.price}</h1>
                     <small className="text-primary"><strong>CASH DISCOUNT PRICE</strong></small>
                 </div>
 

@@ -1,19 +1,35 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Cart from '../Cart/Cart';
-import fakeData from '../fakeData';
-import NavBar from '../NavBar/NavBar';
 import ReviewItems from '../ReviewItems/ReviewItems';
 import './ReviewOrder.css';
 import emptyCart from '../../images/emptyCart.jpg';
-import { getDatabaseCart, removeFromDatabaseCart, processOrder } from '../utilities/databaseManager';
+import { getDatabaseCart, removeFromDatabaseCart } from '../utilities/databaseManager';
 import { Link } from 'react-router-dom';
 import CartReview from '../CartReview/CartReview';
 import Footer from '../Footer/Footer';
 import ShopNavBar from '../ShopNavBar/ShopNavBar';
+import fakeData from '../fakeData';
 
 const ReviewOrder = () => {
-
     const [cart, setCart] = useState([]);
+
+    // ============== calculated runnig cart price from sesion storage=================
+    let price = 0;
+    let shippingAndPrice = 0;
+    for (let i = 0; i < cart.length; i++) {
+        price += cart[i].price * cart[i].quantity;
+    }
+    price = ((price / 100) * 5) + price; // add tax for
+
+    if (price >= 250) {
+        shippingAndPrice = price + 25;
+    }
+    if (price >= 500) {
+        shippingAndPrice = price;
+    }
+    if (price < 250) {
+        shippingAndPrice = price + 50;
+    }
+
     const removeProduct = (productKey) => {
         // console.log("Remove Key Clicked" , productKey);
         const newCart = cart.filter(pd => pd.key !== productKey); // find all key except selected key which remove
@@ -28,20 +44,15 @@ const ReviewOrder = () => {
 
         const cartProducts = productKeys.map(keys => {
             const product = fakeData.find(pd => pd.key === keys);
-            product.quantity = savedCart[keys]; // add product quantity
+            product.quantity = savedCart[keys];
             return product;
         });
         setCart(cartProducts);
     }, [])
 
-    const handlePlaceOrder = () => {
-        setCart([]);
-        processOrder();
-    }
-
     return (
         <div className="container px-0">
-                <ShopNavBar></ShopNavBar>
+            <ShopNavBar></ShopNavBar>
             {cart.length <= 0 && <div className="ifCartItemIsEmpty text-center bg-light">
                 <img className="img-fluid my-5" src={emptyCart} alt="empty cart" />
                 <h1 className="mt-5">Your Cart is Empty!</h1>
@@ -52,7 +63,7 @@ const ReviewOrder = () => {
             {cart.length > 0 && <div className="card mt-5">
                 <div className="card-header mt-3 d-flex justify-content-between">
                     <h1>My Cart ({cart.length} Items)</h1>
-                    <h1>Total: $ (upcomming)</h1>
+                    <h1>Total: $ {price.toFixed(2)}</h1>
                 </div>
             </div>}
 
@@ -69,7 +80,7 @@ const ReviewOrder = () => {
                 </div>
                 <div className="col-md-4">
                     <CartReview cart={cart}>
-                    <Link to="/placeOrder"><button className="btn btn-info btn-lg text-light btn-block"><h5>Proceed to Checkout</h5></button></Link>
+                        <Link to="/placeOrder"><button className="btn btn-info btn-lg text-light btn-block"><h5>Proceed to Checkout</h5></button></Link>
                     </CartReview>
                 </div>
             </div>}

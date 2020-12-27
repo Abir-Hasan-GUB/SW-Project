@@ -4,6 +4,18 @@ import DashBoardMenu from '../DashBoardMenu/DashBoardMenu';
 import Footer from '../Footer/Footer';
 
 const AddProduct = () => {
+// add product to database
+    // const handleAddProduct = () => {
+    //     fetch('http://localhost:5000/addProdcuct',{
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify("revicved info")
+    //     })
+    // }
+
+
     return (
         <div className="container">
         <div className="row mx-0">
