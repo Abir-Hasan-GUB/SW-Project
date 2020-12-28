@@ -76,9 +76,9 @@ const [loggedInUser, setLoggedInUser] = useState({});
                     <Client></Client>
                     <Footer></Footer>
                 </Route> */}
-                <Route path="/feedBack">
+                {/* <Route path="/feedBack">
                     <FeedBack></FeedBack>
-                </Route>
+                </Route> */}
                 <Route path="/message">
                     <Message></Message>
                 </Route>
