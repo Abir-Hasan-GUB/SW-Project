@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DashBoardTop from '../AdminPanel/DashBoardTop/DashBoardTop';
 import DashBoardMenu from '../DashBoardMenu/DashBoardMenu';
 import Footer from '../Footer/Footer';
 
 const OrderList = () => {
+    const [allOrder, setAllOrder] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/clientAllOrder`,)
+            .then(response => response.json())
+            .then(result => setAllOrder(result))
+    }, [])
+    console.log(allOrder)
+
     return (
         <div className="container">
             <div className="row mx-0">
@@ -19,57 +28,29 @@ const OrderList = () => {
                                     <tr>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Product Details</th>
+                                        <th scope="col">Price</th>
+                                        {/* <th scope="col">Order Time</th> */}
                                         <th scope="col">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Abir Hasan</td>
-                                        <td>Samsung A50</td>
-                                        <td>@mdo</td>
-                                        <td>
-                                        <form className="" action="">
-                                                <select className="form-control" name="cars" id="cars">
-                                                    <option className="text-danger"value="volvo">pending</option>
-                                                    <option className="text-success" value="saab">Done</option>
-                                                    <option className="text-warning" value="opel">On Going</option>
-                                                </select>
+                                    {
+                                        allOrder.map(allOrder => <tr>
+                                            <th>{allOrder.name}</th>
+                                            <td>{allOrder.email}</td>
+                                            <td>$ {allOrder.price}</td>
+                                            {/* <td>{allOrder.time}</td> */}
+                                            <td>
+                                                <form className="" action="">
+                                                    <select className="form-control" name="cars" id="cars">
+                                                        <option className="text-danger" value="volvo">{allOrder.status}</option>
+                                                        <option className="text-success" value="saab">Done</option>
+                                                        <option className="text-warning" value="opel">On Going</option>
+                                                    </select>
                                                 </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>
-                                        <form className="" action="">
-                                                <select className="form-control" name="cars" id="cars">
-                                                    <option className="text-danger"value="volvo">pending</option>
-                                                    <option className="text-success" value="saab">Done</option>
-                                                    <option className="text-warning" value="opel">On Going</option>
-                                                </select>
-                                                </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>the Bird</td>
-                                        <td>
-                                        <form className="" action="">
-                                                <select className="form-control" name="cars" id="cars">
-                                                    <option className="text-danger"value="volvo">pending</option>
-                                                    <option className="text-success" value="saab">Done</option>
-                                                    <option className="text-warning" value="opel">On Going</option>
-                                                </select>
-                                                </form>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>)
+                                    }
                                 </tbody>
                             </table>
                         </div>
