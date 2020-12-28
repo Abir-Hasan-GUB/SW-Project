@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import placeOrder from '../../images/place order.gif';
 import fakeData from '../fakeData';
 import { getDatabaseCart, processOrder } from '../utilities/databaseManager';
@@ -7,26 +7,84 @@ import emptyCart from '../../images/emptyCart.jpg';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import ShopNavBar from '../ShopNavBar/ShopNavBar';
+import { UserContext } from '../../App';
 
 const PlaceOrder = () => {
-    // ============== calculated order price =================
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [cart, setCart] = useState([]);
-    let price = 0;
-    let shippingAndPrice = 0;
-    for (let i = 0; i < cart.length; i++) {
-        price += cart[i].price * cart[i].quantity;
+
+// ============== calculated order price =================
+let price = 0;
+let shippingAndPrice = 0;
+for (let i = 0; i < cart.length; i++) {
+    price += cart[i].price * cart[i].quantity;
+}
+price = ((price / 100) * 5) + price; // add tax for
+
+if(price >= 250){
+    shippingAndPrice = price + 25;
+}
+if(price>= 500){
+    shippingAndPrice =  price;
+}
+if(price < 250){
+    shippingAndPrice = price + 50;
+}
+
+const handlePlaceOrder = () => {
+    setCart([]);
+    processOrder();
+}
+
+
+// order send to database
+    const handleAddOrder = (e) => {
+        let phone = document.getElementById('userPhone').value;
+        let privateComment = document.getElementById('privateComment').value;
+        let bKashNumber = document.getElementById('bKashNumber').value;
+        let bKashTransactionID = document.getElementById('transactionId').value;
+
+        let userOrder = {
+            name: loggedInUser.name, 
+            email: loggedInUser.email, 
+            time: new Date(),
+            img: loggedInUser.photo,
+            cart: cart,
+            status: 'pending',
+            phone: phone,
+            price: price,
+            paymentMethod: 'bKash',
+            privateComment: privateComment,
+            bKashNumber: bKashNumber,
+            bKashTransactionID: bKashTransactionID
+           
+        }
+
+        // send comment data to database
+        fetch('http://localhost:5000/addOrder',{
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(userOrder)
+        })
+        .then(response => response.json())
+        .then(success => {
+            if(success.insertedCount){   
+                alert("Order Successfully Placed !");
+                handlePlaceOrder();
+            }
+            
+        })
+        
+        document.getElementById('userPhone').value = '';
+        document.getElementById('privateComment').value = '';
+        document.getElementById('bKashNumber').value = '';
+        document.getElementById('transactionId').value = '';
+
+        e.preventDefault();
     }
-    price = ((price / 100) * 5) + price; // add tax for
-    
-    if(price >= 250){
-        shippingAndPrice = price + 25;
-    }
-    if(price>= 500){
-        shippingAndPrice =  price;
-    }
-    if(price < 250){
-        shippingAndPrice = price + 50;
-    }
+
+
+
 
     useEffect(() => {// load data from database(sesion storage)
         const savedCart = getDatabaseCart();
@@ -43,11 +101,7 @@ const PlaceOrder = () => {
 
     console.log(cart)
 
-    const handlePlaceOrder = () => {
-        setCart([]);
-        processOrder();
-    }
-
+  
     return (
         <div className="container bg-light px-0">
             <ShopNavBar></ShopNavBar>
@@ -60,7 +114,7 @@ const PlaceOrder = () => {
             </div>}
 
 
-            {cart.length > 0 && <form action="">
+            {cart.length > 0 && <form onSubmit={handleAddOrder}>
                 <h1 className="mt-5 pb-3 pt-5 text-center text-danger">Checkout</h1>
                 <div className="divider" style={{ borderBottom: "3px solid red" }}></div>
                 <h3 className="p-3"><strong>Billing Details</strong></h3>
@@ -69,12 +123,12 @@ const PlaceOrder = () => {
                         <div className="col-md-6">
                             <div className="form-group">
                                 <h6><label htmlFor="productName">First Name</label></h6>
-                                <input placeholder="First Name" className="form-control" type="text" name="" id="productName" rounded required />
+                                <input value={loggedInUser.name} placeholder="First Name" className="form-control" type="text" name="" id="productName" rounded required />
 
                             </div>
                             <div className="form-group">
                                 <h6><label htmlFor="company">Phone Number</label></h6>
-                                <input className="form-control" type="tel" name="" id="company" placeholder="Phone Number" rounded required />
+                                <input className="form-control" type="tel" name="" id="userPhone" placeholder="Phone Number" rounded required />
 
                             </div>
                             <div className="form-group">
@@ -86,12 +140,12 @@ const PlaceOrder = () => {
                         <div className="col-md-6">
                             <div className="form-group">
                                 <h6><label htmlFor="lastName">Last Name</label></h6>
-                                <input type="text" className="form-control" name="" placeholder="Last Name" id="lastName" rounded required />
+                                <input type="text" className="form-control" name="" placeholder="Last Name (optional)" id="lastName" rounded />
 
                             </div>
                             <div className="form-group">
                                 <h6><label htmlFor="availableNumber">Email Address</label></h6>
-                                <input type="email" className="form-control" name="" placeholder="Your Email" id="availableNumber" rounded required />
+                                <input value={loggedInUser.email} type="email" className="form-control" name="" placeholder="Your Email" id="availableNumber" rounded required />
 
                             </div>
                         </div>
@@ -145,7 +199,7 @@ const PlaceOrder = () => {
                         <div className="form-group mt-3">
                             <h5 className="text-info py-2">bKash Number: <span className="text-danger">+88 01774-062312 (Personal)</span> </h5>
                             <label className="mt-2" htmlFor="bkashNumber"><strong>bKash Number</strong></label>
-                            <input className="form-control w-50 form-control-lg" placeholder="bKash Number" type="tel" name="" id="bkashNumber" required />
+                            <input className="form-control w-50 form-control-lg" placeholder="bKash Number" type="tel" name="" id="bKashNumber" required />
                             <label className="mt-2" htmlFor="transactionId"><strong>bKash transaction ID</strong></label>
                             <input className="form-control w-50 form-control-lg" placeholder="bKash transaction ID" type="tel" name="" id="transactionId" required />
                         </div>
@@ -155,7 +209,7 @@ const PlaceOrder = () => {
                     <h6><label htmlFor="terms" className="mt-3"><input type="checkbox" name="" id="terms" required /> I have read and agree to the website <Link to="termsAndService" className="text-danger">terms and conditions *</Link></label></h6>
                     <div className="text-right my-5 pr-3">
                         {/* <Link to="/orderComplete"> */}
-                        <button onClick={handlePlaceOrder} className="btn btn-success btn-lg p-2 rounded">Place Order</button>
+                        <button className="btn btn-success btn-lg p-2 rounded">Place Order</button>
                         {/* </Link> */}
                     </div>
 
