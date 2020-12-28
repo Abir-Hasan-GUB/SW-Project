@@ -3,7 +3,7 @@ import placeOrder from '../../images/place order.gif';
 import fakeData from '../fakeData';
 import { getDatabaseCart, processOrder } from '../utilities/databaseManager';
 import bkashRouls from '../../images/bkashrouls.png';
-import emptyCart from '../../images/emptyCart.jpg';
+import emptyCart from '../../images/thankYouForYourOrder.png';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import ShopNavBar from '../ShopNavBar/ShopNavBar';
@@ -59,7 +59,7 @@ const handlePlaceOrder = () => {
             bKashTransactionID: bKashTransactionID
            
         }
-
+console.log(typeof userOrder)
         // send comment data to database
         fetch('http://localhost:5000/addOrder',{
             method: 'POST',
@@ -99,7 +99,7 @@ const handlePlaceOrder = () => {
         setCart(cartProducts);
     }, [])
 
-    console.log(cart)
+    // console.log(cart)
 
   
     return (
@@ -107,10 +107,9 @@ const handlePlaceOrder = () => {
             <ShopNavBar></ShopNavBar>
 
             {cart.length <= 0 && <div className="ifCartItemIsEmpty text-center bg-light">
-                <img className="img-fluid my-5" src={emptyCart} alt="empty cart" />
-                <h1 className="mt-5">Your Cart is Empty!</h1>
-                <p className="lead py-3">Looks like you haven't made order yet.</p>
-                <Link to="/products"><button style={{ backgroundColor: '#f90' }} className="btn text-light my-5 p-3 btn-lg"><h5>Continue to Shopping</h5></button></Link>
+                <img style={{width: '100%'}} className="img-fluid my-5" src={emptyCart} alt="empty cart" />
+                <Link to="/products"><button style={{ backgroundColor: '#f90' }} className="btn text-light mb-4 p-3 btn-lg"><h5>Continue to Shopping</h5></button></Link>
+                <Link to="/client"><button className="btn ml-5 btn-success mb-4 p-3 btn-lg"><h5>Check Your Order</h5></button></Link>
             </div>}
 
 

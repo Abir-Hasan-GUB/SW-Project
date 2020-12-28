@@ -28,9 +28,6 @@ const ShopNavBar = () => {
       <li class="nav-item">
         <Link to="/reviewOrder"><a class="nav-link text-warning active">Review Order</a></Link>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-light" href="#">Manage Inventory</a>
-      </li>
      {/* ================ User Control Button ================= */}
      <li class="dropdown nav-item">
                 <a class="dropdown-toggle nav-link text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

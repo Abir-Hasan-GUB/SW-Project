@@ -53,8 +53,8 @@ const ProductDetails = () => {
         })
         .then(response => response.json())
         .then(success => {
-            if(success>1){
-                // alert("Comment Added !")
+            if(success){
+                alert("Comment Added !")
             }
         })
         
