@@ -54,37 +54,37 @@ const [loggedInUser, setLoggedInUser] = useState({});
                 <Route path="/login">
                     <Login></Login>
                 </Route>
-                <PrivateRoute path="/admin">
+                <Route path="/admin">
                     <AdminPanel></AdminPanel>
-                </PrivateRoute>
-                <PrivateRoute path="/statistics">
+                </Route>
+                <Route path="/statistics">
                     <AdminPanel></AdminPanel>
-                </PrivateRoute>
-                <PrivateRoute path="/ViewAllReviews">
+                </Route>
+                <Route path="/ViewAllReviews">
                     <ViewAllReview></ViewAllReview>
-                </PrivateRoute>
-                <PrivateRoute path="/orderList">
+                </Route>
+                <Route path="/orderList">
                     <OrderList></OrderList>
-                </PrivateRoute>
-                <PrivateRoute path="/addProduct">
+                </Route>
+                <Route path="/addProduct">
                     <AddProduct></AddProduct>
-                </PrivateRoute>
-                <PrivateRoute path="/makeAdmin">
+                </Route>
+                <Route path="/makeAdmin">
                     <MakeAdmin></MakeAdmin>
-                </PrivateRoute>
+                </Route>
                 {/* <Route path="/client">
                     <Client></Client>
                     <Footer></Footer>
                 </Route> */}
-                <PrivateRoute path="/feedBack">
+                <Route path="/feedBack">
                     <FeedBack></FeedBack>
-                </PrivateRoute>
-                <PrivateRoute path="/message">
+                </Route>
+                <Route path="/message">
                     <Message></Message>
-                </PrivateRoute>
-                <PrivateRoute path="/client">
+                </Route>
+                <Route path="/client">
                     <ClientOrder></ClientOrder>
-                </PrivateRoute>
+                </Route>
                 <Route path="/product/:productKey">
                     <ProductDetails></ProductDetails>
                 </Route>
@@ -94,15 +94,15 @@ const [loggedInUser, setLoggedInUser] = useState({});
                 <Route path="/placeOrder">
                     <PlaceOrder></PlaceOrder>
                 </Route>
-                <PrivateRoute path="/termsAndService">
+                <Route path="/termsAndService">
                     <TermsAndService></TermsAndService>
-                </PrivateRoute>
+                </Route>
                 <PrivateRoute path="/faq">
                     <FAQ></FAQ>
                 </PrivateRoute>
-                <PrivateRoute path="/orderComplete">
+                <Route path="/orderComplete">
                     <Shipment></Shipment>
-                </PrivateRoute>
+                </Route>
                 
                 <Route path="*">
                     <NotFound></NotFound>

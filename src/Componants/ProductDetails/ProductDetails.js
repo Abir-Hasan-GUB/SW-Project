@@ -8,8 +8,9 @@ import { UserContext } from '../../App';
 
 const ProductDetails = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [review, setReview] = useState([]);
     const [product, setProduct] = useState({});
-
+    // console.log(loggedInUser)
     const { productKey } = useParams();//recive product key
 
     // load one product/ search one product using key
@@ -24,6 +25,42 @@ const ProductDetails = () => {
         })
         
     },[productKey]);
+
+   useEffect(() => {
+    fetch(`http://localhost:5000/allReview?key=`+productKey)
+        .then(response => response.json())
+        .then(result => setReview(result))
+        },[])
+        
+    const handleAddReview = (e) => {
+        let name = document.getElementById('reviewUserName').value;
+        let comment = document.getElementById('reviewUserComment').value;
+        let email = document.getElementById('reviewUserEmail').value;
+        let userComment = {
+            name: name, 
+            email: loggedInUser.email, 
+            comment: comment,
+            time: new Date(),
+            img: loggedInUser.photo,
+            key: productKey
+        }
+
+        // send comment data to database
+        fetch('http://localhost:5000/addReview',{
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(userComment)
+        })
+        .then(response => response.json())
+        .then(success => {
+            if(success>1){
+                // alert("Comment Added !")
+            }
+        })
+        
+        document.getElementById('reviewUserComment').value = '';
+        e.preventDefault();
+    }
 
     return (
         <div className="container">
@@ -84,42 +121,44 @@ const ProductDetails = () => {
 
             {/* clients review show from database here  */}
             <div className="reviewsOfClientByProduct p-3 bg-light">
-                <h4>Reviews (2) :</h4>
+                <h4>Reviews ({review.length}) :</h4>
                 <p>Get specific details about this product from customers who own it.</p>
                 <hr />
                 <div className="clientReview px-5">
-                    <div class="media my-3">
+                   {
+                       review.map(review =>  <div class="media my-3">
+                       <img src={review.img} class="align-self-center clientImgInReview mr-3 img-fluid" alt="client" />
+                       <div class="media-body">
+                           <h5 class="mt-0">Md. Abir Hasan</h5>
+                           <p>{review.comment}</p>
+                       </div>
+                   </div>)
+                   }
+                    {/* <div class="media my-3">
                         <img src={client} class="align-self-center clientImgInReview mr-3 img-fluid" alt="client" />
                         <div class="media-body">
                             <h5 class="mt-0">Md. Abir Hasan</h5>
                             <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
                         </div>
-                    </div>
-                    <div class="media my-3">
-                        <img src={client} class="align-self-center clientImgInReview mr-3 img-fluid" alt="client" />
-                        <div class="media-body">
-                            <h5 class="mt-0">Md. Abir Hasan</h5>
-                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                        </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* recive clients review by form here  */}
                 {!loggedInUser.name && <h4 className="my-5 text-info text-center"><i class="fas fa-quote-left"></i> To write your review please <Link to="/login"><span className="text-danger"> logIn <i class="fas fa-quote-right text-info"></i></span></Link></h4>}
-                {loggedInUser.name && <form action="">
+                {loggedInUser.name && <form onSubmit={handleAddReview}>
                 <h5 className="mt-5 mb-3">Write your review</h5>
                     <div className="row">
                         <div className="col-md-6">
                             <div className="form-group">
-                                <input className="form-control form-control-lg" type="text" placeholder="Your Name*" name="" id="" required />
+                                <input className="form-control form-control-lg" type="text" placeholder="Your Name*" name="" value ={loggedInUser.name} id="reviewUserName" required />
                             </div>
                             <div className="form-group">
-                                <textarea style={{ resize: 'none' }} className="form-control form-control-lg" placeholder="Your Comments*" name="" id="" cols="30" rows="5" required></textarea>
+                                <textarea style={{ resize: 'none' }} className="form-control form-control-lg" placeholder="Your Comments*" name="" id="reviewUserComment" cols="30" rows="5" required></textarea>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="form-group">
-                                <input className="form-control form-control-lg" type="email" placeholder="Your Email*" name="" id="" required />
+                                <input className="form-control form-control-lg" type="email" placeholder="Your Email*" name="" id="reviewUserEmail" value={loggedInUser.email} required />
                             </div>
 
                             {/* rating part here  */}
