@@ -28,6 +28,8 @@ import PrivateRoute from './Componants/PrivateRoute/PrivateRoute';
 import TermsAndService from './Componants/TermsAndService/TermsAndService';
 import FAQ from './Componants/FAQ/FAQ';
 import Shipment from './Componants/Shipment/Shipment';
+import DailySell from './Componants/DailySell/DailySell';
+import UpdateProducts from './Componants/UpdateProducts/UpdateProducts';
 
 export const UserContext = createContext();
 
@@ -103,7 +105,12 @@ const [loggedInUser, setLoggedInUser] = useState({});
                 <Route path="/orderComplete">
                     <Shipment></Shipment>
                 </Route>
-                
+                <Route path="/dailySell">
+                    <DailySell></DailySell>
+                </Route>
+                <Route path="/updateProduct">
+                    <UpdateProducts></UpdateProducts>
+                    </Route>
                 <Route path="*">
                     <NotFound></NotFound>
                 </Route>

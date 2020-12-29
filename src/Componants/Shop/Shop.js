@@ -10,7 +10,7 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([])
 
-    // data load form database
+    // all products load form database
     useEffect(() => {
         fetch('http://localhost:5000/products/')
         .then(response => response.json())

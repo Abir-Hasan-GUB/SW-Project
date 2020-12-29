@@ -28,9 +28,10 @@ const AdminPanel = () => {
                                 <Link to="/orderList"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-luggage-cart mr-2"></i> Order List</button></Link>
                                 <Link to="/addProduct"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="far fa-plus-square mr-2"></i> Add Product</button></Link>
                                 {admin == 'abirhasan6111@gmail.com' && <Link to="/makeAdmin"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Make Admin</button></Link>}
-
+                                <Link to="/dailySell"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="far fa-calendar-alt mr-2"></i> Daily Sell </button></Link>
+                                <Link to="/updateProduct"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-edit mr-2"></i> Update Product</button></Link>
                                 {/* ============= Calender Accordion Start ==========  */}
-                                <div class="accordion" id="showCalender">
+                                {/* <div class="accordion" id="showCalender">
                                     <div>
                                         <div class="mb-0">
                                             <button class="list-group-item list-group-item-action mt-3 bg-dark text-light" type="button" data-toggle="collapse" data-target="#calender" aria-expanded="true" aria-controls="calender"> <i class="far fa-calendar-alt mr-2"></i> Daily Sell</button>
@@ -38,12 +39,12 @@ const AdminPanel = () => {
                                         <div id="calender" class="collapse" aria-labelledby="headingOne" data-parent="#showCalender">
                                             <div class="">
                                                 {/* calender here  */}
-                                              <Calender></Calender>
+                                              
                                                
-                                    </div>
+                                    {/* </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */} 
                                 {/* ============= Calender Accordion End ==========  */}
                                 <button data-toggle="modal" data-target="#forgotPasswordModal" type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Log Out</button>
 
