@@ -12,9 +12,7 @@ const OrderList = () => {
             .then(result => setAllOrder(result))
     }, [])
     // console.log(allOrder)
-const handleStatusChange = () => {
-    
-}
+
 
 
     return (

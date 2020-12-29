@@ -11,7 +11,22 @@ const ClientOrder = () => {
     const [order, setOrder] = useState([]);
     // const [cart, setCart] = useState([]);
 
+      // ================= Delete an order using id ==============
+      const cancelOrder = (id) => {
+        // console.log(id)
+        fetch(`http://localhost:5000/deleteOneOrder/${id}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.deletedCount) {
+                    alert("Cancel on Item of Order !")
+                }
+            })
+    }
 
+  
+console.log(order)
 
     useEffect(() => {
         fetch('http://localhost:5000/clientOrder?email=' + loggedInUser.email)
@@ -48,7 +63,7 @@ const ClientOrder = () => {
 
                                                                 {order.status == "Done" && <h6 id="orderStatus" style={{ border: '2px solid green', background: 'green', color: '#fff' }} className=" pl-4 py-2 pr-4 mb-3" >{order.status}</h6>}
 
-                                                                {order.status == "pending" && <button style={{ height: '40px', border: '2px solid red', background: 'red', color: '#fff' }} className="btn btn-danger btn-sm"><strong>Cancel order</strong></button>}
+                                                                {order.status == "pending" && <button onClick={() => cancelOrder(order._id)} style={{ height: '40px', border: '2px solid red', background: 'red', color: '#fff' }} className="btn btn-danger btn-sm"><strong>Cancel order</strong></button>}
                                                             </div>
                                                             <div className="card-text text-center">
                                                                 <h4 class="my-2 m-0">Coustomer: {order.name} </h4>

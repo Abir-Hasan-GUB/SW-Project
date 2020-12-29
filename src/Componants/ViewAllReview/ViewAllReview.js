@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import DashBoardTop from '../AdminPanel/DashBoardTop/DashBoardTop';
 import DashBoardMenu from '../DashBoardMenu/DashBoardMenu';
+import noReview from '../../images/no-review-found.png';
 import Footer from '../Footer/Footer';
+import './ViewAllReview.css';
 
 const ViewAllReview = () => {
     const [review, setReview] = useState([]);
@@ -15,6 +17,7 @@ const ViewAllReview = () => {
 
     // ================= Delete an review using id ==============
     const handleDeleteReview = (id) => {
+        // console.log(id)
         fetch(`http://localhost:5000/deleteOneReview/${id}`, {
             method: 'DELETE'
         })
@@ -45,17 +48,22 @@ const ViewAllReview = () => {
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                {review.length > 0 && <tbody>
                                     {
                                         review.map(rv => <tr>
                                             <td>{rv.name}</td>
                                             <td>{rv.comment}</td>
                                             <td>{rv.time}</td>
-                                            <td><button onClick={() => handleDeleteReview(rv._id)} className="btn btn-danger" data-toggle="tooltip" data-placement="left" title="Delete this Review"><i class="text-light fas fa-trash-alt"></i></button></td>
+                                            <td><button onClick={() => handleDeleteReview(rv._id)} className="btn btn-danger" name="Reviewdelete" data-toggle="tooltip" data-placement="left" title="Delete this Review"><i class="text-light fas fa-trash-alt"></i></button></td>
                                         </tr>
                                         )
                                     }
-                                </tbody>
+                                </tbody>}
+                                {review.length <= 0 && 
+                                <div className="noReview ml-5 pl-5 mt-5">
+                                    <img className="img-fluid" src={noReview} alt="noReview"/>
+                                </div>
+                                }
                             </table>
                         </div>
                     </div>
