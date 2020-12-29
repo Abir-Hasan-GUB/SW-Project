@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 
 const UpdateProducts = () => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([])
+    const [productid, setId] = useState([])
 
     // all products load form database
     useEffect(() => {
@@ -14,7 +14,32 @@ const UpdateProducts = () => {
             .then(data => setProducts(data))
     }, [])
 
-    console.log(products)
+    // console.log(products)
+
+    const saveUpdateInformation = () => {
+        const id = productid; // get clicked product id
+        const newPrice = document.getElementById('newPrice').value; //get new price
+        const newStock = document.getElementById('newStock').value; // get new stock
+        const updateProduct = { id, newPrice, newStock };
+
+        // send information to database
+        fetch(`http://localhost:5000/updateProductInformation/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updateProduct) // send update information to database
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    alert("Product updated successfully !");
+                }
+            })
+
+    }
+
+    const handleUpdateProduct = (id) => setId(id); //stor id to state for query
 
     return (
         <div className="container">
@@ -26,19 +51,47 @@ const UpdateProducts = () => {
                     <DashBoardTop></DashBoardTop>
                     <div className="reviews row bg-light ml-0 mr-0">
                         <div className="col-md-12 pr-2 pl-2" style={{ height: '620px', overflow: 'scroll' }}>
+
+                            {/* ============== Product navigation menu bar ================= */}
+                            <div className="sticky-top">
+                                <div className="row mb-2 d-flex align-items-center bg-dark py-2 text-light">
+                                    <div className="col-md-2">
+                                        <h6 className="ml-3">Picture</h6>
+                                        {/* <img className="img-fluid" src={product.img} alt={product.name} /> */}
+                                    </div>
+                                    <div className="col-md-4">
+                                        <h6 className="text-center">Title</h6>
+                                    </div>
+                                    <div className="col-md-2">
+                                        <h6>Stock</h6>
+                                    </div>
+                                    <div className="col-md-2">
+                                        <h6>Price</h6>
+                                    </div>
+                                    <div className="col-md-2">
+                                        <h6 className="ml-2">Action</h6>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            {/* ============ Load all products to UI ================= */}
                             {
                                 products.map(product => <div className="row my-2 d-flex align-items-center" style={{ borderBottom: '1px solid gray' }}>
-                                    <div className="col-md-3">
+                                    <div className="col-md-2">
                                         <img className="img-fluid" src={product.img} alt={product.name} />
                                     </div>
-                                    <div className="col-md-5 text-dark">
+                                    <div className="col-md-4">
                                         <h6>{product.name}</h6>
+                                    </div>
+                                    <div className="col-md-2 text-danger">
+                                        <h5>{product.stock}</h5>
                                     </div>
                                     <div className="col-md-2 text-danger">
                                         <h5>$ {product.price}</h5>
                                     </div>
                                     <div className="col-md-2">
-                                        <button data-toggle="modal" data-target="#updatePriceModal" className="btn btn-info btn-md">Update</button>
+                                        <button onClick={() => handleUpdateProduct(product._id)} data-toggle="modal" data-target="#updatePriceModal" className="btn btn-info btn-md">Update</button>
                                     </div>
 
                                 </div>
@@ -46,9 +99,7 @@ const UpdateProducts = () => {
                                 )
                             }
 
-                            {/* <button data-toggle="modal" data-target="#exampleModal" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Log Out</button> */}
-
-                            {/* ==================== Log Out Confarmation Modal Start ================= */}
+                            {/* ==================== Update product information Modal Start ================= */}
 
                             <div class="modal fade" id="updatePriceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -65,11 +116,11 @@ const UpdateProducts = () => {
                                                     <div className="row">
                                                         <div className="col-md-6">
                                                             <label htmlFor="price"><strong className="text-info">Give Updated Price</strong></label>
-                                                            <input placeholder="New Price" className="form-control form-control-lg" type="number" name="" id="price" required />
+                                                            <input placeholder="New Price" className="form-control form-control-lg" type="number" name="" id="newPrice" required />
                                                         </div>
                                                         <div className="col-md-6">
                                                             <label htmlFor="stock"><strong className="text-info">Give Updated Stock</strong></label>
-                                                            <input placeholder="Stock Number" className="form-control form-control-lg round" type="number" name="" id="stock" required />
+                                                            <input placeholder="Stock Number" className="form-control form-control-lg round" type="number" name="" id="newStock" required />
                                                         </div>
                                                     </div>
                                                 </form>
@@ -77,12 +128,12 @@ const UpdateProducts = () => {
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button onClick={saveUpdateInformation} type="button" class="btn btn-primary">Save changes</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {/* ==================== Log Out Confarmation Modal End ================= */}
+                            {/* ==================== Update product information Modal End ================= */}
                         </div>
                     </div>
                 </div>
