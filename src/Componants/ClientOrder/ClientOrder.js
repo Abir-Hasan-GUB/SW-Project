@@ -82,7 +82,15 @@ console.log(order)
                                 </div>
                             }
 
-                            {!loggedInUser.name && <div>
+                            {!loggedInUser.name &&<div>
+                                <img className="img-fluid" src={noOrder} alt="noOrder" />
+                                <div className="text-center">
+                                    <Link to="/products"><button className="btn btn-lg btn-warning my-3 text-dark">Back to Shop</button></Link>
+                                </div>
+                            </div>
+
+                            }
+                             {order.length === 0 && loggedInUser.name &&<div>
                                 <img className="img-fluid" src={noOrder} alt="noOrder" />
                                 <div className="text-center">
                                     <Link to="/products"><button className="btn btn-lg btn-warning my-3 text-dark">Back to Shop</button></Link>
