@@ -38,13 +38,51 @@ const UpdateProducts = () => {
                                         <h5>$ {product.price}</h5>
                                     </div>
                                     <div className="col-md-2">
-                                        <button className="btn btn-info btn-md">Update</button>
+                                        <button data-toggle="modal" data-target="#updatePriceModal" className="btn btn-info btn-md">Update</button>
                                     </div>
 
                                 </div>
 
                                 )
                             }
+
+                            {/* <button data-toggle="modal" data-target="#exampleModal" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Log Out</button> */}
+
+                            {/* ==================== Log Out Confarmation Modal Start ================= */}
+
+                            <div class="modal fade" id="updatePriceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Update Product Information</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div className="form-group">
+                                                <form>
+                                                    <div className="row">
+                                                        <div className="col-md-6">
+                                                            <label htmlFor="price"><strong className="text-info">Give Updated Price</strong></label>
+                                                            <input placeholder="New Price" className="form-control form-control-lg" type="number" name="" id="price" required />
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <label htmlFor="stock"><strong className="text-info">Give Updated Stock</strong></label>
+                                                            <input placeholder="Stock Number" className="form-control form-control-lg round" type="number" name="" id="stock" required />
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* ==================== Log Out Confarmation Modal End ================= */}
                         </div>
                     </div>
                 </div>
