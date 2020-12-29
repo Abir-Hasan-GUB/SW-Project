@@ -34,6 +34,8 @@ const UpdateProducts = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     alert("Product updated successfully !");
+                    document.getElementById('newPrice').value = '';
+                    document.getElementById('newStock').value = '';
                 }
             })
 
