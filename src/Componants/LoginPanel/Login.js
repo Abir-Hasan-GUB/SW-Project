@@ -165,6 +165,7 @@ const Login = () => {
 
     return (
         <div className="container" id="login">
+            
             <div className="login bg-light text-center p-5">
                 {!newUser && <h1 className="mb-4">Login</h1>}
                 {newUser && <h1 className="mb-4">Sign Up</h1>}

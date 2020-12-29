@@ -11,7 +11,11 @@ const OrderList = () => {
             .then(response => response.json())
             .then(result => setAllOrder(result))
     }, [])
-    console.log(allOrder)
+    // console.log(allOrder)
+const handleStatusChange = () => {
+    
+}
+
 
     return (
         <div className="container">

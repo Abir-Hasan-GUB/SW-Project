@@ -4,14 +4,27 @@ import DashBoardMenu from '../DashBoardMenu/DashBoardMenu';
 import Footer from '../Footer/Footer';
 
 const ViewAllReview = () => {
- const [review, setReview] = useState([]);
+    const [review, setReview] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:5000/allReviewInAdmin/`)
             .then(response => response.json())
             .then(result => setReview(result))
-            },[])
-            console.log(review)
+    }, [])
+    // console.log(review)
+
+    // ================= Delete an review using id ==============
+    const handleDeleteReview = (id) => {
+        fetch(`http://localhost:5000/deleteOneReview/${id}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.deletedCount) {
+                    alert("Delete on Item of Review !")
+                }
+            })
+    }
 
     return (
         <div className="container">
@@ -38,9 +51,9 @@ const ViewAllReview = () => {
                                             <td>{rv.name}</td>
                                             <td>{rv.comment}</td>
                                             <td>{rv.time}</td>
-                                            <td><i class="text-danger fas fa-trash-alt"></i></td>
+                                            <td><button onClick={() => handleDeleteReview(rv._id)} className="btn btn-danger" data-toggle="tooltip" data-placement="left" title="Delete this Review"><i class="text-light fas fa-trash-alt"></i></button></td>
                                         </tr>
-                                       )
+                                        )
                                     }
                                 </tbody>
                             </table>
