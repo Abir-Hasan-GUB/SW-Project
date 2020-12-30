@@ -14,25 +14,25 @@ const Shop = () => {
     // all products load form database
     useEffect(() => {
         fetch('http://localhost:5000/products/')
-        .then(response => response.json())
-        .then(data => setProducts(data))
+            .then(response => response.json())
+            .then(data => setProducts(data))
     }, [])
 
     //load data form sesion storage
     useEffect(() => {
         const saveCart = getDatabaseCart();
         const productKeys = Object.keys(saveCart);
-       
+
         // load all products using keys
-        fetch('http://localhost:5000/productsByKeys',{
+        fetch('http://localhost:5000/productsByKeys', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(productKeys)
         })
-        .then(response => response.json())
-        .then(data => setCart(data))
+            .then(response => response.json())
+            .then(data => setCart(data))
         // setCart(previousCart) error here . eita dile erroer aste
     }, [])
 

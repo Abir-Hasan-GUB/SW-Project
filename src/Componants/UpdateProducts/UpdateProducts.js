@@ -36,11 +36,11 @@ const UpdateProducts = () => {
             .then(response => response.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    // alert("Product updated successfully !");
-                    // document.getElementById('newPrice').value = '';
-                    // document.getElementById('newStock').value = '';
-                    window.location.reload();
-                    
+                    alert("Product updated successfully !");
+                    document.getElementById('newPrice').value = '';
+                    document.getElementById('newStock').value = '';
+                    // window.location.reload();
+
                 }
             })
 
@@ -142,7 +142,7 @@ const UpdateProducts = () => {
                             </div>
                             {/* ==================== Update product information Modal End ================= */}
                             {
-                                products.length === 0 &&  <LoadingText></LoadingText>
+                                products.length === 0 && <LoadingText></LoadingText>
                             }
                         </div>
                     </div>

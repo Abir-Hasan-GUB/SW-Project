@@ -30,93 +30,92 @@ import FAQ from './Componants/FAQ/FAQ';
 import Shipment from './Componants/Shipment/Shipment';
 import DailySell from './Componants/DailySell/DailySell';
 import UpdateProducts from './Componants/UpdateProducts/UpdateProducts';
-import LoadingText from './Componants/LoadingText/LoadingText';
 
 export const UserContext = createContext();
 
 function App() {
-const [loggedInUser, setLoggedInUser] = useState({});
+    const [loggedInUser, setLoggedInUser] = useState({});
 
     return (
         <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-        <Router>
-            <Switch>
-                <Route exact path="/">
-                    <HomeMenuBar></HomeMenuBar>
-                    <Banner></Banner>
-                    <HomeCategories></HomeCategories>
-                    <Sliders></Sliders>
-                    {/* <AdminPanel></AdminPanel> */}
-                    <Footer></Footer>
-                    {/* <NotFound></NotFound> */}
-                    {/* <Login></Login> */}
-                </Route>
-                <Route path="/products">
-                    <Shop></Shop>
-                </Route>
-                <Route path="/login">
-                    <Login></Login>
-                </Route>
-                <Route path="/admin">
-                    <AdminPanel></AdminPanel>
-                </Route>
-                <Route path="/statistics">
-                    <AdminPanel></AdminPanel>
-                </Route>
-                <Route path="/ViewAllReviews">
-                    <ViewAllReview></ViewAllReview>
-                </Route>
-                <Route path="/orderList">
-                    <OrderList></OrderList>
-                </Route>
-                <Route path="/addProduct">
-                    <AddProduct></AddProduct>
-                </Route>
-                <Route path="/makeAdmin">
-                    <MakeAdmin></MakeAdmin>
-                </Route>
-                {/* <Route path="/client">
+            <Router>
+                <Switch>
+                    <Route exact path="/">
+                        <HomeMenuBar></HomeMenuBar>
+                        <Banner></Banner>
+                        <HomeCategories></HomeCategories>
+                        <Sliders></Sliders>
+                        {/* <AdminPanel></AdminPanel> */}
+                        <Footer></Footer>
+                        {/* <NotFound></NotFound> */}
+                        {/* <Login></Login> */}
+                    </Route>
+                    <Route path="/products">
+                        <Shop></Shop>
+                    </Route>
+                    <Route path="/login">
+                        <Login></Login>
+                    </Route>
+                    <Route path="/admin">
+                        <AdminPanel></AdminPanel>
+                    </Route>
+                    <Route path="/statistics">
+                        <AdminPanel></AdminPanel>
+                    </Route>
+                    <Route path="/ViewAllReviews">
+                        <ViewAllReview></ViewAllReview>
+                    </Route>
+                    <Route path="/orderList">
+                        <OrderList></OrderList>
+                    </Route>
+                    <Route path="/addProduct">
+                        <AddProduct></AddProduct>
+                    </Route>
+                    <Route path="/makeAdmin">
+                        <MakeAdmin></MakeAdmin>
+                    </Route>
+                    {/* <Route path="/client">
                     <Client></Client>
                     <Footer></Footer>
                 </Route> */}
-                {/* <Route path="/feedBack">
+                    {/* <Route path="/feedBack">
                     <FeedBack></FeedBack>
                 </Route> */}
-                <Route path="/message">
-                    <Message></Message>
-                </Route>
-                <Route path="/client">
-                    <ClientOrder></ClientOrder>
-                </Route>
-                <Route path="/product/:productKey">
-                    <ProductDetails></ProductDetails>
-                </Route>
-                <Route path="/reviewOrder">
-                    <ReviewOrder></ReviewOrder>
-                </Route>
-                <Route path="/placeOrder">
-                    <PlaceOrder></PlaceOrder>
-                </Route>
-                <Route path="/termsAndService">
-                    <TermsAndService></TermsAndService>
-                </Route>
-                <PrivateRoute path="/faq">
-                    <FAQ></FAQ>
-                </PrivateRoute>
-                <Route path="/orderComplete">
-                    <Shipment></Shipment>
-                </Route>
-                <Route path="/dailySell">
-                    <DailySell></DailySell>
-                </Route>
-                <Route path="/updateProduct">
-                    <UpdateProducts></UpdateProducts>
+                    <Route path="/message">
+                        <Message></Message>
                     </Route>
-                <Route path="*">
-                    <NotFound></NotFound>
-                </Route>
-            </Switch>
-        </Router>
+                    <Route path="/client">
+                        <ClientOrder></ClientOrder>
+                    </Route>
+                    <Route path="/product/:productKey">
+                        <ProductDetails></ProductDetails>
+                    </Route>
+                    <Route path="/reviewOrder">
+                        <ReviewOrder></ReviewOrder>
+                    </Route>
+                    <Route path="/placeOrder">
+                        <PlaceOrder></PlaceOrder>
+                    </Route>
+                    <Route path="/termsAndService">
+                        <TermsAndService></TermsAndService>
+                    </Route>
+                    <PrivateRoute path="/faq">
+                        <FAQ></FAQ>
+                    </PrivateRoute>
+                    <Route path="/orderComplete">
+                        <Shipment></Shipment>
+                    </Route>
+                    <Route path="/dailySell">
+                        <DailySell></DailySell>
+                    </Route>
+                    <Route path="/updateProduct">
+                        <UpdateProducts></UpdateProducts>
+                    </Route>
+                    <Route path="*">
+                        <NotFound></NotFound>
+                    </Route>
+                </Switch>
+            </Router>
         </UserContext.Provider>
     );
 }

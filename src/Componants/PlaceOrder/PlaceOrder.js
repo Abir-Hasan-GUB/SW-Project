@@ -35,7 +35,7 @@ const handlePlaceOrder = () => {
     setCart([]);
     processOrder();
 }
-
+// console.log(new Date())
 
 // order send to database
     const handleAddOrder = (e) => {
@@ -43,14 +43,15 @@ const handlePlaceOrder = () => {
         let privateComment = document.getElementById('privateComment').value;
         let bKashNumber = document.getElementById('bKashNumber').value;
         let bKashTransactionID = document.getElementById('transactionId').value;
+        let currentDate = new Date();
 
         let userOrder = {
             name: loggedInUser.name, 
             email: loggedInUser.email, 
-            time: new Date(),
             img: loggedInUser.photo,
             cart: cart,
             status: 'pending',
+            date: currentDate.toLocaleDateString(),
             phone: phone,
             price: price,
             paymentMethod: 'bKash',
@@ -59,7 +60,7 @@ const handlePlaceOrder = () => {
             bKashTransactionID: bKashTransactionID
            
         }
-console.log(typeof userOrder)
+// console.log(typeof userOrder)
         // send comment data to database
         fetch('http://localhost:5000/addOrder',{
             method: 'POST',

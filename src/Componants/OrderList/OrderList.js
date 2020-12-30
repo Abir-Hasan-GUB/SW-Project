@@ -30,8 +30,8 @@ const OrderList = () => {
         })
             .then(response => response.json())
             .then(data => {
-                if(data.modifiedCount){
-                    window.location.reload();
+                if (data.modifiedCount) {
+                    // window.location.reload();
                 }
             })
 

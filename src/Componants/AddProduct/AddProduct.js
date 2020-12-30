@@ -32,39 +32,39 @@ const AddProduct = () => {
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <h6><label htmlFor="productName">Product Name</label></h6>
-                                        <input placeholder="Product Name"className="form-control" type="text" name="" id="productName" rounded required/>
+                                        <input placeholder="Product Name"className="form-control rounded" type="text" name="" id="productName" required/>
 
                                     </div>
                                     <div className="form-group">
                                         <h6><label htmlFor="company">Company Name</label></h6>
-                                        <input className="form-control" type="text" name="" id="company" placeholder="Company Name" rounded required/>
+                                        <input className="form-control rounded" type="text" name="" id="company" placeholder="Company Name" required/>
 
                                     </div>
                                     <div className="form-group">
                                         <h6><label htmlFor="description">Description</label></h6>
-                                        <textarea className="form-control" name="" placeholder="Enter product description" id="description" cols="30" rows="5"  rounded required></textarea>
+                                        <textarea className="form-control rounded" name="" placeholder="Enter product description" id="description" cols="30" rows="5" required></textarea>
 
                                     </div>
                                 </div>
                                 <div className="col-md-6">
                                 <div className="form-group">
                                         <h6><label htmlFor="Price">Price</label></h6>
-                                        <input type="number" className="form-control" name="" placeholder="Price" id="Price"  rounded required/>
+                                        <input type="number" className="form-control rounded" name="" placeholder="Price" id="Price" required/>
 
                                     </div>
                                     <div className="form-group">
-                                        <h6><label htmlFor="availableNumber">Available Number</label></h6>
-                                        <input type="number" className="form-control" name="" placeholder="Available Number" id="availableNumber"  rounded required/>
+                                        <h6><label htmlFor="availableNumber">Stock</label></h6>
+                                        <input type="number" className="form-control rounded" name="" placeholder="Available Number" id="availableNumber" required/>
 
                                     </div>
                                     <div className="form-group">
                                         <h6><label htmlFor="rating">Rating</label></h6>
-                                        <input type="number" className="form-control" name="" placeholder="Rating" id="rating"  rounded required/>
+                                        <input type="number" className="form-control rounded" name="" placeholder="Rating" id="rating" required/>
 
                                     </div>
                                     <div className="form-group">
                                         <h6><label htmlFor="productPicture">Picture</label></h6>
-                                        <input type="file" className="form-control" name="" placeholder="Rating" id="productPicture"  rounded required/>
+                                        <input type="file" className="form-control rounded" name="" placeholder="Rating" id="productPicture" required/>
 
                                     </div>
                                 </div>

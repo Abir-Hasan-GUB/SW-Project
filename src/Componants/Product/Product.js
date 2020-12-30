@@ -11,7 +11,7 @@ const Product = (props) => {
                     <img className="img-fluid rounded" src={img} alt="" />
                 </div>
                 <div className="text-left col-md-8">
-                    <h6 class="product-name text-primary"><Link to={"/product/"+key}>{name}</Link></h6>
+                    <h6 class="product-name text-primary"><Link to={"/product/" + key}>{name}</Link></h6>
                     <p class="lead">By: {seller}</p>
                     <p class="text-danger">Price: $ {price}</p>
                     <p class="text-success">Available: {stock}</p>

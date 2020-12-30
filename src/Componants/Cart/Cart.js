@@ -37,14 +37,14 @@ const Cart = (props) => {
         const product = cart[i];
         
         // console.log(product.quantity)
-        subTotal += product.price;
+        subTotal += parseFloat(product.price);
         // debugger
         // subTotal += product.product.price * product.quantity;
 
     }
     // console.log(cart[0].product.price)
     // console.log('subtotal', subTotal)
-    let tax = (5 * subTotal) / 100;  // tax calculated
+    let tax = ((5 * subTotal) / 100).toFixed(2);  // tax calculated
     let shipping = 50; //shipping charge fixed
 
     // conditionally reduce shipping cost 
@@ -56,8 +56,9 @@ const Cart = (props) => {
         shipping = 0;
     }
 
-    let total = subTotal + shipping; // shipping charge + total
-    let totalPayable = total + tax; //total price with tax + shipping
+    let total = parseFloat(parseFloat(subTotal) + parseFloat(shipping)); // shipping charge + total
+    // console.log(total)
+    let totalPayable = (parseFloat(total) + parseFloat(tax)); //total price with tax + shipping
 
     return (
         <div className="shopingCard position-fixed container">
@@ -78,27 +79,27 @@ const Cart = (props) => {
                             <div className="card-text ">
                                 <div className="sub-total d-flex justify-content-between">
                                     <h5>Subtotal</h5>
-                                    <h5>$ {subTotal.toFixed(2)}</h5>
+                                    <h5>$ {subTotal}</h5>
                                 </div>
                                 <hr />
                                 <div className="sub-total d-flex justify-content-between">
                                     <h5>Shiping</h5>
-                                    <h5>$ {shipping.toFixed(2)}</h5>
+                                    <h5>$ {shipping}</h5>
                                 </div>
                                 <hr />
                                 <div className="sub-total d-flex justify-content-between">
                                     <h5>Total</h5>
-                                    <h5>$ {total.toFixed(2)}</h5>
+                                    <h5>$ {total}</h5>
                                 </div>
                                 <hr />
                                 <div className="sub-total d-flex justify-content-between">
                                     <h5>Vat + Tax <small>(5%)</small> </h5>
-                                    <h5>$ {tax.toFixed(2)}</h5>
+                                    <h5>$ {tax}</h5>
                                 </div>
                                 <hr />
                                 <div className="sub-total d-flex justify-content-between">
                                     <h5>Payable Total</h5>
-                                    <h5>$ <span id="toalPrice">{totalPayable.toFixed(2)}</span></h5>
+                                    <h5>$ <span id="toalPrice">{totalPayable}</span></h5>
                                 </div>
                             </div>
                         </div>
