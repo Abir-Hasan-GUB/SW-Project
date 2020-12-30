@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './AdminPanel.css';
 import logo from '../../images/logos/logo.png';
 import Statistics from '../Statistics/Statistics';
@@ -7,15 +7,35 @@ import DashBoardTop from './DashBoardTop/DashBoardTop';
 import Calender from '../Calender/Calender';
 import Footer from '../Footer/Footer';
 import { UserContext } from '../../App';
-
+import wrongImg from '../../images/wrong.png';
 
 const AdminPanel = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    let admin = loggedInUser.email;
+    const [admin, setAdmin] = useState([]);
+    let role = "admin";
+
+    let adminCheck = false;
+
+    // load all admin 
+    useEffect(() => {
+        fetch('http://localhost:5000/findAdmin?role=' + role)
+            .then(response => response.json())
+            .then(data => setAdmin(data))
+    }, [])
+
+
+    for (let i = 0; i < admin.length; i++) {
+        let user = admin[i];
+        if (user.role === role && user.email == loggedInUser.email) {
+            adminCheck = true;
+        }
+    }
+
+    console.log(adminCheck)
 
     return (
         <div className="container">
-            <div className="row mx-0">
+            { adminCheck == true && <div className="row mx-0">
                 <div className="col-md-3 dashBoardMenu bg-dark px-0">
                     <div className="row mx-0">
                         <div className="col-md-12 m-0 px-0 dashBoardLogo bg-light">
@@ -39,12 +59,12 @@ const AdminPanel = () => {
                                         <div id="calender" class="collapse" aria-labelledby="headingOne" data-parent="#showCalender">
                                             <div class="">
                                                 {/* calender here  */}
-                                              
-                                               
-                                    {/* </div>
+
+
+                                {/* </div>
                                         </div>
                                     </div>
-                                </div> */} 
+                                </div> */}
                                 {/* ============= Calender Accordion End ==========  */}
                                 <button data-toggle="modal" data-target="#forgotPasswordModal" type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Log Out</button>
 
@@ -62,7 +82,7 @@ const AdminPanel = () => {
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
-                                                <button onClick={()=> setLoggedInUser({})} type="button" class="btn btn-success">Confirm</button>
+                                                <button onClick={() => setLoggedInUser({})} type="button" class="btn btn-success">Confirm</button>
                                             </div>
                                         </div>
                                     </div>
@@ -79,7 +99,14 @@ const AdminPanel = () => {
                     <Statistics></Statistics>
 
                 </div>
-            </div>
+            </div>}
+
+            {adminCheck == false &&
+                <div className="bg-light text-center p-3">
+                    <img className="img-fluid" src={wrongImg} alt="wrongImg" />
+                    <h1 className="text-danger py-4">Wrong Information</h1>
+                    <Link to="/"><button className="btn btn-danger btn-lg p-3 mt-3">Back to Home Page</button></Link>
+                </div>}
             <Footer></Footer>
         </div>
     );

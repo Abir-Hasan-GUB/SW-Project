@@ -1,16 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react/cjs/react.development';
 import { UserContext } from '../../App';
 import logo from '../../images/logos/logo.png';
 import Calender from '../Calender/Calender';
 
 const DashBoardMenu = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    let admin = loggedInUser.email;
+    const [admin, setAdmin] = useState([]);
+    let role = "admin";
+
+    let adminCheck = false;
+
+    // load all admin 
+    useEffect(() => {
+        fetch('http://localhost:5000/findAdmin?role=' + role)
+            .then(response => response.json())
+            .then(data => setAdmin(data))
+    }, [])
+
+
+    for (let i = 0; i < admin.length; i++) {
+        let user = admin[i];
+        if (user.role === role && user.email == loggedInUser.email) {
+            adminCheck = true;
+        }
+    }
+
 
     return (
         <div className="dashBoardMenu bg-dark px-0">
-            <div className="row mx-0">
+           {adminCheck === true && <div className="row mx-0">
                 <div className="col-md-12 m-0 px-0 dashBoardLogo bg-light">
                     <Link to="/"><img className="img-fluid dashLogo" src={logo} alt="logo" /></Link>
                 </div>
@@ -64,7 +84,7 @@ const DashBoardMenu = () => {
 
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
     );
 };
