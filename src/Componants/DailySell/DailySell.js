@@ -76,13 +76,13 @@ const DailySell = () => {
                                             orderByDate.map(order => <div style={{ borderBottom: '1px solid black' }} className="row mx-0 d-flex align-items-center">
 
                                                 <div className="col-md-4">
-                                                    <h6 className="text-center">{order.name || "No Name Found"}</h6>
+                                                    <h6 style={{ fontSize: '12px' }} className="text-center">{order.name || "No Name Found"}</h6>
                                                 </div>
                                                 <div className="col-md-4">
-                                                    <p>{order.email || "No Email Found"}</p>
+                                                    <p style={{ fontSize: '12px' }}>{order.email || "No Email Found"}</p>
                                                 </div>
                                                 <div className="col-md-2">
-                                                    <h6>{"$" + order.price || "No Price Found"}</h6>
+                                                    <h6 style={{ fontSize: '12px' }}>{"$" + order.price || "No Price Found"}</h6>
                                                 </div>
                                                 <div className="col-md-2">
                                                     {
