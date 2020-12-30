@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Statistics.css';
 import welcomeProfileImg from "../../images/dashboard/profile-img.png";
 import proPic from "../../images/dashboard/abir.JPG";
+import { UserContext } from '../../App';
 
 const Statistics = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [allOrder, setAllOrder] = useState([]);
+
+    // calculate total reveues
+    let revinue = 0;
+    for (let i = 0; i < allOrder.length; i++) {
+        let product = allOrder[i];
+        revinue = revinue + product.price;
+    }
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/clientAllOrder`,)
+            .then(response => response.json())
+            .then(result => setAllOrder(result))
+    }, [])
 
     return (
         <div className="container">
@@ -38,8 +54,8 @@ const Statistics = () => {
                                                 <small><strong>Projects</strong></small>
                                             </div>
                                             <div className="col-md-3 p-3">
-                                                <h5>$1025</h5>
-                                                <small><strong>Revenue</strong></small>
+                                                <h5>127</h5>
+                                                <small><strong>Client</strong></small>
                                             </div>
                                         </div>
                                     </div>
@@ -47,7 +63,7 @@ const Statistics = () => {
                                 <div className="col-md-3 ml-md-3 mb-2 mt-2 d-flex orderCount justify-content-between align-items-center">
                                     <div>
                                         <p className="m-0"><strong>Orders</strong></p>
-                                        <h5>1,225</h5>
+                                        <h5>{allOrder.length}</h5>
                                     </div>
                                     <i class="far fa-copy bg-primary text-white" style={{ lineHeight: "40px" }}></i>
                                 </div>
@@ -55,17 +71,17 @@ const Statistics = () => {
                                 <div className="col-md-3 mt-2 d-flex orderCount justify-content-between align-items-center ml-md-4">
                                     <div>
                                         <p className="m-0"><strong>Revenue</strong></p>
-                                        <h5>$35, 723</h5>
+                                        <h5>$ {revinue}</h5>
                                     </div>
                                     <i class="far fa-copy bg-primary text-white" style={{ lineHeight: "40px" }}></i>
                                 </div>
-                               
+
                             </div>
 
                         </div>
                     </div>
 
-                    
+
                 </div>
                 {/* =============== Monthly Income PIE Chart =================
                 <div className="pieChart bg-warning row ml-0">
@@ -74,7 +90,7 @@ const Statistics = () => {
                         </div>
                     </div> */}
             </div>
-            
+
         </div>
     );
 };
