@@ -36,7 +36,7 @@ const Statistics = () => {
                                     <div className="row ml-0 mr-0 bg-dark">
                                         <div className="col-md-7 text-light pb-3 pt-3">
                                             <h5>Welcome Back !</h5>
-                                            <h6>Abir Hasan</h6>
+                                            <h6>{"Abir Hasan" || loggedInUser.name}</h6>
                                         </div>
                                         <div className="col-md-5">
                                             <img className="img-fluid" src={welcomeProfileImg} alt="welcome" />
@@ -45,8 +45,8 @@ const Statistics = () => {
                                     <div className="welcomeProfile bg-light">
                                         <div className="row p-2">
                                             <div className="col-md-6">
-                                                <img className="img-fluid proPicofDshB" src={proPic} alt="profile pic" />
-                                                <h6 className="pt-2">Abir Hasan</h6>
+                                                <img className="img-fluid proPicofDshB" src={proPic || loggedInUser.photo} alt="profile pic" />
+                                                <h6 className="pt-2">{"Abir Hasan" || loggedInUser.name}</h6>
                                                 <p>Full-Stack Devoloper</p>
                                             </div>
                                             <div className="col-md-3 p-3">
@@ -63,7 +63,7 @@ const Statistics = () => {
                                 <div className="col-md-3 ml-md-3 mb-2 mt-2 d-flex orderCount justify-content-between align-items-center">
                                     <div>
                                         <p className="m-0"><strong>Orders</strong></p>
-                                        <h5>{allOrder.length}</h5>
+                                        <h5>{allOrder.length || 0}</h5>
                                     </div>
                                     <i class="far fa-copy bg-primary text-white" style={{ lineHeight: "40px" }}></i>
                                 </div>
@@ -71,7 +71,7 @@ const Statistics = () => {
                                 <div className="col-md-3 mt-2 d-flex orderCount justify-content-between align-items-center ml-md-4">
                                     <div>
                                         <p className="m-0"><strong>Revenue</strong></p>
-                                        <h5>$ {revinue}</h5>
+                                        <h5>$ {revinue || 0}</h5>
                                     </div>
                                     <i class="far fa-copy bg-primary text-white" style={{ lineHeight: "40px" }}></i>
                                 </div>

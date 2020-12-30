@@ -38,7 +38,7 @@ const ViewAllReview = () => {
                 <div className="col-md-9 dashBoardMainDiv px-0">
                     <DashBoardTop></DashBoardTop>
                     <div className="reviews row bg-light ml-0 mr-0">
-                        <div className="col-md-12 pr-0 pl-0" style={{ height: '620px', overflow: 'scroll' }}>
+                        <div className="col-md-12 pr-0 pl-0" style={{ height: '632px', overflow: 'scroll' }}>
                             <table class="table table-striped table-hover text-center">
                                 <thead class="thead-dark">
                                     <tr>
