@@ -6,17 +6,23 @@ import Cart from '../Cart/Cart';
 import { addToDatabaseCart, getDatabaseCart } from '../utilities/databaseManager';
 import { Link } from 'react-router-dom';
 import LoadingText from '../LoadingText/LoadingText';
+import noDataFound from '../../images/noDataFound.png';
+import Footer from '../Footer/Footer';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState([]);
+    const [search, setSearch] = useState('');
 
+    const handleSearch = event => {
+        setSearch(event.target.value);
+    }
     // all products load form database
     useEffect(() => {
-        fetch('http://localhost:5000/products/')
+        fetch('http://localhost:5000/products?search=' + search)
             .then(response => response.json())
             .then(data => setProducts(data))
-    }, [])
+    }, [search])
 
     //load data form sesion storage
     useEffect(() => {
@@ -47,7 +53,8 @@ const Shop = () => {
     }
     return (
         <div className="container">
-            <NavBar cart={cart.length}></NavBar>
+
+            <NavBar handleSearch={handleSearch} cart={cart.length}></NavBar>
             {/* <h1 className="text-center sticky-top bg-primary text-light">Cart Items:  {cart.length}</h1> */}
             <div className="row mt-4 mr-0">
                 <div className="col-md-8 mt-4">
@@ -61,6 +68,13 @@ const Shop = () => {
                     {
                         products.length === 0 && <LoadingText></LoadingText>
                     }
+
+                    {/* ============== If no data found show this message ================= */}
+                    {
+                        products.length === 0 && <div>
+                            <img className="img-fluid" style={{ marginTop: '-24%', backgroundColor: '#000' }} src={noDataFound} alt="noDataFound" />
+                        </div>
+                    }
                 </div>
                 <div className="col-md-4 my-5">
                     <Cart cart={cart}>
@@ -68,6 +82,9 @@ const Shop = () => {
                     </Cart>
                 </div>
             </div>
+            {
+                products.length === 0 && <Footer></Footer>
+            }
         </div>
     );
 };
