@@ -37,7 +37,7 @@ const DailySell = () => {
                 <div className="col-md-9 dashBoardMainDiv px-0">
                     <DashBoardTop></DashBoardTop>
                     <div className="reviews row bg-light ml-0 mr-0">
-                        <div className="col-md-12 pr-0 pl-0" style={{ height: '632px' }}>
+                        <div className="col-md-12 pr-0 pl-0" style={{ height: '618px' }}>
                             <div className="row">
                                 <div className="col-md-4">
                                     <div>

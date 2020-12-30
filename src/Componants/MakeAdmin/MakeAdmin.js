@@ -4,8 +4,6 @@ import DashBoardTop from '../AdminPanel/DashBoardTop/DashBoardTop';
 import DashBoardMenu from '../DashBoardMenu/DashBoardMenu';
 import Footer from '../Footer/Footer';
 import './MakeAdmin.css';
-import wrongImg from '../../images/wrong.png';
-import { Link } from 'react-router-dom';
 
 const MakeAdmin = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -15,7 +13,10 @@ const MakeAdmin = () => {
         let addAdmin = { //recive all product information
             role: 'admin',
             createdDate: new Date(),
-            email: email
+            email: email,
+            assignByAdminMail: loggedInUser.email,
+            assignByAdminName: loggedInUser.name,
+            assignByAdminPicture: loggedInUser.photo
         }
 
         fetch('http://localhost:5000/makeAdmin', {
@@ -41,7 +42,7 @@ const MakeAdmin = () => {
                 <div className="col-md-3 dashBoardMenu bg-dark px-0">
                     <DashBoardMenu></DashBoardMenu>
                 </div>
-                <div className="col-md-9 dashBoardMainDiv px-0" style={{ height: '710px', backgroundColor: '#dadadb'}}>
+                <div className="col-md-9 dashBoardMainDiv px-0" style={{ height: '700px', backgroundColor: '#dadadb'}}>
                     <DashBoardTop></DashBoardTop>
                     <div className="reviews row ml-0 mr-0 ">
                    <h5 className="text-primary py-2">MAKE ADMIN</h5>

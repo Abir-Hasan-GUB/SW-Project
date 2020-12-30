@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react/cjs/react.development';
 import { UserContext } from '../../App';
 import logo from '../../images/logos/logo.png';
-import Calender from '../Calender/Calender';
 
 const DashBoardMenu = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [admin, setAdmin] = useState([]);
     let role = "admin";
-
+    const suparAdmin = "abirhasan6111@gmail.com";
     let adminCheck = false;
 
     // load all admin 
@@ -30,7 +29,7 @@ const DashBoardMenu = () => {
 
     return (
         <div className="dashBoardMenu bg-dark px-0">
-           {adminCheck === true && <div className="row mx-0">
+            <div className="row mx-0">
                 <div className="col-md-12 m-0 px-0 dashBoardLogo bg-light">
                     <Link to="/"><img className="img-fluid dashLogo" src={logo} alt="logo" /></Link>
                 </div>
@@ -40,24 +39,10 @@ const DashBoardMenu = () => {
                         <Link to="/ViewAllReviews"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-border-all mr-2"></i> View All Reviews</button></Link>
                         <Link to="/orderList"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-luggage-cart mr-2"></i> Order List</button></Link>
                         <Link to="/addProduct"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="far fa-plus-square mr-2"></i> Add Product</button></Link>
-                         <Link to="/makeAdmin"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Make Admin</button></Link>
+                        {loggedInUser.email === suparAdmin && <Link to="/makeAdmin"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Make Admin</button></Link>}
                         <Link to="/dailySell"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"><i class="far fa-calendar-alt mr-2"></i> Daily Sell</button></Link>
                         <Link to="/updateProduct"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-edit mr-2"></i> Update Product</button></Link>
-                        {/* ============= Calender Accordion Start ==========  */}
-                        {/* <div class="accordion" id="showCalender">
-                            <div>
-                                <div class="mb-0">
-                                    <button class="list-group-item list-group-item-action mt-3 bg-dark text-light" type="button" data-toggle="collapse" data-target="#calender" aria-expanded="true" aria-controls="calender"> <i class="far fa-calendar-alt mr-2"></i> Daily Sell</button>
-                                </div>
-                                <div id="calender" class="collapse" aria-labelledby="headingOne" data-parent="#showCalender">
-                                    <div class="">
-                                      
-                                        <Calender></Calender>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
-                        {/* ============= Calender Accordion End ==========  */}
+
                         <button data-toggle="modal" data-target="#forgotPasswordModal" type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Log Out</button>
 
                         {/* ==================== Log Out Confarmation Modal Start ================= */}
@@ -74,7 +59,7 @@ const DashBoardMenu = () => {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
-                                        <button onClick={()=> setLoggedInUser({})} type="button" class="btn btn-success">Confirm</button>
+                                        <button onClick={() => setLoggedInUser({})} type="button" class="btn btn-success">Confirm</button>
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +69,7 @@ const DashBoardMenu = () => {
 
                     </div>
                 </div>
-            </div>}
+            </div>
         </div>
     );
 };
