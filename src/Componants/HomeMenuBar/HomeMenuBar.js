@@ -32,25 +32,28 @@ const HomeMenuBar = () => {
             <li class="nav-item">
               <a class="nav-link text-light" href="#footer">Contacts</a>
             </li>
-              {/* ================ User Control Button ================= */}
-              <li class="dropdown nav-item">
-                <a class="dropdown-toggle nav-link text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img className="img-fluid userAvatar bg-light mr-3" src={loggedInUser.photo ? loggedInUser.photo: userIcon} alt="avatar"/>
-                  </a>
+            <li class="nav-item">
+              <Link to="admin"><a class="nav-link btn btn-info text-light" href="#footer">Admin Panel</a></Link>
+            </li>
+            {/* ================ User Control Button ================= */}
+            <li class="dropdown nav-item">
+              <a class="dropdown-toggle nav-link text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img className="img-fluid userAvatar bg-light mr-3" src={loggedInUser.photo ? loggedInUser.photo : userIcon} alt="avatar" />
+              </a>
 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 {!loggedInUser.name && <button className="btn btn-primary btn-sm"><Link className="text-light" to="/login">LogIn</Link></button>}
-                  {loggedInUser.name && <div>
-                  <img className="img-fluid homeDropDounMenuUserImg" src={loggedInUser.photo ? loggedInUser.photo: userIcon} alt=""/>
+                {loggedInUser.name && <div>
+                  <img className="img-fluid homeDropDounMenuUserImg" src={loggedInUser.photo ? loggedInUser.photo : userIcon} alt="" />
                   <h6>{loggedInUser.name}</h6>
                   <Link to="/client"><button className="btn btn-primary btn-sm">View Profile</button></Link>
                   <div class="dropdown-divider"></div>
                   <Link to="/termsAndService"><a class="dropdown-item text-left" href="#"><i class="fas fa-lock mr-2"></i> Terms of service</a></Link>
                   <Link to="/faq"><a class="dropdown-item text-left" href="#"><i class="fas fa-question-circle mr-2"></i> FAQ</a></Link>
-                  <a onClick={()=> setLoggedInUser({})} class="dropdown-item text-left" href="#"><i class="fas fa-sign-out-alt mr-2"></i> Logout</a>
-                  </div>}
-                </div>
-              </li>
+                  <a onClick={() => setLoggedInUser({})} class="dropdown-item text-left" href="#"><i class="fas fa-sign-out-alt mr-2"></i> Logout</a>
+                </div>}
+              </div>
+            </li>
           </ul>
         </div>
       </nav>

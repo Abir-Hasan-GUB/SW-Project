@@ -25,9 +25,6 @@ const ClientOrder = () => {
             })
     }
 
-  
-// console.log(order)
-
     useEffect(() => {
         fetch('http://localhost:5000/clientOrder?email=' + loggedInUser.email)
             .then(response => response.json())

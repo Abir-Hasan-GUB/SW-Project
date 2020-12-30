@@ -13,8 +13,7 @@ import ViewAllReview from './Componants/ViewAllReview/ViewAllReview';
 import OrderList from './Componants/OrderList/OrderList';
 import AddProduct from './Componants/AddProduct/AddProduct';
 import MakeAdmin from './Componants/MakeAdmin/MakeAdmin';
-import NotFound from './Componants/NotFound/NotFound';
-import FeedBack from './Componants/FeedBack/FeedBack';
+import NotFound from './Componants/NotFound/NotFound'
 import Message from './Componants/Message/Message';
 import ClientOrder from './Componants/ClientOrder/ClientOrder';
 import Footer from './Componants/Footer/Footer';
@@ -45,10 +44,7 @@ function App() {
                         <Banner></Banner>
                         <HomeCategories></HomeCategories>
                         <Sliders></Sliders>
-                        {/* <AdminPanel></AdminPanel> */}
                         <Footer></Footer>
-                        {/* <NotFound></NotFound> */}
-                        {/* <Login></Login> */}
                     </Route>
                     <Route path="/products">
                         <Shop></Shop>
@@ -56,61 +52,55 @@ function App() {
                     <Route path="/login">
                         <Login></Login>
                     </Route>
-                    <Route path="/admin">
+                    <PrivateRoute path="/admin">
                         <AdminPanel></AdminPanel>
-                    </Route>
-                    <Route path="/statistics">
+                    </PrivateRoute>
+                    <PrivateRoute path="/statistics">
                         <AdminPanel></AdminPanel>
-                    </Route>
-                    <Route path="/ViewAllReviews">
+                    </PrivateRoute>
+                    <PrivateRoute path="/ViewAllReviews">
                         <ViewAllReview></ViewAllReview>
-                    </Route>
-                    <Route path="/orderList">
+                    </PrivateRoute>
+                    <PrivateRoute path="/orderList">
                         <OrderList></OrderList>
-                    </Route>
-                    <Route path="/addProduct">
+                    </PrivateRoute>
+                    <PrivateRoute path="/addProduct">
                         <AddProduct></AddProduct>
-                    </Route>
-                    <Route path="/makeAdmin">
+                    </PrivateRoute>
+                    <PrivateRoute path="/makeAdmin">
                         <MakeAdmin></MakeAdmin>
-                    </Route>
-                    {/* <Route path="/client">
-                    <Client></Client>
-                    <Footer></Footer>
-                </Route> */}
-                    {/* <Route path="/feedBack">
-                    <FeedBack></FeedBack>
-                </Route> */}
-                    <Route path="/message">
+                    </PrivateRoute>
+
+                    <PrivateRoute path="/message">
                         <Message></Message>
-                    </Route>
-                    <Route path="/client">
+                    </PrivateRoute>
+                    <PrivateRoute path="/client">
                         <ClientOrder></ClientOrder>
-                    </Route>
+                    </PrivateRoute>
                     <Route path="/product/:productKey">
                         <ProductDetails></ProductDetails>
                     </Route>
                     <Route path="/reviewOrder">
                         <ReviewOrder></ReviewOrder>
                     </Route>
-                    <Route path="/placeOrder">
+                    <PrivateRoute path="/placeOrder">
                         <PlaceOrder></PlaceOrder>
-                    </Route>
+                    </PrivateRoute>
                     <Route path="/termsAndService">
                         <TermsAndService></TermsAndService>
                     </Route>
-                    <PrivateRoute path="/faq">
+                    <Route path="/faq">
                         <FAQ></FAQ>
-                    </PrivateRoute>
-                    <Route path="/orderComplete">
+                    </Route>
+                    <PrivateRoute path="/orderComplete">
                         <Shipment></Shipment>
-                    </Route>
-                    <Route path="/dailySell">
+                    </PrivateRoute>
+                    <PrivateRoute path="/dailySell">
                         <DailySell></DailySell>
-                    </Route>
-                    <Route path="/updateProduct">
+                    </PrivateRoute>
+                    <PrivateRoute path="/updateProduct">
                         <UpdateProducts></UpdateProducts>
-                    </Route>
+                    </PrivateRoute>
                     <Route path="*">
                         <NotFound></NotFound>
                     </Route>

@@ -3,7 +3,6 @@ import { UserContext } from '../../App';
 import DashBoardTop from '../AdminPanel/DashBoardTop/DashBoardTop';
 import DashBoardMenu from '../DashBoardMenu/DashBoardMenu';
 import Footer from '../Footer/Footer';
-import wrongImg from '../../images/wrong.png';
 import { Link } from 'react-router-dom';
 
 const AddProduct = () => {
@@ -56,33 +55,10 @@ const AddProduct = () => {
         e.preventDefault();
     }
 
-    // ======================== Check Admin =================
-    const [admin, setAdmin] = useState([]);
-    let role = "admin";
-
-    let adminCheck = false;
-
-    // load all admin 
-    useEffect(() => {
-        fetch('http://localhost:5000/findAdmin?role=' + role)
-            .then(response => response.json())
-            .then(data => setAdmin(data))
-    }, [])
-
-
-    for (let i = 0; i < admin.length; i++) {
-        let user = admin[i];
-        if (user.role === role && user.email == loggedInUser.email) {
-            adminCheck = true;
-        }
-    }
-
-
-
-
+  
     return (
         <div className="container">
-            {adminCheck === true && <div className="row mx-0">
+           <div className="row mx-0">
                 <div className="col-md-3 dashBoardMenu bg-dark px-0">
                     <DashBoardMenu></DashBoardMenu>
                 </div>
@@ -140,14 +116,7 @@ const AddProduct = () => {
                         </div>
                     </div>
                 </div>
-            </div>}
-            
-            {adminCheck == false &&
-                <div className="bg-light text-center p-3">
-                    <img className="img-fluid" src={wrongImg} alt="wrongImg" />
-                    <h1 className="text-danger py-4">Wrong Information</h1>
-                    <Link to="/"><button className="btn btn-danger btn-lg p-3 mt-3">Back to Home Page</button></Link>
-                </div>}
+            </div>
             <Footer></Footer>
         </div>
     );
