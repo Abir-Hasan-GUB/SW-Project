@@ -30,6 +30,7 @@ import FAQ from './Componants/FAQ/FAQ';
 import Shipment from './Componants/Shipment/Shipment';
 import DailySell from './Componants/DailySell/DailySell';
 import UpdateProducts from './Componants/UpdateProducts/UpdateProducts';
+import LoadingText from './Componants/LoadingText/LoadingText';
 
 export const UserContext = createContext();
 

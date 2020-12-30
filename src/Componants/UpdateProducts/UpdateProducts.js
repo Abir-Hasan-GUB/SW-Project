@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import DashBoardTop from '../AdminPanel/DashBoardTop/DashBoardTop';
 import DashBoardMenu from '../DashBoardMenu/DashBoardMenu';
 import Footer from '../Footer/Footer';
+import LoadingText from '../LoadingText/LoadingText';
 
 const UpdateProducts = () => {
     const [products, setProducts] = useState([]);
     const [productid, setId] = useState([])
+    const location = useLocation();
 
     // all products load form database
     useEffect(() => {
@@ -33,9 +36,11 @@ const UpdateProducts = () => {
             .then(response => response.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    alert("Product updated successfully !");
-                    document.getElementById('newPrice').value = '';
-                    document.getElementById('newStock').value = '';
+                    // alert("Product updated successfully !");
+                    // document.getElementById('newPrice').value = '';
+                    // document.getElementById('newStock').value = '';
+                    window.location.reload();
+                    
                 }
             })
 
@@ -136,6 +141,9 @@ const UpdateProducts = () => {
                                 </div>
                             </div>
                             {/* ==================== Update product information Modal End ================= */}
+                            {
+                                products.length === 0 &&  <LoadingText></LoadingText>
+                            }
                         </div>
                     </div>
                 </div>

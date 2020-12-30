@@ -30,7 +30,9 @@ const OrderList = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log("Updated status")
+                if(data.modifiedCount){
+                    window.location.reload();
+                }
             })
 
     }

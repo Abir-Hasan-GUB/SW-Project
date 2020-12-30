@@ -5,6 +5,7 @@ import NavBar from '../NavBar/NavBar';
 import Cart from '../Cart/Cart';
 import { addToDatabaseCart, getDatabaseCart } from '../utilities/databaseManager';
 import { Link } from 'react-router-dom';
+import LoadingText from '../LoadingText/LoadingText';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -56,6 +57,9 @@ const Shop = () => {
                             product={product}
                             handleAddProduct={handleAddProduct}
                         ></Product>)
+                    }
+                    {
+                        products.length === 0 && <LoadingText></LoadingText>
                     }
                 </div>
                 <div className="col-md-4 my-5">
