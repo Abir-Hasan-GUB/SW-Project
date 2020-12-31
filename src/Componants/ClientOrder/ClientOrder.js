@@ -14,7 +14,7 @@ const ClientOrder = () => {
       // ================= Delete an order using id ==============
       const cancelOrder = (id) => {
         // console.log(id)
-        fetch(`https://creative-agency-abir.herokuapp.com/deleteOneOrder/${id}`, {
+        fetch(`http://localhost:5000/deleteOneOrder/${id}`, {
             method: 'DELETE'
         })
             .then(response => response.json())
@@ -26,7 +26,7 @@ const ClientOrder = () => {
     }
 
     useEffect(() => {
-        fetch('https://creative-agency-abir.herokuapp.com/clientOrder?email=' + loggedInUser.email)
+        fetch('http://localhost:5000/clientOrder?email=' + loggedInUser.email)
             .then(response => response.json())
             .then(data => setOrder(data))
     }, [])

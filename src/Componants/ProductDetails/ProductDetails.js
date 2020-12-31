@@ -14,7 +14,7 @@ const ProductDetails = () => {
     // load one product/ search one product using key
 
     useEffect(() => {
-        fetch(`https://creative-agency-abir.herokuapp.com/product/` + productKey)
+        fetch(`http://localhost:5000/product/` + productKey)
             .then(response => response.json())
             .then(function (value) {
                 if (value) {
@@ -26,7 +26,7 @@ const ProductDetails = () => {
 
     // ==================== Update review state for show to uI =================
     useEffect(() => {
-        fetch(`https://creative-agency-abir.herokuapp.com/allReview?key=` + productKey)
+        fetch(`http://localhost:5000/allReview?key=` + productKey)
             .then(response => response.json())
             .then(result => setReview(result))//Update review state
     }, [])
@@ -46,7 +46,7 @@ const ProductDetails = () => {
         }
 
         // send comment data to database
-        fetch('https://creative-agency-abir.herokuapp.com/addReview', {
+        fetch('http://localhost:5000/addReview', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userComment)

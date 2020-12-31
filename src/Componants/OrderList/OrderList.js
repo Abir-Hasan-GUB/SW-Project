@@ -14,7 +14,7 @@ const OrderList = () => {
 
     // ================ Load all clients order with state =================
     useEffect(() => {
-        fetch(`https://creative-agency-abir.herokuapp.com/clientAllOrder`,)
+        fetch(`http://localhost:5000/clientAllOrder`,)
             .then(response => response.json())
             .then(result => setAllOrder(result))
     }, [])
@@ -23,7 +23,7 @@ const OrderList = () => {
     const handleUpdateStatus = (id) => {
         const updateStatus = status;
         const afterUpdate = { id, updateStatus };
-        fetch(`https://creative-agency-abir.herokuapp.com/updateStatus/${id}`, {
+        fetch(`http://localhost:5000/updateStatus/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(afterUpdate)

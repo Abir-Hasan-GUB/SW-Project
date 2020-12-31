@@ -19,7 +19,7 @@ const Shop = () => {
     }
     // all products load form database
     useEffect(() => {
-        fetch('https://creative-agency-abir.herokuapp.com/products?search=' + search)
+        fetch('http://localhost:5000/products?search=' + search)
             .then(response => response.json())
             .then(data => setProducts(data))
     }, [search])
@@ -30,7 +30,7 @@ const Shop = () => {
         const productKeys = Object.keys(saveCart);
 
         // load all products using keys
-        fetch('https://creative-agency-abir.herokuapp.com/productsByKeys', {
+        fetch('http://localhost:5000/productsByKeys', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

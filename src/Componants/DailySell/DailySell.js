@@ -19,7 +19,7 @@ const DailySell = () => {
         // console.log(curentDate)
         // setSelectedDate(date);
 
-        fetch('https://creative-agency-abir.herokuapp.com/orderByDate', {
+        fetch('http://localhost:5000/orderByDate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ curentDate })

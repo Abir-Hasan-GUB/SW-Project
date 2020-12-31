@@ -52,24 +52,24 @@ function App() {
                     <Route path="/login">
                         <Login></Login>
                     </Route>
-                    <PrivateRoute path="/admin">
+                    <Route path="/admin">
                         <AdminPanel></AdminPanel>
-                    </PrivateRoute>
-                    <PrivateRoute path="/statistics">
+                    </Route>
+                    <Route path="/statistics">
                         <AdminPanel></AdminPanel>
-                    </PrivateRoute>
-                    <PrivateRoute path="/ViewAllReviews">
+                    </Route>
+                    <Route path="/ViewAllReviews">
                         <ViewAllReview></ViewAllReview>
-                    </PrivateRoute>
-                    <PrivateRoute path="/orderList">
+                    </Route>
+                    <Route path="/orderList">
                         <OrderList></OrderList>
-                    </PrivateRoute>
-                    <PrivateRoute path="/addProduct">
+                    </Route>
+                    <Route path="/addProduct">
                         <AddProduct></AddProduct>
-                    </PrivateRoute>
-                    <PrivateRoute path="/makeAdmin">
+                    </Route>
+                    <Route path="/makeAdmin">
                         <MakeAdmin></MakeAdmin>
-                    </PrivateRoute>
+                    </Route>
 
                     <PrivateRoute path="/message">
                         <Message></Message>
@@ -92,15 +92,15 @@ function App() {
                     <Route path="/faq">
                         <FAQ></FAQ>
                     </Route>
-                    <PrivateRoute path="/orderComplete">
+                    <Route path="/orderComplete">
                         <Shipment></Shipment>
-                    </PrivateRoute>
-                    <PrivateRoute path="/dailySell">
+                    </Route>
+                    <Route path="/dailySell">
                         <DailySell></DailySell>
-                    </PrivateRoute>
-                    <PrivateRoute path="/updateProduct">
+                    </Route>
+                    <Route path="/updateProduct">
                         <UpdateProducts></UpdateProducts>
-                    </PrivateRoute>
+                    </Route>
                     <Route path="*">
                         <NotFound></NotFound>
                     </Route>

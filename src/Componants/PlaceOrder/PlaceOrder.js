@@ -62,7 +62,7 @@ const handlePlaceOrder = () => {
         }
 // console.log(typeof userOrder)
         // send comment data to database
-        fetch('https://creative-agency-abir.herokuapp.com/addOrder',{
+        fetch('http://localhost:5000/addOrder',{
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(userOrder)

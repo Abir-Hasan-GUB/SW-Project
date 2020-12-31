@@ -15,7 +15,7 @@ const UpdateProducts = () => {
 
     // all products load form database
     useEffect(() => {
-        fetch('https://creative-agency-abir.herokuapp.com/Allproducts/')
+        fetch('http://localhost:5000/Allproducts/')
             .then(response => response.json())
             .then(data => setProducts(data))
     }, [])
@@ -29,7 +29,7 @@ const UpdateProducts = () => {
         const updateProduct = { id, newPrice, newStock };
 
         // send information to database
-        fetch(`https://creative-agency-abir.herokuapp.com/updateProductInformation/${id}`, {
+        fetch(`http://localhost:5000/updateProductInformation/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -49,7 +49,20 @@ const UpdateProducts = () => {
 
     }
 
-    const handleUpdateProduct = (id) => setId(id); //stor id to state for query
+    const handleUpdateProduct = (id) => setId(id); //store id to state for query
+
+    const handleDeleteProduct = (id) => { //delete product from database by admin
+        fetch(`http://localhost:5000/deleteOneProduct/${id}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.deletedCount) {
+                    alert("Delete on Item of Product !")
+                }
+            })
+    };
+  
 
     return (
         <div className="container">
@@ -102,6 +115,7 @@ const UpdateProducts = () => {
                                     </div>
                                     <div className="col-md-2">
                                         <button onClick={() => handleUpdateProduct(product._id)} data-toggle="modal" data-target="#updatePriceModal" className="btn btn-info btn-md">Update</button>
+                                        <button onClick={() => handleDeleteProduct(product._id)} className="btn btn-danger mt-3 px-3 btn-md">Delete</button>
                                     </div>
 
                                 </div>

@@ -19,7 +19,7 @@ const AdminPanel = () => {
 
     // load all admin 
     useEffect(() => {
-        fetch('https://creative-agency-abir.herokuapp.com/findAdmin?role=' + role)
+        fetch('http://localhost:5000/findAdmin?role=' + role)
             .then(response => response.json())
             .then(data => setAdmin(data))
     }, [])

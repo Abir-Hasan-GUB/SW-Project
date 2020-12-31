@@ -11,7 +11,7 @@ const ViewAllReview = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`https://creative-agency-abir.herokuapp.com/allReviewInAdmin/`)
+        fetch(`http://localhost:5000/allReviewInAdmin/`)
             .then(response => response.json())
             .then(result => setReview(result))
     }, [])
@@ -20,7 +20,7 @@ const ViewAllReview = () => {
     // ================= Delete an review using id ==============
     const handleDeleteReview = (id) => {
         // console.log(id)
-        fetch(`https://creative-agency-abir.herokuapp.com/deleteOneReview/${id}`, {
+        fetch(`http://localhost:5000/deleteOneReview/${id}`, {
             method: 'DELETE'
         })
             .then(response => response.json())
