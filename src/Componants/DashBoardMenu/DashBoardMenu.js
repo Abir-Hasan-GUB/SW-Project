@@ -39,7 +39,7 @@ const DashBoardMenu = () => {
                         <Link to="/ViewAllReviews"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-border-all mr-2"></i> View All Reviews</button></Link>
                         <Link to="/orderList"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-luggage-cart mr-2"></i> Order List</button></Link>
                         <Link to="/addProduct"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="far fa-plus-square mr-2"></i> Add Product</button></Link>
-                        {loggedInUser.email === suparAdmin && <Link to="/makeAdmin"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-sign-out-alt mr-2"></i> Make Admin</button></Link>}
+                        {loggedInUser.email === suparAdmin && <Link to="/makeAdmin"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-user-shield mr-2"></i> Admin Control</button></Link>}
                         <Link to="/dailySell"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"><i class="far fa-calendar-alt mr-2"></i> Daily Sell</button></Link>
                         <Link to="/updateProduct"><button type="button" class="list-group-item list-group-item-action mt-3 bg-dark text-light"> <i class="fas fa-edit mr-2"></i> Update Product</button></Link>
 
