@@ -18,7 +18,7 @@ const Statistics = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/clientAllOrder`,)
+        fetch(`https://creative-agency-abir.herokuapp.com/clientAllOrder`,)
             .then(response => response.json())
             .then(result => setAllOrder(result))
     }, [])
@@ -32,7 +32,7 @@ const Statistics = () => {
   
       // load all admin 
       useEffect(() => {
-          fetch('http://localhost:5000/findAdmin?role=' + role)
+          fetch('https://creative-agency-abir.herokuapp.com/findAdmin?role=' + role)
               .then(response => response.json())
               .then(data => setAdmin(data))
       }, [])

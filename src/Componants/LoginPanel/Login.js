@@ -101,6 +101,7 @@ const Login = () => {
                     newUserInfo.success = true; // if successfully login then value is true
                     setUser(newUserInfo);
                     updateUserName(user.name);
+                    handleVerificationEmail(); // send email to verification
                 })
                 .catch((error) => {
                     console.log(error);
@@ -163,9 +164,36 @@ const Login = () => {
         }
     }
 
+    // ================= Send Verification Email to New User =================
+    const handleVerificationEmail = () => {
+        var user = firebase.auth().currentUser;
+        console.log(user)
+
+        user.sendEmailVerification().then(function () {
+           console.log('Verification email sent')
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
+    const resetPassword = (e) => {
+        const resetEmail = document.getElementById('resetEmail').value; // get reset email address
+        // console.log(resetEmail)
+        var auth = firebase.auth();
+    
+        auth.sendPasswordResetEmail(resetEmail).then(function() {
+          // Email sent.
+          console.log("Email sent")
+        }).catch(function(error) {
+          // An error happened.
+          console.log(error)
+        });
+        e.preventDefault();
+    }
+
     return (
         <div className="container" id="login">
-            
+
             <div className="login bg-light text-center p-5">
                 {!newUser && <h1 className="mb-4">Login</h1>}
                 {newUser && <h1 className="mb-4">Sign Up</h1>}
@@ -197,10 +225,10 @@ const Login = () => {
                                 <div class="modal-body">
                                     <p class="lead">Enter the email address associated with your account.</p>
                                     <div className="form-group">
-                                        <input className="ForgotEmail form-control form-control-lg email" type="email" name="" placeholder="Enter Your Email" id="" />
+                                        <input className="ForgotEmail form-control form-control-lg email" type="email" name="" placeholder="Enter Your Email" id="resetEmail" />
                                     </div>
                                     <div className="form-group px-0 px-md-5 ">
-                                        <input className="btn btn-success logInBtn btn-md btn-block p-3" type="submit" value="Reset Password" />
+                                        <input onClick={resetPassword} className="btn btn-success logInBtn btn-md btn-block p-3" type="submit" value="Reset Password" />
                                     </div>
                                     <p className="text-dark py-2"><strong>Return to <a href="" className="text-success">login</a> </strong></p>
 
@@ -261,8 +289,8 @@ const Login = () => {
                     <a className="btn btn-primary justify-content-around d-flex facebookBtn logInBtn btn-sm text-light btn-block p-2" onClick={handleSignInWithFaceBook}><i class="fab fa-facebook"></i> continue with Facebook</a>
                 </div>
                 <div className="form-group px-0 px-md-5 ">
-                        <Link to="/"><input className="btn btn-dark text-light logInBtn btn-sm btn-sm-lg btn-block p-3" type="submit" value="Back to Home" /></Link>
-                    </div>
+                    <Link to="/"><input className="btn btn-dark text-light logInBtn btn-sm btn-sm-lg btn-block p-3" type="submit" value="Back to Home" /></Link>
+                </div>
             </div>
         </div>
     );

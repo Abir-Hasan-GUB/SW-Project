@@ -19,7 +19,7 @@ const MakeAdmin = () => {
             assignByAdminPicture: loggedInUser.photo
         }
 
-        fetch('http://localhost:5000/makeAdmin', {
+        fetch('https://creative-agency-abir.herokuapp.com/makeAdmin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

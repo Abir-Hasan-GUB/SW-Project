@@ -15,7 +15,7 @@ const UpdateProducts = () => {
 
     // all products load form database
     useEffect(() => {
-        fetch('http://localhost:5000/Allproducts/')
+        fetch('https://creative-agency-abir.herokuapp.com/Allproducts/')
             .then(response => response.json())
             .then(data => setProducts(data))
     }, [])
@@ -29,7 +29,7 @@ const UpdateProducts = () => {
         const updateProduct = { id, newPrice, newStock };
 
         // send information to database
-        fetch(`http://localhost:5000/updateProductInformation/${id}`, {
+        fetch(`https://creative-agency-abir.herokuapp.com/updateProductInformation/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

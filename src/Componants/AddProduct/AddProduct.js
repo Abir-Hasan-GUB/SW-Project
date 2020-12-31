@@ -32,7 +32,7 @@ const AddProduct = () => {
         }
 
 
-        fetch('http://localhost:5000/addProdcuct', {
+        fetch('https://creative-agency-abir.herokuapp.com/addProdcuct', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
