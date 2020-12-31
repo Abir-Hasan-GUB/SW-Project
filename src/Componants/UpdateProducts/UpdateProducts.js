@@ -58,7 +58,7 @@ const UpdateProducts = () => {
             .then(response => response.json())
             .then(result => {
                 if (result.deletedCount) {
-                    alert("Delete on Item of Product !")
+                    alert("Delete one Item of Product !")
                 }
             })
     };
