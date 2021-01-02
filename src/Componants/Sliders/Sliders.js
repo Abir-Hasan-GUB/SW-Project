@@ -22,7 +22,7 @@ const Sliders = () => {
     };
 
     return (
-        <div id="ourworks" className="container bg-dark text-light px-0">
+        <div id="ourworks" className="container text-light px-0" style={{ backgroundColor: "#111430" }}>
             <div className="serviceTitle text-center py-5 pb-3">
                 <h2>Sample of <span className="text-warning"> our Products</span></h2>
             </div>
@@ -47,7 +47,6 @@ const Sliders = () => {
 
                 </Slider>
             </div>
-
         </div>
     );
 };

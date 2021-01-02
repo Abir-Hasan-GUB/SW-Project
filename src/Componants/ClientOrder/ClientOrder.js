@@ -64,7 +64,7 @@ const ClientOrder = () => {
                                                             </div>
                                                             <div className="card-text text-center">
                                                                 <h4 class="my-2 m-0">Coustomer: {order.name} </h4>
-                                                                <h5 className="my-2">Order Time: {order.time}</h5>
+                                                                <h5 className="my-2">Order Date: {order.date}</h5>
                                                                 <h5 class="text-danger my-2">Total Price: {order.price} </h5>
                                                                 <h5 class="text-primary my-2">Payment-Method: {order.paymentMethod}</h5>
                                                             </div>

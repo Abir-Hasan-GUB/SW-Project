@@ -13,69 +13,70 @@ const PlaceOrder = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [cart, setCart] = useState([]);
 
-// ============== calculated order price =================
-let price = 0;
-let shippingAndPrice = 0;
-for (let i = 0; i < cart.length; i++) {
-    price += cart[i].price * cart[i].quantity;
-}
-price = ((price / 100) * 5) + price; // add tax for
+    // ============== calculated order price =================
+    let price = 0;
+    let shippingAndPrice = 0;
+    for (let i = 0; i < cart.length; i++) {
+        price += cart[i].price * cart[i].quantity;
+    }
+    price = ((price / 100) * 5) + price; // add tax for
 
-if(price >= 250){
-    shippingAndPrice = price + 25;
-}
-if(price>= 500){
-    shippingAndPrice =  price;
-}
-if(price < 250){
-    shippingAndPrice = price + 50;
-}
+    if (price >= 250) {
+        shippingAndPrice = price + 25;
+    }
+    if (price >= 500) {
+        shippingAndPrice = price;
+    }
+    if (price < 250) {
+        shippingAndPrice = price + 50;
+    }
 
-const handlePlaceOrder = () => {
-    setCart([]);
-    processOrder();
-}
-// console.log(new Date())
+    const handlePlaceOrder = () => {
+        setCart([]);
+        processOrder();
+    }
+    // console.log(new Date())
 
-// order send to database
+    // order send to database
     const handleAddOrder = (e) => {
         let phone = document.getElementById('userPhone').value;
         let privateComment = document.getElementById('privateComment').value;
         let bKashNumber = document.getElementById('bKashNumber').value;
         let bKashTransactionID = document.getElementById('transactionId').value;
         let currentDate = new Date();
+        let finalPrice = document.getElementById('finalTotalPrice').innerText;
 
         let userOrder = {
-            name: loggedInUser.name, 
-            email: loggedInUser.email, 
+            name: loggedInUser.name,
+            email: loggedInUser.email,
             img: loggedInUser.photo,
             cart: cart,
             status: 'pending',
             date: currentDate.toLocaleDateString(),
             phone: phone,
-            price: price,
+            price: finalPrice,
             paymentMethod: 'bKash',
             privateComment: privateComment,
             bKashNumber: bKashNumber,
             bKashTransactionID: bKashTransactionID
-           
+
         }
-// console.log(typeof userOrder)
+        // console.log(typeof userOrder)
         // send comment data to database
-        fetch('http://localhost:5000/addOrder',{
+        fetch('http://localhost:5000/addOrder', {
             method: 'POST',
-            headers: {'Content-Type':'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userOrder)
         })
-        .then(response => response.json())
-        .then(success => {
-            if(success.insertedCount){   
-                alert("Order Successfully Placed !");
-                handlePlaceOrder();
-            }
-            
-        })
-        
+            .then(response => response.json())
+            .then(success => {
+                if (success.insertedCount) {
+                    alert("Order Successfully Placed !");
+                    handlePlaceOrder();
+                }
+
+            })
+
         document.getElementById('userPhone').value = '';
         document.getElementById('privateComment').value = '';
         document.getElementById('bKashNumber').value = '';
@@ -83,9 +84,6 @@ const handlePlaceOrder = () => {
 
         e.preventDefault();
     }
-
-
-
 
     useEffect(() => {// load data from database(sesion storage)
         const savedCart = getDatabaseCart();
@@ -100,15 +98,41 @@ const handlePlaceOrder = () => {
         setCart(cartProducts);
     }, [])
 
-    // console.log(cart)
+    //  ====================== Apply promo code =================
+    const applyPromoCode = () => {
+        let promoCount = 0;
+        let promoCode = document.getElementById('GetPromoCode').value;
+        let totalPrice = shippingAndPrice;
+        // let mainPrice = totalPrice;
+        let reducePrice = totalPrice / 4;
+        let updatePrice = totalPrice - reducePrice;
 
-  
+        if (promoCode === 'abir25') {
+            ++promoCount;
+            console.log('clicked')
+            console.log(updatePrice)
+            document.getElementById('finalTotalPrice').innerText = updatePrice.toFixed(2);
+            // document.getElementById('promoCode').value = '';
+            if (promoCount) {
+                alert("Promo Code Added !");
+                document.getElementById('GetPromoCode').value = '';
+                document.getElementById('GetPromoCode').disabled = true;
+                document.getElementById('promoButton').disabled = true;
+            }
+        }
+        else {
+            alert("Wrong Promo Code !")
+        }
+    }
+
+
+
     return (
         <div className="container bg-light px-0">
             <ShopNavBar></ShopNavBar>
 
             {cart.length <= 0 && <div className="ifCartItemIsEmpty text-center bg-light">
-                <img style={{width: '100%'}} className="img-fluid my-5" src={emptyCart} alt="empty cart" />
+                <img style={{ width: '100%' }} className="img-fluid my-5" src={emptyCart} alt="empty cart" />
                 <Link to="/products"><button style={{ backgroundColor: '#f90' }} className="btn text-light mb-4 p-3 btn-lg"><h5>Continue to Shopping</h5></button></Link>
                 <Link to="/client"><button className="btn ml-5 btn-success mb-4 p-3 btn-lg"><h5>Check Your Order</h5></button></Link>
             </div>}
@@ -181,10 +205,20 @@ const handlePlaceOrder = () => {
                         </tr>
                         <tr>
                             <th className="text-left">Total</th>
-                            <th className="text-right">$ {shippingAndPrice.toFixed(2)}</th>
+                            <th id="finalTotalPrice" className="text-right">$ {shippingAndPrice.toFixed(2)}</th>
                         </tr>
                     </table>
-                    <p className="text-danger">** Delive Charge Vary some times...</p>
+                    <div className="d-flex align-items-center justify-content-center">
+                        <div>
+                        <h5 className="text-info">Have any promo code? </h5>
+                        </div>
+                        <div class="input-group mb-3 w-25 ml-4">
+                            <input id="GetPromoCode" type="text" class="form-control" placeholder="Promo Code Here" aria-label="Promo Code Here" aria-describedby="promoButton" />
+                            <div class="input-group-append">
+                                <button onClick={applyPromoCode} class="btn btn-info" type="button" id="promoButton">Apply</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* ============ bkash payment section ================= */}

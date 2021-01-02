@@ -53,11 +53,19 @@ const Shop = () => {
     }
     return (
         <div className="container">
-
+            
             <NavBar handleSearch={handleSearch} cart={cart.length}></NavBar>
+            <div className="mt-5 pt-4">
+            <div class="alert alert-dismissible text-light fade show p-3 bg-info" role="alert">
+                    <strong>Yeah Huu!</strong> If Your shipping <strong>Greater  250</strong> then charge is half. And if <strong> Greater  500</strong> charge totally free..Haha
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
             {/* <h1 className="text-center sticky-top bg-primary text-light">Cart Items:  {cart.length}</h1> */}
-            <div className="row mt-4 mr-0">
-                <div className="col-md-8 mt-4">
+            <div className="row mr-0">
+                <div className="col-md-8">
                     {
                         products.map(product => <Product
                             key={product.key}

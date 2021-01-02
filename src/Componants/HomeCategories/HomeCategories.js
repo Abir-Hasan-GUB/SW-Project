@@ -33,7 +33,7 @@ const HomeCategories = () => {
                 </div>
             </div>
             <div className="browesAllProduct text-center">
-                <Link to="/products"><button className="btn btn-success btn-lg"><h3>See All Products</h3></button></Link>
+                <Link to="/products"><button className="btn btn-success mb-5 btn-lg"><h3>See All Products</h3></button></Link>
             </div>
         </div>
     );

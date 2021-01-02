@@ -3,29 +3,30 @@ import { Link } from 'react-router-dom';
 
 const CartReview = (props) => {
 
-    const applyPromoCode = () => {
-        let promoCount = 0;
-        let promoCode = document.getElementById('promoCode').value;
-        let totalPrice = document.getElementById('toalPrice').innerText;
-        let mainPrice = totalPrice;
-        let reducePrice = mainPrice / 4;
-        let updatePrice = totalPrice - reducePrice;
+    // ===================== Apply promo code =================
+    // const applyPromoCode = () => {
+    //     let promoCount = 0;
+    //     let promoCode = document.getElementById('promoCode').value;
+    //     let totalPrice = document.getElementById('toalPrice').innerText;
+    //     let mainPrice = totalPrice;
+    //     let reducePrice = mainPrice / 4;
+    //     let updatePrice = totalPrice - reducePrice;
 
-        if (promoCode === 'abir25') {
-            ++promoCount;
-            console.log('clicked')
-            console.log(updatePrice)
-            document.getElementById('toalPrice').innerText = updatePrice.toFixed(2);
-            document.getElementById('promoCode').value = '';
-            if (promoCount) {
-                document.getElementById('promoCode').disabled = true;
-                alert("Promo Code Added !");
-            }
-        }
-        else {
-            alert("Wrong Promo Code !")
-        }
-    }
+    //     if (promoCode === 'abir25') {
+    //         ++promoCount;
+    //         console.log('clicked')
+    //         console.log(updatePrice)
+    //         document.getElementById('toalPrice').innerText = updatePrice.toFixed(2);
+    //         document.getElementById('promoCode').value = '';
+    //         if (promoCount) {
+    //             document.getElementById('promoCode').disabled = true;
+    //             alert("Promo Code Added !");
+    //         }
+    //     }
+    //     else {
+    //         alert("Wrong Promo Code !")
+    //     }
+    // }
 
     // variable decler
     const cart = props.cart;
@@ -60,14 +61,7 @@ const CartReview = (props) => {
 
     return (
         <div className="shopingCard position-fixed container">
-            <div className="row col-4">
-                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    <strong>Yeah Huu!</strong> If Your shipping <strong>Grether 250</strong> then charge is half. And if <strong> Grether 500</strong> charge totally free..Haha
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
+            <div className="row col-4 mt-5">
                 <div className="card-top">
                     <div className="card">
                         <div className="card-header text-center">
@@ -101,7 +95,8 @@ const CartReview = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer text-muted">
+                        {/* ======================== Add promoCode ================= */}
+                        {/* <div class="card-footer text-muted">
                             <div class="accordion" id="accordionExample">
 
                                 <div class="" id="headingOne">
@@ -124,7 +119,7 @@ const CartReview = (props) => {
 
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         {
                             props.children
                         }

@@ -8,8 +8,8 @@ import laptop3 from '../../images/banner3.jpg';
 
 const Footer = () => {
     return (
-        <div id="footer" className="container footerDiv">
-            <div style={{ backgroundColor: "#060e17" }} className="row text-light pt-4">
+        <div id="footer" className="container footerDiv" style={{ backgroundColor: "#060e17" }}>
+            <div className="row text-light pt-4">
                 <div className="col-md-3">
                     <Link to="/"><h1 className="text-warning navbar-brand">Creative Agency</h1></Link>
                     <p className="pt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est quas quam corrupti neque atque saepe ab magni temporibus !</p>

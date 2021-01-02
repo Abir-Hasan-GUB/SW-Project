@@ -3,8 +3,7 @@ import './Banner.css';
 
 const Banner = () => {
     return (
-        <section id="showcase" class="container pl-0 pr-0">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div id="myCarousel" class="carousel pl-0 pr-0 slide container" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-slide-to="0" data-target="#myCarousel" class="active"></li>
                     <li data-slide-to="1" data-target="#myCarousel"></li>
@@ -46,7 +45,6 @@ const Banner = () => {
                     <span class="carousel-control-next-icon"></span>
                 </a>
             </div>
-        </section>
     );
 };
 
