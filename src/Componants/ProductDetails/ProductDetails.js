@@ -4,6 +4,7 @@ import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import './ProductDetails.css';
 import { UserContext } from '../../App';
+import HomeMenuBar from '../HomeMenuBar/HomeMenuBar';
 
 const ProductDetails = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -65,7 +66,7 @@ const ProductDetails = () => {
 
     return (
         <div className="container">
-            <NavBar></NavBar>
+            <HomeMenuBar></HomeMenuBar>
             <div className="row mx-0 mt-5 bg-light">
                 <div className="col-md-6 px-0 mt-4">
                     {/* product img  */}
