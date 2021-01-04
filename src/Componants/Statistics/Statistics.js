@@ -14,9 +14,9 @@ const Statistics = () => {
     let revinue = 0;
     for (let i = 0; i < allOrder.length; i++) {
         let product = allOrder[i];
-        revinue = revinue + product.price;
+        revinue = parseFloat(revinue + product.price).toFixed(2) ;
     }
-
+// console.log(revinue)
     useEffect(() => {
         fetch(`http://localhost:5000/clientAllOrder`,)
             .then(response => response.json())
@@ -60,7 +60,7 @@ const Statistics = () => {
                                     <div className="row ml-0 mr-0 bg-dark">
                                         <div className="col-md-7 text-light pb-3 pt-3">
                                             <h5>Welcome Back !</h5>
-                                            <h6>{"Abir Hasan" || loggedInUser.name}</h6>
+                                            <h6>{loggedInUser.name}</h6>
                                         </div>
                                         <div className="col-md-5">
                                             <img className="img-fluid" src={welcomeProfileImg} alt="welcome" />
@@ -69,8 +69,8 @@ const Statistics = () => {
                                     <div className="welcomeProfile bg-light">
                                         <div className="row p-2">
                                             <div className="col-md-6">
-                                                <img className="img-fluid proPicofDshB" src={proPic || loggedInUser.photo} alt="profile pic" />
-                                                <h6 className="pt-2">{"Abir Hasan" || loggedInUser.name}</h6>
+                                                <img className="img-fluid proPicofDshB" src={loggedInUser.photo} alt="profile pic" />
+                                                <h6 className="pt-2">{loggedInUser.name}</h6>
                                                 <p>Full-Stack Devoloper</p>
                                             </div>
                                             <div className="col-md-3 p-3">

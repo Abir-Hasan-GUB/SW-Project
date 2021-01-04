@@ -205,7 +205,7 @@ const PlaceOrder = () => {
                         </tr>
                         <tr>
                             <th className="text-left">Total</th>
-                            <th id="finalTotalPrice" className="text-right">$ {shippingAndPrice.toFixed(2)}</th>
+                            <th className="text-right">$ <span id="finalTotalPrice">{shippingAndPrice.toFixed(2)}</span></th>
                         </tr>
                     </table>
                     <div className="d-flex align-items-center justify-content-center">
