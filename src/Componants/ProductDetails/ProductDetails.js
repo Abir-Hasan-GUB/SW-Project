@@ -23,6 +23,7 @@ const ProductDetails = () => {
             })
 
     }, [productKey]);
+    console.log(review)
 
     // ==================== Update review state for show to uI =================
     useEffect(() => {
@@ -33,11 +34,11 @@ const ProductDetails = () => {
 
     // =============== Add an review ============
     const handleAddReview = (e) => {
-        let name = document.getElementById('reviewUserName').value;
+        // let name = document.getElementById('reviewUserName').value;
         let comment = document.getElementById('reviewUserComment').value;
-        let email = document.getElementById('reviewUserEmail').value;
+        // let email = document.getElementById('reviewUserEmail').value;
         let userComment = {
-            name: name,
+            name: loggedInUser.name,
             email: loggedInUser.email,
             comment: comment,
             time: new Date(),
@@ -118,7 +119,7 @@ const ProductDetails = () => {
                         review.map(review => <div class="media my-3">
                             <img src={review.img} class="align-self-center clientImgInReview mr-3 img-fluid" alt="client" />
                             <div class="media-body">
-                                <h5 class="mt-0">Md. Abir Hasan</h5>
+                                <h5 class="mt-0">{review.name}</h5>
                                 <p>{review.comment}</p>
                             </div>
                         </div>)
